@@ -1,0 +1,63 @@
+.Navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  background-color: #383838;
+  color: #ffffff;
+  height: 56px;
+  z-index: 10;
+}
+
+.Navbar-container {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Navbar-container-left {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Navbar-container-right {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.try-free-button {
+  background: linear-gradient(to right, #fb7b49, #edaf38);
+  outline: none;
+  border: none;
+  width: 45%;
+  color: #ffffff;
+  padding: 0.4rem 0;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.try-free-button:hover {
+  transform: scale(1.02);
+  transition: 0.3s ease;
+}
+
+.Navbar-items {
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 1.1rem 0.9rem;
+  margin: 0;
+}
+
+.active {
+  border-bottom: 4px solid #ffb53e;
+}

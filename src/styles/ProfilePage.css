@@ -1,0 +1,93 @@
+.ProfilePage {
+  margin-top: 56px;
+}
+
+.ProfilePage-title-container {
+  background-color: #383838;
+  color: #ffffff;
+  padding: 3rem 0 9rem 0;
+}
+
+.ProfilePage-title-row {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.ProfilePage-title-row h1 {
+  font-size: 2.3rem;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+}
+.ProfilePage-title-row span {
+  font-size: 0.8rem;
+  color: #3eac72;
+  cursor: pointer;
+}
+
+.contact-details-div {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.profile-name {
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+  border-right: 1px solid #ffffff;
+}
+
+.Profile-card-container {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.Profile-card {
+  background-color: #ffffff;
+  border: 1px solid #d1d9d9;
+  border-radius: 0.5rem;
+  padding: 1rem 0 2.5rem 0;
+  margin-bottom: 1rem;
+}
+.Profile-card h3 {
+  font-weight: 400;
+  width: 65%;
+  margin: 1rem auto;
+}
+
+.Profile-card-content-div {
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Profile-card-column-div {
+  display: flex;
+  flex-direction: column;
+}
+.Profile-card-column-div span {
+  font-size: 0.8rem;
+  margin: 0.4rem 0;
+  color: grey;
+  font-weight: 500;
+  line-height: 1.1rem;
+}
+
+.col-values-div {
+  width: 40%;
+  text-align: right;
+}
+.col-values-div span {
+  color: black;
+}
+
+.first-card {
+  margin-top: -6rem;
+}

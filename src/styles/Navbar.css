@@ -7,7 +7,7 @@
   width: 100%;
   background-color: #383838;
   color: #ffffff;
-  height: 56px;
+  height: 57px;
   z-index: 10;
 }
 
@@ -18,6 +18,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .Navbar-container-left {
@@ -40,9 +45,9 @@
   background: linear-gradient(to right, #fb7b49, #edaf38);
   outline: none;
   border: none;
-  width: 45%;
+  width: 40%;
   color: #ffffff;
-  padding: 0.4rem 0;
+  padding: 0.5rem 0;
   border-radius: 1rem;
   cursor: pointer;
 }

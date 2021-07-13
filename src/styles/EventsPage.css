@@ -1,0 +1,25 @@
+.EventsPage {
+  margin-top: 56px;
+}
+
+.EventsPage-title-container {
+  background-color: #383838;
+  color: #ffffff;
+  padding: 3rem 0 8rem 0;
+}
+.EventsPage-title-container h1 {
+  font-size: 2.3rem;
+  font-weight: 400;
+  width: 70%;
+  margin: 0 auto 0.7rem auto;
+}
+.EventsPage-title-container p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.events-card-container {
+  margin: -6rem 0 6rem 0;
+}

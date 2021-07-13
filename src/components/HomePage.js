@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import heroImage from '../images/img_hero.png';
 import favIcon from '../images/ic_fav.svg';
 import universityLogo1 from '../images/logo_univercity_1.jpg';
@@ -22,6 +22,12 @@ import Footer from './Footer';
 import '../styles/HomePage.css';
 
 const HomePage = () => {
+  const [activeDot, setActiveDot] = useState(1);
+
+  const handleDotClick = (val) => {
+    setActiveDot(val);
+  };
+
   return (
     <div className="HomePage">
       <Navbar />
@@ -55,19 +61,39 @@ const HomePage = () => {
             </div>
             <p>Active students</p>
           </div>
-          <div className="university-section-content-box-right">
-            <h1>Trust our world of learning, joining us to achieve their goals.</h1>
-            <p>Collaborated with universities</p>
-            <div className="university-icon-container">
-              <img className="university-logo" src={universityLogo1} alt="university-1" />
-              <img className="university-logo" src={universityLogo2} alt="university-2" />
+          {activeDot === 1 && (
+            <div className="university-section-content-box-right">
+              <h1>Trust our world of learning, joining us to achieve their goals.</h1>
+              <p>Collaborated with universities</p>
+              <div className="university-icon-container">
+                <img className="university-logo" src={universityLogo1} alt="university-1" />
+                <img className="university-logo" src={universityLogo2} alt="university-2" />
+              </div>
             </div>
-          </div>
+          )}
+          {activeDot === 2 && (
+            <div className="university-section-content-box-right">
+              <h1>Organised 50+ technical events, in and around 15+ cities all over India.</h1>
+            </div>
+          )}
+          {activeDot === 3 && (
+            <div className="university-section-content-box-right">
+              <h1>75+ technical workshops conducted.</h1>
+            </div>
+          )}
           <div className="carousal-pagination">
-            <span className="dot checked"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
+            <span
+              className={`dot ${activeDot === 1 && 'checked'}`}
+              onClick={() => handleDotClick(1)}
+            ></span>
+            <span
+              className={`dot ${activeDot === 2 && 'checked'}`}
+              onClick={() => handleDotClick(2)}
+            ></span>
+            <span
+              className={`dot ${activeDot === 3 && 'checked'}`}
+              onClick={() => handleDotClick(3)}
+            ></span>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ const Navbar = () => {
           <NavLink to='/help' exact className="nav-link" activeClassName="active">
             <p className="Navbar-items">Help</p>
           </NavLink>
-          <NavLink to='login' exact className="nav-link" activeClassName="active">
+          <NavLink to='/profile' exact className="nav-link" activeClassName="active">
             <p className="Navbar-items">Login</p>
           </NavLink>
           <button className="try-free-button">Try for free</button>

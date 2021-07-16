@@ -30,7 +30,7 @@ const HomePage = () => {
 
   return (
     <div className="HomePage">
-      <Navbar />
+      <Navbar activeMenuItem={'home'} />
       <div className="welcome-section">
         <div className="welcome-textbox">
           <h1 className="welcome-text1">Welcome to Enrouting careers</h1>
@@ -99,7 +99,7 @@ const HomePage = () => {
       </div>
       <div className="features-section">
         <div className="features-section-title">
-          <h1>Why simple notes are better than Tuitions & video classNamees"</h1>
+          <h1>Why simple notes are better than Tuitions & video classes"</h1>
         </div>
         <div className="features-container">
           <div className="features-container-row">
@@ -132,7 +132,7 @@ const HomePage = () => {
             <div className="feature-item">
               <img src={featureImage5} alt="feature-5" className="feature-img" />
               <p className="feature-text">
-                No more worries of loosing a className or avoiding family functions.
+                No more worries of loosing a class or avoiding family functions.
               </p>
             </div>
             <div className="feature-item">
@@ -172,7 +172,7 @@ const HomePage = () => {
               <p>Become self reliant.</p>
               <p>Start making Informed decisions about your learning.</p>
               <p>Be aware of your strength and weaknesses.</p>
-              <p>Connect the classNameroom learning with the real world.</p>
+              <p>Connect the classroom learning with the real world.</p>
               <p>Start taking responsibility for your own learning.</p>
               <p>Know about the different strategies of learning.</p>
             </div>

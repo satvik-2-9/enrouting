@@ -1,0 +1,116 @@
+.UnlockChapterModal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+}
+
+.UnlockChapterModal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  width: 35%;
+  height: 50%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+  border-radius: 10px;
+  padding: 1.1rem 1.1rem 0.8rem 1rem;
+}
+
+.UnlockChapterModal-content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.unlock-chapter-img {
+  width: 38%;
+  border-radius: 10px;
+}
+
+.UnlockChapterModal-text-container {
+  width: 58%;
+  text-align: center;
+}
+.UnlockChapterModal-text-container h1 {
+  font-family: Smoothy, Arial, serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+.UnlockChapterModal-text-container p {
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 90%;
+  line-height: 1.1rem;
+  margin: 0 auto;
+}
+
+.UnlockChapterModal-details-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+  margin: 1rem auto;
+}
+
+.UnlockChapterModal-details-container-col-left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: grey;
+  line-height: 1.7rem;
+}
+
+.UnlockChapterModal-details-container-col-right {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.7rem;
+}
+
+.UnlockChapterModal-button {
+  width: 55%;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(to right, #fb794a, #edb038);
+  padding: 0.5rem 0;
+  border-radius: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.UnlockChapterModal-close-icon {
+  width: 18px;
+  float: right;
+  margin-top: -2.7rem;
+  margin-right: -1.1rem;
+  cursor: pointer;
+}
+
+.UnlockChapterModal-link {
+  text-decoration: none;
+  color: #ffffff;
+}

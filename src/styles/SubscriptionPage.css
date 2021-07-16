@@ -1,0 +1,174 @@
+.SubscriptionPage {
+  margin-top: 56px;
+}
+
+.SubscriptionPage-title-container {
+  background-color: #3eac72;
+  padding: 1rem 0 10rem 0;
+}
+
+.SubscriptionPage-content {
+  width: 80%;
+  margin: 0 auto;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+.SubscriptionPage-content h1 {
+  font-weight: 400;
+  width: 40%;
+  margin: 0 auto 0.7rem auto;
+  line-height: 2.7rem;
+}
+.SubscriptionPage-content p {
+  font-size: 0.8rem;
+  margin: 0;
+  font-weight: 300;
+  line-height: 1.3rem;
+}
+
+.tick-icon {
+  width: 5%;
+  margin: 1.8rem 0 1rem 0;
+}
+
+.bg-img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.subscription-card-container {
+  width: 70%;
+  margin: -8rem auto 7rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.subscription-card {
+  width: 33%;
+  background-color: #ffffff;
+  border-radius: 0.6rem;
+  padding: 1rem 4.5rem;
+  z-index: 1;
+  border: 1px solid #d1d9d9;
+}
+
+.subscription-card-title {
+  margin: 0.8rem 0 0.4rem 0;
+}
+
+.subscription-details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.subscription-details-container-col-left p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: grey;
+  line-height: 1.1rem;
+}
+
+.subscription-details-container-col-right p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.1rem;
+  text-align: right;
+}
+
+.invoice-container {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0.7rem 0;
+}
+.invoice-container span {
+  font-size: 0.8rem;
+  color: #3eac72;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.download-icon {
+  width: 7%;
+  margin-right: 0.4rem;
+}
+
+.subscription-card-text {
+  font-size: 0.8rem;
+  color: grey;
+  font-weight: 500;
+  line-height: 1.1rem;
+}
+
+.notes-img {
+  width: 70%;
+  margin-top: 0.7rem;
+}
+
+.subscription-card-button {
+  width: 45%;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(to right, #fb794a, #edb038);
+  padding: 0.4rem 0;
+  border-radius: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin-top: 2.3rem;
+}
+
+.workshop-title {
+  font-weight: 400;
+  width: 70%;
+  margin: 0 auto;
+}
+.workshop-title h1 {
+  font-weight: 400;
+  width: 44%;
+  line-height: 2.8rem;
+}
+
+.best-workshop-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 72%;
+  margin: 2rem auto 8rem auto;
+}
+
+.best-workshop-card {
+  width: 33%;
+  margin: 0 0.4rem;
+}
+.best-workshop-card h4 {
+  font-weight: 500;
+  width: 70%;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.best-workshop-card p {
+  font-size: 0.8rem;
+  color: grey;
+  line-height: 1.2rem;
+  margin-top: 0.5rem;
+}
+.best-workshop-card span {
+  color: #3eac72;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.best-workshop-card-img {
+  height: 170px;
+  background-color: #dcfbf3;
+  border-radius: 1rem;
+}

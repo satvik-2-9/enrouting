@@ -7,7 +7,7 @@ import '../styles/WorkshopPage.css';
 const WorkshopPage = () => {
   return (
     <div className="WorkshopPage">
-      <Navbar />
+      <Navbar activeMenuItem={'workshop'} />
       <div className="WorkshopPage-title-container">
         <h1>Workshop</h1>
         <p>All workshops you are part of you can check here.</p>

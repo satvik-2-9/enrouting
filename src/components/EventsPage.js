@@ -7,7 +7,7 @@ import '../styles/EventsPage.css';
 const EventsPage = () => {
   return (
     <div className="EventsPage">
-      <Navbar />
+      <Navbar activeMenuItem={'events'} />
       <div className="EventsPage-title-container">
         <h1>Events</h1>
         <p>All events you are part of you can check here.</p>

@@ -6,6 +6,7 @@ import WorkshopPage from './components/WorkshopPage';
 import EventsPage from './components/EventsPage';
 import ProfilePage from './components/ProfilePage';
 import EditProfilePage from './components/EditProfilePage';
+import SubscriptionPage from './components/SubscriptionPage';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Route path='/events' exact component={EventsPage} />
       <Route path='/profile' exact component={ProfilePage} />
       <Route path='/profile/edit' exact component={EditProfilePage} />
+      <Route path='/subscription' exact component={SubscriptionPage} />
     </Switch>
   );
 };

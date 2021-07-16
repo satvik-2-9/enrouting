@@ -149,7 +149,7 @@
 }
 
 .feature-item {
-  width: 25%;
+  width: 26%;
   padding: 1.5rem 0;
 }
 
@@ -159,6 +159,7 @@
 
 .feature-text {
   font-size: 0.8rem;
+  line-height: 1.2rem;
 }
 
 .event-curved-div {
@@ -273,6 +274,7 @@
 .workshops-section-card p {
   font-size: 0.8rem;
   text-align: left;
+  line-height: 1.2rem;
 }
 
 .workshop-img {

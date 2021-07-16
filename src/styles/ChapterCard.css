@@ -47,3 +47,7 @@
 .lock-icon {
   width: 1.9rem;
 }
+
+.read-watch-button {
+  cursor: pointer;
+}

@@ -127,7 +127,6 @@ const Navbar = (props) => {
               </div>
             )}
           </div>
-          <div></div>
           <NavLink
             to='/events'
             exact

@@ -1,0 +1,99 @@
+.PurchasesPage {
+  margin-top: 56px;
+}
+
+.PurchasesPage-title-container {
+  background-color: #383838;
+  padding: 3rem 0 10rem 0;
+}
+.PurchasesPage-title-container h1 {
+  font-weight: 400;
+  color: #ffffff;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+.PurchasesPage-title-container span {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-right: 2.5rem;
+  cursor: pointer;
+  padding-bottom: 0.5rem;
+}
+
+.PurchasesPage-options-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.active-option {
+  color: #3eac72 !important;
+  border-bottom: 3px solid #3eac72;
+  font-weight: 400 !important;
+}
+
+.transactions-card-container {
+  width: 70%;
+  margin: -7rem auto 5rem auto;
+  border: 1px solid #d1d9d9;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.transactions-card-container-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background-color: #ffffff;
+}
+.transactions-card-container-title-row p {
+  margin-bottom: 0.5rem;
+  margin-top: 2.2rem;
+}
+
+.first-title {
+  width: 35%;
+}
+
+.middle-title {
+  width: 10%;
+}
+
+.last-title {
+  text-align: right;
+  width: 30%;
+}
+
+.subscriptions-card-content {
+  width: 70%;
+  margin: -7rem auto 5rem auto;
+}
+
+.subscriptions-card-container {
+  padding-top: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #d1d9d9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.subscriptions-card-title {
+  margin-left: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.view-toggle {
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: grey;
+  margin: 0.5rem 2.5rem 1.6rem 0;
+}
+.view-toggle span {
+  cursor: pointer;
+}

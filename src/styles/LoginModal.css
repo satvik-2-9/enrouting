@@ -12,6 +12,7 @@
   -webkit-animation-duration: 0.4s;
   animation-name: loginFadeIn;
   animation-duration: 0.4s;
+  color: black;
 }
 
 .LoginModal-content {
@@ -40,10 +41,11 @@
   margin: 0 auto;
 }
 
-.LoginModal-content h1 {
+.login-title {
   font-weight: 400;
   margin: 4rem auto 1.3rem auto;
   text-align: left;
+  font-size: 1.6rem;
 }
 .LoginModal-content p {
   font-size: 0.8rem;
@@ -97,6 +99,40 @@
   border-top: 1px solid #d1d9d9;
   width: 45%;
   margin: 0.8rem auto 2rem auto;
+}
+
+.back-icon-container {
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.back-icon {
+  width: 10%;
+  cursor: pointer;
+}
+
+.create-account-title {
+  font-weight: 400;
+  margin: 0.6rem auto 1.3rem auto;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+.success-icon {
+  width: 30%;
+  margin-top: 6rem;
+}
+
+.success-title {
+  font-family: Smoothy, Arial, serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  line-height: 3.2rem;
+}
+
+.success-text {
+  color: grey;
 }
 
 /* Add Animation */

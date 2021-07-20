@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import '../styles/EditProfilePage.css';
 
-const initialData = {
-  name: 'Pradeep Tekale',
-  email: 'impradeep@gmail.com',
-  number: '9730488258',
-  address: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-  standard: '8th standard',
-  school: 'Gandhi High School',
-  password: 'pradeep619',
-  confirmPassword: 'pradeep619',
-}
+import { updateUserDetails } from '../redux/actions/userActions';
+
+import '../styles/EditProfilePage.css';
 
 const EditProfilePage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { userData } = useSelector((store) => store.userReducer);
+
+  const initialData = {
+    ...userData, password: '123456789', confirmPassword: '123456789'
+  };
+
+  const firstName = initialData.firstname;
+  const lastName = initialData.lastname;
+  delete initialData.firstname;
+  delete initialData.lastname;
+  initialData.name = firstName + " " + lastName;
+
   const [details, setDetails] = useState(initialData);
 
   const handleChange = (e) => {
@@ -24,9 +30,30 @@ const EditProfilePage = () => {
     setDetails({ ...details, [name]: e.target.value });
   };
 
+  const handleSave = () => {
+    if (details.password !== details.confirmPassword) {
+      alert('Password and confirm password do not match!');
+    } else {
+      const changes = { ...details };
+      const [firstName, lastName] = changes.name.split(" ");
+      delete changes.name;
+      delete changes.confirmPassword;
+      delete changes.id;
+      changes.firstname = firstName;
+      changes.lastname = lastName;
+
+      if (changes.password === '123456789')
+        delete changes.password;
+
+      dispatch(updateUserDetails(changes)).then(() => {
+        history.push('/profile');
+      });
+    }
+  };
+
   return (
     <div className="EditProfilePage">
-      <Navbar />
+      <Navbar activeMenuItem={'profile'} />
       <div className="EditProfilePage-title-container">
         <h1>Edit profile</h1>
       </div>
@@ -67,9 +94,9 @@ const EditProfilePage = () => {
               <div className="EditProfile-card-content-col">
                 <p>Number</p>
                 <input
-                  name="number"
+                  name="phone"
                   type="tel"
-                  value={details.number}
+                  value={details.phone}
                   onChange={handleChange}
                 />
               </div>
@@ -96,7 +123,7 @@ const EditProfilePage = () => {
                 <p>Standard of student</p>
                 <input
                   name="standard"
-                  type="text"
+                  type="number"
                   value={details.standard}
                   onChange={handleChange}
                 />
@@ -143,7 +170,7 @@ const EditProfilePage = () => {
         <button onClick={() => history.push('/profile')} className="cancel-button">
           Cancel
         </button>
-        <button onClick={() => history.push('/profile')} className="save-button">
+        <button onClick={handleSave} className="save-button">
           Save changes
         </button>
       </div>

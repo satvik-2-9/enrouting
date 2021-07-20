@@ -1,21 +1,31 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { createBrowserHistory as createHistory } from 'history';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import jwt_decode from 'jwt-decode';
+import Cookies from 'js-cookie';
+import App, { history } from './App';
+import store from './redux/store';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-export const history = createHistory();
+import { setUserDetails, logout } from './redux/actions/userActions';
 
-ReactDOM.render(
-  <BrowserRouter history={history}>
+const jsx = (
+  <Provider store={store}>
     <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+if (Cookies.get('userJWT')) {
+  const decoded = jwt_decode(Cookies.get('userJWT'));
+  // Check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    store.dispatch(logout())
+      .then(() => ReactDOM.render(jsx, document.getElementById('root')));
+  } else {
+    store.dispatch(setUserDetails(history))
+      .then(() => ReactDOM.render(jsx, document.getElementById('root')));
+  }
+} else {
+  ReactDOM.render(jsx, document.getElementById('root'));
+}

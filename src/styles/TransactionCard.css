@@ -1,0 +1,47 @@
+.TransactionCard {
+  border-bottom: 1px solid #d1d9d9;
+  padding: 0.8rem 2.5rem;
+  background-color: #ffffff;
+}
+
+.TransactionCard-row-1,
+.TransactionCard-row-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TransactionCard-row-1 p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+.all-chapters-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: grey;
+  margin-top: 0;
+}
+
+.download-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #3eac72;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.first-col {
+  width: 35%;
+}
+
+.second-col {
+  width: 10%;
+}
+
+.third-col {
+  width: 30%;
+  text-align: right;
+}

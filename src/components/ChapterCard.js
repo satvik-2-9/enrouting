@@ -6,7 +6,7 @@ import nextIcon from '../images/ic_arrow_right.svg';
 import '../styles/ChapterCard.css';
 
 const ChapterCard = (props) => {
-  const { isLocked, chapNo } = props;
+  const { isLocked, chapter } = props;
   const [notesModal, setNotesModal] = useState(false);
   const [lecturesModal, setLecturesModal] = useState(false);
   const [unlockChapterModal, setUnlockChapterModal] = useState(false);
@@ -33,12 +33,28 @@ const ChapterCard = (props) => {
 
   return (
     <div className="ChapterCard">
-      {notesModal && <ReadWatchModal type={'notes'} handleClose={handleClose} />}
-      {lecturesModal && <ReadWatchModal type={'lectures'} handleClose={handleClose} />}
-      {unlockChapterModal && <UnlockChapterModal handleClose={handleClose} />}
+      {notesModal &&
+        <ReadWatchModal
+          type={'notes'}
+          handleClose={handleClose}
+          chapter={chapter}
+        />
+      }
+      {lecturesModal &&
+        <ReadWatchModal
+          type={'lectures'}
+          handleClose={handleClose}
+          chapter={chapter}
+        />
+      }
+      {unlockChapterModal &&
+        <UnlockChapterModal
+          handleClose={handleClose}
+        />
+      }
       <div className="ChapterCard-left">
-        <p>Chapter {chapNo}</p>
-        <p>Name of the chapter</p>
+        <span>Chapter {chapter.number}</span>
+        <p>{chapter.name}</p>
       </div>
       {isLocked ? (
         <div className="ChapterCard-right">

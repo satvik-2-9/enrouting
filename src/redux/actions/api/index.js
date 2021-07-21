@@ -21,3 +21,9 @@ export const signup = (signupData) => API.post('/api/auth/signup', signupData);
 
 export const updateUserDetails = (updates) => API.put('/api/user/update', updates);
 
+
+// Courses Routes
+export const getAllCourses = () => API.get('/api/courses/all');
+
+export const getUserCourses = () => API.get('/api/courses/self');
+

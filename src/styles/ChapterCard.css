@@ -11,12 +11,15 @@
 }
 
 .ChapterCard-left {
-  width: 35%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0.8rem 2.5rem;
+}
+.ChapterCard-left p {
+  width: 60%;
 }
 
 .ChapterCard-right {

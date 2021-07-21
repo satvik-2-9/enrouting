@@ -13,20 +13,24 @@ const Navbar = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { activeMenuItem } = props;
+
   const [loginModal, setLoginModal] = useState(false);
   const [courseMenu, setCourseMenu] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
   const [activeMenu1Item, setActiveMenu1Item] = useState(0);
-  const [activeMenu2Item, setActiveMenu2Item] = useState(0);
+  const [activeMenu2Item, setActiveMenu2Item] = useState('');
   const [activeProfileMenuItem, setActiveProfileMenuItem] = useState(0);
 
   const { isAuthenticated, userData } = useSelector(
     (store) => store.userReducer
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = (board) => {
     setCourseMenu(false);
-    history.push('/course');
+    history.push({
+      pathname: '/course',
+      state: { standard: activeMenu2Item, board },
+    });
   };
 
   const handleProfileClick = (option) => {
@@ -58,6 +62,23 @@ const Navbar = (props) => {
     ? document.querySelector("body").style.overflow = 'hidden'
     : document.querySelector("body").style.overflow = 'auto'
 
+  const boardMenu = () => (
+    <div className="course-menu-2">
+      <div
+        onClick={() => handleSubmit('CBSE')}
+        className="course-menu-1-item"
+      >
+        <span>CBSE board</span>
+      </div>
+      <div
+        onClick={() => handleSubmit('Kerala')}
+        className="course-menu-1-item"
+      >
+        <span>Kerala board</span>
+      </div>
+    </div>
+  );
+
 
   return (
     <div className="Navbar">
@@ -87,50 +108,39 @@ const Navbar = (props) => {
                     {activeMenu1Item === 1 && (
                       <div className="course-menu-2">
                         <div
-                          onClick={() => setActiveMenu2Item(1)}
-                          className={`course-menu-1-item ${activeMenu2Item === 1 && 'active-item'}`}
+                          onClick={() => setActiveMenu2Item('8')}
+                          className={`course-menu-1-item ${activeMenu2Item === '8' && 'active-item'}`}
                         >
                           <span>8th Class</span>
+                          {activeMenu2Item === '8' && boardMenu()}
                         </div>
                         <div
-                          onClick={() => setActiveMenu2Item(2)}
-                          className={`course-menu-1-item ${activeMenu2Item === 2 && 'active-item'}`}
+                          onClick={() => setActiveMenu2Item('9')}
+                          className={`course-menu-1-item ${activeMenu2Item === '9' && 'active-item'}`}
                         >
                           <span>9th Class</span>
+                          {activeMenu2Item === '9' && boardMenu()}
                         </div>
                         <div
-                          onClick={() => setActiveMenu2Item(3)}
-                          className={`course-menu-1-item ${activeMenu2Item === 3 && 'active-item'}`}
+                          onClick={() => setActiveMenu2Item('10')}
+                          className={`course-menu-1-item ${activeMenu2Item === '10' && 'active-item'}`}
                         >
                           <span>10th Class</span>
-                          {activeMenu2Item === 3 && (
-                            <div className="course-menu-2">
-                              <div
-                                onClick={handleSubmit}
-                                className="course-menu-1-item"
-                              >
-                                <span>CBSE board</span>
-                              </div>
-                              <div
-                                onClick={handleSubmit}
-                                className="course-menu-1-item"
-                              >
-                                <span>Kerala board</span>
-                              </div>
-                            </div>
-                          )}
+                          {activeMenu2Item === '10' && boardMenu()}
                         </div>
                         <div
-                          onClick={() => setActiveMenu2Item(4)}
-                          className={`course-menu-1-item ${activeMenu2Item === 4 && 'active-item'}`}
+                          onClick={() => setActiveMenu2Item('11')}
+                          className={`course-menu-1-item ${activeMenu2Item === '11' && 'active-item'}`}
                         >
                           <span>11th Class</span>
+                          {activeMenu2Item === '11' && boardMenu()}
                         </div>
                         <div
-                          onClick={() => setActiveMenu2Item(5)}
-                          className={`course-menu-1-item ${activeMenu2Item === 5 && 'active-item'}`}
+                          onClick={() => setActiveMenu2Item('12')}
+                          className={`course-menu-1-item ${activeMenu2Item === '12' && 'active-item'}`}
                         >
                           <span>12th Class</span>
+                          {activeMenu2Item === '12' && boardMenu()}
                         </div>
                       </div>
                     )}

@@ -9,6 +9,9 @@ import ProfilePage from './components/ProfilePage';
 import EditProfilePage from './components/EditProfilePage';
 import SubscriptionPage from './components/SubscriptionPage';
 import PurchasesPage from './components/PurchasesPage';
+import BlogsPage from './components/BlogsPage';
+import AboutUsPage from './components/AboutUsPage';
+import HelpPage from './components/HelpPage';
 
 export const history = createHistory();
 
@@ -25,6 +28,9 @@ const App = () => {
         <Route path='/subscription' exact component={SubscriptionPage} />
         <Route path='/purchases' exact component={PurchasesPage} />
         <Route path='/notes' exact component={PurchasesPage} />
+        <Route path='/blogs' exact component={BlogsPage} />
+        <Route path='/about' exact component={AboutUsPage} />
+        <Route path='/help' exact component={HelpPage} />
       </Switch>
     </BrowserRouter>
   );

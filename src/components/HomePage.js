@@ -14,6 +14,8 @@ import workshopImage1 from '../images/img_tech_workshop1.svg';
 import workshopImage2 from '../images/img_tech_workshop2.svg';
 import workshopImage3 from '../images/img_tech_workshop3.svg';
 import workshopImage4 from '../images/img_tech_workshop4.svg';
+import workshopImage5 from '../images/img_tech_workshop5.svg';
+import workshopImage6 from '../images/img_tech_workshop6.svg';
 import teachersImage from '../images/img_best_teacher.svg';
 import studentImage from '../images/img_student.jpg';
 import starIcon from '../images/ic_star.svg';
@@ -187,38 +189,41 @@ const HomePage = () => {
         <div className="workshops-section-card-container">
           <div className="workshops-section-card-container-row">
             <div className="workshops-section-card">
-              <img src={featureImage4} alt="workshop-img-1" className="workshop-feature-img" />
+              <img src={workshopImage5} alt="workshop-img-1" className="workshop-img" />
               <p>Provides practical knowledge on various topics which would help the students to build strong concepts and hands on experience.</p>
+            </div>
+            <div className="workshops-section-card">
+              <img src={workshopImage1} alt="workshop-img-6" className="workshop-img" />
+              <p>Step by step explanations on how a project is completed.</p>
+            </div>
+            <div className="workshops-section-card">
+              <img src={workshopImage6} alt="workshop-img-6" className="workshop-img" />
+              <p>Opportunities to develop and learn new skills.</p>
             </div>
             <div className="workshops-section-card">
               <img src={workshopImage2} alt="workshop-img-2" className="workshop-img" />
               <p>Opportunities for networking with other like minded students.</p>
             </div>
-            <div className="workshops-section-card">
-              <img src={workshopImage3} alt="workshop-img-3" className="workshop-img" />
-              <p>Will help you realize and think new ideas as you learn.</p>
-            </div>
           </div>
           <div className="workshops-section-card-container-row">
             <div className="workshops-section-card">
-              <img src={workshopImage4} alt="workshop-img-4" className="workshop-img" />
-              <p>Have fun while learning.</p>
+              <img src={workshopImage3} alt="workshop-img-3" className="workshop-img" />
+              <p>Will help you realize and think new ideas as you learn.</p>
             </div>
             <div className="workshops-section-card">
               <img src={featureImage6} alt="workshop-img-5" className="workshop-feature-img" />
               <p>Get inspired to work better on your ideas.</p>
             </div>
             <div className="workshops-section-card">
-              <img src={workshopImage1} alt="workshop-img-6" className="workshop-img" />
-              <p>Step by step explanations on how a project is completed.</p>
+              <img src={workshopImage4} alt="workshop-img-4" className="workshop-img" />
+              <p>Have fun while learning.</p>
             </div>
+            <div className="workshops-section-card"></div>
           </div>
         </div>
       </div>
       <div className="testimonial-section">
-        <div className="empty-div">
-
-        </div>
+        <div className="empty-div"></div>
         <div className="testimonial-curved-div" >
           <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
             <path d="M-1.41,68.58 C175.78,-7.39 317.43,14.30 500.84,91.28 L503.67,159.38 L0.00,150.00 Z" style={{ stroke: 'none', fill: '#3eac72' }}></path>

@@ -1,0 +1,79 @@
+.BlogCard {
+  width: 65%;
+  margin: 1rem auto;
+  padding: 1.5rem 2rem 1.2rem 2rem;
+  border: 1px solid #d1d9d9;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+}
+
+.BlogCard-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.BlogCard-amount-text {
+  font-size: 0.8rem;
+  color: grey;
+  font-weight: 500;
+}
+
+.BlogCard-content-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.BlogCard-content-row img {
+  width: 160px;
+  height: 90px;
+  border-radius: 8px;
+  margin-right: 1.5rem;
+}
+
+.BlogCard-img-container {
+  width: 23%;
+}
+
+.BlogCard-content-div {
+  width: 77%;
+}
+
+.BlogCard-content-div p {
+  font-size: 0.8rem;
+  color: grey;
+  width: 65%;
+  line-height: 1.3rem;
+  margin: -1px 0 0.8rem 0;
+}
+
+.BlogCard-date-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.BlogCard-date-text {
+  font-size: 0.8rem;
+  margin-right: 2rem;
+}
+
+.BlogCard-details-text {
+  font-size: 0.8rem;
+  color: #3eac72;
+  font-weight: 500;
+}
+
+.BlogCard-detail-div {
+  margin-top: 1.3rem;
+  margin-bottom: 0.7rem;
+  cursor: pointer;
+}
+
+img.BlogCard-forward-icon {
+  width: 11px;
+  height: 11px;
+  margin: 0 0 -1px 5px;
+}

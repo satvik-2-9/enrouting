@@ -161,3 +161,9 @@
 .name-text {
   padding: 1rem 0;
 }
+
+.ec-logo {
+  width: 11%;
+  margin-right: 1rem;
+  cursor: pointer;
+}

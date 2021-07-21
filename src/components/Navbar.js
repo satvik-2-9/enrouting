@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import OutsideClickHandler from 'react-outside-click-handler';
+import brandLogo from '../images/ec_logo_nobg.png';
 import downIcon from '../images/ic_arrow_down_green.svg';
 
 import { logout } from '../redux/actions/userActions';
@@ -86,7 +87,12 @@ const Navbar = (props) => {
       {loginModal && <LoginModal setLoginModal={setLoginModal} />}
       <div className="Navbar-container">
         <div className="Navbar-container-left">
-          <span className="Navbar-items">RS</span>
+          <img
+            src={brandLogo}
+            alt="ec_logo"
+            className="ec-logo"
+            onClick={() => history.push('/')}
+          />
           <NavLink
             to='/'
             exact
@@ -197,15 +203,24 @@ const Navbar = (props) => {
             className={`nav-link ${activeMenuItem === 'workshop' && !courseMenu && !profileMenu && 'activ'}`}>
             <p onClick={() => setCourseMenu(false)} className="Navbar-items">Workshop</p>
           </NavLink>
-          <NavLink to='/blogs' exact className="nav-link">
+          <NavLink
+            to='/blogs'
+            exact
+            className={`nav-link ${activeMenuItem === 'blogs' && !courseMenu && !profileMenu && 'activ'}`}>
             <p className="Navbar-items">Blogs</p>
           </NavLink>
-          <NavLink to='/about' exact className="nav-link">
+          <NavLink
+            to='/about'
+            exact
+            className={`nav-link ${activeMenuItem === 'about' && !courseMenu && !profileMenu && 'activ'}`}>
             <p className="Navbar-items">About us</p>
           </NavLink>
         </div>
         <div className="Navbar-container-right">
-          <NavLink to='/help' exact className="nav-link">
+          <NavLink
+            to='/help'
+            exact
+            className={`nav-link ${activeMenuItem === 'help' && !courseMenu && !profileMenu && 'activ'}`}>
             <p className="Navbar-items">Help</p>
           </NavLink>
           {isAuthenticated ? (

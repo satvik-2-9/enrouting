@@ -256,20 +256,20 @@
 }
 
 .workshops-section-card-container {
-  width: 70%;
+  width: 80%;
   margin: 2rem auto 7rem auto;
 }
 
 .workshops-section-card-container-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
 }
 
 .workshops-section-card {
   width: 25%;
   text-align: center;
+  padding: 1.1rem;
 }
 .workshops-section-card p {
   font-size: 0.8rem;
@@ -282,9 +282,9 @@
 }
 
 .workshop-feature-img {
-  width: 50%;
-  padding: 1rem 0 3rem 0;
-  margin-top: 1rem;
+  width: 55%;
+  margin-top: 1.7rem;
+  margin-bottom: 1.4rem;
 }
 
 .testimonial-section {

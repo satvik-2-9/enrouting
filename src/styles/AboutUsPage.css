@@ -1,0 +1,47 @@
+.AboutUsPage {
+  margin-top: 57px;
+  margin-bottom: -2px;
+}
+
+.AboutUsPage-container {
+  height: 91vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.AboutUsPage-container-left {
+  width: 40%;
+  background-color: #383838;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.AboutUsPage-container-right {
+  width: 60%;
+  overflow-y: scroll;
+}
+.AboutUsPage-container-right::-webkit-scrollbar {
+  width: 0;
+}
+
+.AboutUsPage-text-box {
+  width: 75%;
+  margin: 0 auto 3rem auto;
+}
+.AboutUsPage-text-box h1 {
+  font-weight: 400;
+  margin-top: 3rem;
+}
+.AboutUsPage-text-box p {
+  font-size: 0.8rem;
+  color: grey;
+  font-weight: 500;
+  line-height: 1.3rem;
+  margin: 1.1rem 0;
+}
+
+.aboutUs-img {
+  width: 70%;
+}

@@ -13,6 +13,10 @@
   font-weight: 400;
   margin-bottom: 0.7rem;
 }
+.CoursePage-title-container h2 {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
 .CoursePage-title-container p {
   font-size: 0.8rem;
   font-weight: 300;

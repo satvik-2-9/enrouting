@@ -13,8 +13,10 @@ const courseReducer = (state = initialState, action) => {
         allCourses: action?.payload,
       };
     case GET_USER_COURSES:
-      return state;
-
+      return {
+        ...state,
+        userCourses: action?.payload,
+      };
     default:
       return state;
   }

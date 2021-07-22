@@ -7,6 +7,7 @@ import brandLogo from '../images/ec_logo_nobg.png';
 import downIcon from '../images/ic_arrow_down_green.svg';
 
 import { logout } from '../redux/actions/userActions';
+import { getAllCourses, getUserCourses } from '../redux/actions/courseActions';
 
 import '../styles/Navbar.css';
 
@@ -20,18 +21,32 @@ const Navbar = (props) => {
   const [profileMenu, setProfileMenu] = useState(false);
   const [activeMenu1Item, setActiveMenu1Item] = useState(0);
   const [activeMenu2Item, setActiveMenu2Item] = useState('');
+  const [activeMenu3Item, setActiveMenu3Item] = useState('');
   const [activeProfileMenuItem, setActiveProfileMenuItem] = useState(0);
 
-  const { isAuthenticated, userData } = useSelector(
-    (store) => store.userReducer
-  );
+  const { isAuthenticated, userData } = useSelector((store) => store.userReducer);
+  const { allCourses, userCourses } = useSelector((store) => store.courseReducer);
 
-  const handleSubmit = (board) => {
-    setCourseMenu(false);
+  const handleMenu1Click = (val) => {
+    setActiveMenu1Item(val);
+  };
+
+  const handleSubmit = (course) => {
+    handleOutsideClick();
+    if (!userCourses && isAuthenticated) {
+      dispatch(getUserCourses());
+    }
     history.push({
       pathname: '/course',
-      state: { standard: activeMenu2Item, board },
+      state: course,
     });
+  };
+
+  const handleCourseClick = () => {
+    setCourseMenu(true);
+    if (!allCourses) {
+      dispatch(getAllCourses());
+    }
   };
 
   const handleProfileClick = (option) => {
@@ -57,29 +72,91 @@ const Navbar = (props) => {
   const handleOutsideClick = () => {
     setProfileMenu(false);
     setCourseMenu(false);
+    setActiveMenu1Item(0);
+    setActiveMenu2Item('');
+    setActiveMenu3Item('');
+    setActiveProfileMenuItem(0);
   };
 
   loginModal
     ? document.querySelector("body").style.overflow = 'hidden'
     : document.querySelector("body").style.overflow = 'auto'
 
+  const getFilteredCourses = (standard, board) => {
+    return allCourses.filter(course => (course.class === standard && course.board === board));
+  };
+
+  const subjectsMenu = (standard, board) => (
+    <div className="course-menu-2">
+      {getFilteredCourses(standard, board).map(course => (
+        <div
+          onClick={() => handleSubmit(course)}
+          className="course-menu-1-item"
+        >
+          <span>{course.subject}</span>
+        </div>
+      ))}
+    </div>
+  );
+
   const boardMenu = () => (
     <div className="course-menu-2">
       <div
-        onClick={() => handleSubmit('CBSE')}
-        className="course-menu-1-item"
+        onClick={() => setActiveMenu3Item('CBSE')}
+        className={`course-menu-1-item ${activeMenu3Item === 'CBSE' && 'active-item'}`}
       >
         <span>CBSE board</span>
+        {activeMenu3Item === 'CBSE' && subjectsMenu(activeMenu2Item, activeMenu3Item)}
       </div>
       <div
-        onClick={() => handleSubmit('Kerala')}
-        className="course-menu-1-item"
+        onClick={() => setActiveMenu3Item('Kerala')}
+        className={`course-menu-1-item ${activeMenu3Item === 'Kerala' && 'active-item'}`}
       >
         <span>Kerala board</span>
+        {activeMenu3Item === 'Kerala' && subjectsMenu(activeMenu2Item, activeMenu3Item)}
       </div>
     </div>
   );
 
+  const classMenu = () => (
+    <div className="course-menu-2">
+      <div
+        onClick={() => setActiveMenu2Item('8')}
+        className={`course-menu-1-item ${activeMenu2Item === '8' && 'active-item'}`}
+      >
+        <span>8th Class</span>
+        {activeMenu2Item === '8' && boardMenu()}
+      </div>
+      <div
+        onClick={() => setActiveMenu2Item('9')}
+        className={`course-menu-1-item ${activeMenu2Item === '9' && 'active-item'}`}
+      >
+        <span>9th Class</span>
+        {activeMenu2Item === '9' && boardMenu()}
+      </div>
+      <div
+        onClick={() => setActiveMenu2Item('10')}
+        className={`course-menu-1-item ${activeMenu2Item === '10' && 'active-item'}`}
+      >
+        <span>10th Class</span>
+        {activeMenu2Item === '10' && boardMenu()}
+      </div>
+      <div
+        onClick={() => setActiveMenu2Item('11')}
+        className={`course-menu-1-item ${activeMenu2Item === '11' && 'active-item'}`}
+      >
+        <span>11th Class</span>
+        {activeMenu2Item === '11' && boardMenu()}
+      </div>
+      <div
+        onClick={() => setActiveMenu2Item('12')}
+        className={`course-menu-1-item ${activeMenu2Item === '12' && 'active-item'}`}
+      >
+        <span>12th Class</span>
+        {activeMenu2Item === '12' && boardMenu()}
+      </div>
+    </div>
+  );
 
   return (
     <div className="Navbar">
@@ -102,87 +179,49 @@ const Navbar = (props) => {
           <div
             className={`Navbar-items course-div ${(courseMenu || activeMenuItem === 'course') && 'activ'}`}
           >
-            <span className="course-text" onClick={() => setCourseMenu(true)}>Course</span>
+            <span className="course-text" onClick={handleCourseClick}>Course</span>
             {courseMenu && (
               <OutsideClickHandler onOutsideClick={handleOutsideClick}>
                 <div className="course-menu-1">
                   <div
-                    onClick={() => setActiveMenu1Item(1)}
+                    onClick={() => handleMenu1Click(1)}
                     className={`course-menu-1-item ${activeMenu1Item === 1 && 'active-item'}`}
                   >
                     <span>Notes & lectures</span>
-                    {activeMenu1Item === 1 && (
-                      <div className="course-menu-2">
-                        <div
-                          onClick={() => setActiveMenu2Item('8')}
-                          className={`course-menu-1-item ${activeMenu2Item === '8' && 'active-item'}`}
-                        >
-                          <span>8th Class</span>
-                          {activeMenu2Item === '8' && boardMenu()}
-                        </div>
-                        <div
-                          onClick={() => setActiveMenu2Item('9')}
-                          className={`course-menu-1-item ${activeMenu2Item === '9' && 'active-item'}`}
-                        >
-                          <span>9th Class</span>
-                          {activeMenu2Item === '9' && boardMenu()}
-                        </div>
-                        <div
-                          onClick={() => setActiveMenu2Item('10')}
-                          className={`course-menu-1-item ${activeMenu2Item === '10' && 'active-item'}`}
-                        >
-                          <span>10th Class</span>
-                          {activeMenu2Item === '10' && boardMenu()}
-                        </div>
-                        <div
-                          onClick={() => setActiveMenu2Item('11')}
-                          className={`course-menu-1-item ${activeMenu2Item === '11' && 'active-item'}`}
-                        >
-                          <span>11th Class</span>
-                          {activeMenu2Item === '11' && boardMenu()}
-                        </div>
-                        <div
-                          onClick={() => setActiveMenu2Item('12')}
-                          className={`course-menu-1-item ${activeMenu2Item === '12' && 'active-item'}`}
-                        >
-                          <span>12th Class</span>
-                          {activeMenu2Item === '12' && boardMenu()}
-                        </div>
-                      </div>
-                    )}
+                    {activeMenu1Item === 1 && classMenu()}
                   </div>
                   <div
-                    onClick={() => setActiveMenu1Item(2)}
+                    onClick={() => handleMenu1Click(2)}
                     className={`course-menu-1-item ${activeMenu1Item === 2 && 'active-item'}`}
                   >
                     <span>Exam preparation</span>
                   </div>
                   <div
-                    onClick={() => setActiveMenu1Item(3)}
+                    onClick={() => handleMenu1Click(3)}
                     className={`course-menu-1-item ${activeMenu1Item === 3 && 'active-item'}`}
                   >
                     <span>Competitive exam</span>
                   </div>
                   <div
-                    onClick={() => setActiveMenu1Item(4)}
+                    onClick={() => handleMenu1Click(4)}
                     className={`course-menu-1-item ${activeMenu1Item === 4 && 'active-item'}`}
                   >
                     <span>Articulture</span>
                   </div>
                   <div
-                    onClick={() => setActiveMenu1Item(5)}
+                    onClick={() => handleMenu1Click(5)}
                     className={`course-menu-1-item ${activeMenu1Item === 5 && 'active-item'}`}
                   >
                     <span>Scifun</span>
                   </div>
                   <div
-                    onClick={() => setActiveMenu1Item(6)}
+                    onClick={() => handleMenu1Click(6)}
                     className={`course-menu-1-item ${activeMenu1Item === 6 && 'active-item'}`}
                   >
                     <span>Practical presentation</span>
                   </div>
                   <div
-                    onClick={() => setActiveMenu1Item(7)}
+                    onClick={() => handleMenu1Click(7)}
                     className={`course-menu-1-item ${activeMenu1Item === 7 && 'active-item'}`}
                   >
                     <span>Conceptual videos</span>
@@ -274,7 +313,7 @@ const Navbar = (props) => {
                       onClick={() => setActiveProfileMenuItem(6)}
                       className={`course-menu-1-item ${activeProfileMenuItem === 6 && 'active-item'}`}
                     >
-                      <p onClick={() => dispatch(logout(history))}>Security</p>
+                      <p onClick={() => dispatch(logout(history))}>Log Out</p>
                     </div>
                   </div>
                 </OutsideClickHandler>

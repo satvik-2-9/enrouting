@@ -8,8 +8,6 @@ import escLightIcon from '../images/ic_esc_white.svg';
 import escDarkIcon from '../images/ic_esc_gray.svg';
 import '../styles/ReadWatchModal.css';
 
-const notes = "Lorem ipsum dolor sit amet. Eos nisi odit qui porro voluptatum est sequi dolor et vero ullam aut eius nihil eum Quis mollitia. Aut dignissimos adipisci eum rerum voluptas et veritatis dignissimos aut tenetur suscipit ut dolorem nemo qui itaque cupiditate. Et eligendi aliquam vel iure natus sed dolores accusamus? Ea doloremque pariatur ut eaque optio est sint nulla ea ducimus porro ea velit culpa et assumenda deserunt. Ab eligendi culpa quo nisi asperiores ab velit esse. Et similique dolores a voluptatem natus non alias Quis vel quod veniam cum asperiores error ex fugit nulla aut tenetur perspiciatis?Qui vero eaque et laudantium quod est consequatur tempore. Eos galisum quia ut cupiditate delectus ea cupiditate sapiente et omnis eligendi et voluptatem deleniti et voluptatum amet sed sunt. Id quisquam voluptates cum voluptatem quia et eaque velit et molestias ullam. Quo exercitationem iste eum fugit suscipit et odio vero aut enim similique et quisquam natus non rerum iusto At asperiores earum."
-
 const ReadWatchModal = (props) => {
   const { type, handleClose, chapter } = props;
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -22,28 +20,27 @@ const ReadWatchModal = (props) => {
         </span>
         <div className="ReadWatchModal-title-container">
           <h1>{chapter.name}</h1>
-          <button>Download {type === 'notes' ? 'notes' : 'video'}</button>
+          <button>
+            <a href={chapter.notes} download target="_blank" rel="noopener noreferrer">
+              Download {type === 'notes' ? 'notes' : 'video'}
+            </a>
+          </button>
         </div>
         <p className="ReadWatchModal-notes-text">
           {type === 'notes' ? 'Notes' : 'Video lecture'}
         </p>
         {type === 'notes' ? (
           <div className={`ReadWatchModal-notes-container ${isDarkMode && 'dark-mode'}`}>
-            <div className="ReadWatchModal-notes">
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-              {notes}
-            </div>
-          </div >
+            <embed
+              className="notes-frame"
+              src={`${chapter.notes}#toolbar=0&navpanes=0&scrollbar=0`}
+              type="application/pdf"
+              scrolling="auto"
+              frameBorder="0"
+              height="100%"
+              width="100%"
+            ></embed>
+          </div>
         ) : (
           <div className={`ReadWatchModal-lecture-container ${isDarkMode && 'dark-mode'}`}>
             <iframe

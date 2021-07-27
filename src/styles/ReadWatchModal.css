@@ -58,6 +58,10 @@
   font-weight: 500;
   font-size: 0.8rem;
 }
+.ReadWatchModal-title-container button a {
+  text-decoration: none;
+  color: #ffffff;
+}
 
 .ReadWatchModal-notes-text {
   width: 60%;
@@ -74,21 +78,14 @@
   font-size: 0.8rem;
   border: 1px solid #d1d9d9;
   border-radius: 0.5rem;
-  padding: 2rem 0;
-  height: 50vh;
-  overflow-y: scroll;
+  height: 60vh;
+  overflow: hidden;
 }
 
 .ReadWatchModal-lecture-container {
   width: 60%;
   margin: 1.5rem auto;
   height: 60vh;
-}
-
-.ReadWatchModal-notes {
-  margin: 0 auto;
-  padding: 0 5rem;
-  line-height: 1.2rem;
 }
 
 .ReadWatchModal-options-container {
@@ -203,16 +200,16 @@
 }
 
 /* width */
-.ReadWatchModal-notes-container::-webkit-scrollbar {
+embed::-webkit-scrollbar {
   width: 3px;
 }
 /* Track */
-.ReadWatchModal-notes-container::-webkit-scrollbar-track {
+embed::-webkit-scrollbar-track {
   background: transparent;
   margin: 2.2rem 0;
 }
 /* Handle */
-.ReadWatchModal-notes-container::-webkit-scrollbar-thumb {
+embed::-webkit-scrollbar-thumb {
   background-color: #3eac72;
   border-radius: 2px;
 }

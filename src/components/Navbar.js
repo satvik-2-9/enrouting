@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import OutsideClickHandler from 'react-outside-click-handler';
 import brandLogo from '../images/ec_logo_nobg.png';
 import downIcon from '../images/ic_arrow_down_green.svg';
-
 import { logout } from '../redux/actions/userActions';
+import { getAllBoards } from '../redux/actions/boardActions';
+import { getAllStandards } from '../redux/actions/standardActions';
 import { getAllCourses, getUserCourses } from '../redux/actions/courseActions';
-
 import '../styles/Navbar.css';
 
 const Navbar = (props) => {
@@ -25,7 +25,18 @@ const Navbar = (props) => {
   const [activeProfileMenuItem, setActiveProfileMenuItem] = useState(0);
 
   const { isAuthenticated, userData } = useSelector((store) => store.userReducer);
+  const { allBoards } = useSelector((store) => store.boardReducer);
+  const { allStandards } = useSelector((store) => store.standardReducer);
   const { allCourses, userCourses } = useSelector((store) => store.courseReducer);
+
+  useEffect(() => {
+    if (allBoards.length === 0) {
+      dispatch(getAllBoards());
+    }
+    if (allStandards.length === 0) {
+      dispatch(getAllStandards());
+    }
+  }, [dispatch, allBoards, allStandards]);
 
   const handleMenu1Click = (val) => {
     setActiveMenu1Item(val);
@@ -83,12 +94,14 @@ const Navbar = (props) => {
     : document.querySelector("body").style.overflow = 'auto'
 
   const getFilteredCourses = (standard, board) => {
-    return allCourses.filter(course => (course.class === standard && course.board === board));
+    return allCourses.filter(course =>
+      (course.class === standard.toString() && course.board === board)
+    );
   };
 
   const subjectsMenu = (standard, board) => (
     <div className="course-menu-2">
-      {getFilteredCourses(standard, board).map(course => (
+      {getFilteredCourses(standard, board)?.map(course => (
         <div
           onClick={() => handleSubmit(course)}
           className="course-menu-1-item"
@@ -101,60 +114,29 @@ const Navbar = (props) => {
 
   const boardMenu = () => (
     <div className="course-menu-2">
-      <div
-        onClick={() => setActiveMenu3Item('CBSE')}
-        className={`course-menu-1-item ${activeMenu3Item === 'CBSE' && 'active-item'}`}
-      >
-        <span>CBSE board</span>
-        {activeMenu3Item === 'CBSE' && subjectsMenu(activeMenu2Item, activeMenu3Item)}
-      </div>
-      <div
-        onClick={() => setActiveMenu3Item('Kerala')}
-        className={`course-menu-1-item ${activeMenu3Item === 'Kerala' && 'active-item'}`}
-      >
-        <span>Kerala board</span>
-        {activeMenu3Item === 'Kerala' && subjectsMenu(activeMenu2Item, activeMenu3Item)}
-      </div>
+      {allBoards?.map(board => (
+        <div
+          onClick={() => setActiveMenu3Item(board.name)}
+          className={`course-menu-1-item ${activeMenu3Item === board.name && 'active-item'}`}
+        >
+          <span>{board.name}</span>
+          {activeMenu3Item === board.name && subjectsMenu(activeMenu2Item, activeMenu3Item)}
+        </div>
+      ))}
     </div>
   );
 
   const classMenu = () => (
     <div className="course-menu-2">
-      <div
-        onClick={() => setActiveMenu2Item('8')}
-        className={`course-menu-1-item ${activeMenu2Item === '8' && 'active-item'}`}
-      >
-        <span>8th Class</span>
-        {activeMenu2Item === '8' && boardMenu()}
-      </div>
-      <div
-        onClick={() => setActiveMenu2Item('9')}
-        className={`course-menu-1-item ${activeMenu2Item === '9' && 'active-item'}`}
-      >
-        <span>9th Class</span>
-        {activeMenu2Item === '9' && boardMenu()}
-      </div>
-      <div
-        onClick={() => setActiveMenu2Item('10')}
-        className={`course-menu-1-item ${activeMenu2Item === '10' && 'active-item'}`}
-      >
-        <span>10th Class</span>
-        {activeMenu2Item === '10' && boardMenu()}
-      </div>
-      <div
-        onClick={() => setActiveMenu2Item('11')}
-        className={`course-menu-1-item ${activeMenu2Item === '11' && 'active-item'}`}
-      >
-        <span>11th Class</span>
-        {activeMenu2Item === '11' && boardMenu()}
-      </div>
-      <div
-        onClick={() => setActiveMenu2Item('12')}
-        className={`course-menu-1-item ${activeMenu2Item === '12' && 'active-item'}`}
-      >
-        <span>12th Class</span>
-        {activeMenu2Item === '12' && boardMenu()}
-      </div>
+      {allStandards?.map(standard => (
+        <div
+          onClick={() => setActiveMenu2Item(standard.class)}
+          className={`course-menu-1-item ${activeMenu2Item === standard.class && 'active-item'}`}
+        >
+          <span>{standard.class}th Class</span>
+          {activeMenu2Item === standard.class && boardMenu()}
+        </div>
+      ))}
     </div>
   );
 

@@ -14,16 +14,17 @@ API.interceptors.request.use((req) => {
 
 // User Routes
 export const getUser = () => API.get('/api/user/profile');
-
 export const login = (loginData) => API.post('/api/auth/signin', loginData);
-
 export const signup = (signupData) => API.post('/api/auth/signup', signupData);
-
 export const updateUserDetails = (updates) => API.put('/api/user/update', updates);
-
 
 // Courses Routes
 export const getAllCourses = () => API.get('/api/courses/all');
-
 export const getUserCourses = () => API.get('/api/courses/self');
+
+// Board Routes
+export const getAllBoards = () => API.get('/admin/boards/all');
+
+// Standard Routes
+export const getAllStandards = () => API.get('/admin/standards/all');
 

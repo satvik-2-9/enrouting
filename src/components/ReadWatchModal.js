@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import closeIcon from '../images/ic_close.svg';
 import prevLightIcon from '../images/ic_arrow_left_white.svg';
 import prevDarkIcon from '../images/ic_arrow_left_gray.svg';
@@ -11,6 +11,13 @@ import '../styles/ReadWatchModal.css';
 const ReadWatchModal = (props) => {
   const { type, handleClose, chapter } = props;
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const noContext = document.getElementById("noContextMenu");
+    noContext.addEventListener('contextmenu', e => {
+      e.preventDefault();
+    });
+  });
 
   return (
     <div className="ReadWatchModal">
@@ -26,7 +33,8 @@ const ReadWatchModal = (props) => {
         </p>
         {type === 'notes' ? (
           <div className={`ReadWatchModal-notes-container ${isDarkMode && 'dark-mode'}`}>
-            <embed
+            <iframe
+              id="noContextMenu"
               className="notes-frame"
               src={`${chapter.notes}#toolbar=0&navpanes=0&scrollbar=0`}
               type="application/pdf"
@@ -34,16 +42,19 @@ const ReadWatchModal = (props) => {
               frameBorder="0"
               height="100%"
               width="100%"
-            ></embed>
+              title="notes"
+            ></iframe>
           </div>
         ) : (
           <div className={`ReadWatchModal-lecture-container ${isDarkMode && 'dark-mode'}`}>
-            <iframe
-              allowFullScreen
-              src="https://www.youtube.com/embed/tgbNymZ7vqY"
-              title="video-lecture"
+            <video
+              id="noContextMenu"
+              controls
+              controlsList="nodownload"
               className="video-frame"
-            ></iframe>
+            >
+              <source src={chapter.url} />
+            </video>
           </div>
         )}
         <div className="ReadWatchModal-options-container">

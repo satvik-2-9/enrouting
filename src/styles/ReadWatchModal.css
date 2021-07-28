@@ -83,6 +83,9 @@
   width: 60%;
   margin: 1.5rem auto;
   height: 60vh;
+  background-color: black !important;
+  border-radius: 0.7rem;
+  overflow: hidden;
 }
 
 .ReadWatchModal-options-container {
@@ -187,7 +190,6 @@
 .video-frame {
   width: 100%;
   border: none;
-  border-radius: 0.7rem;
   height: 100%;
 }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import LoginModal from './LoginModal';
+import TryModal from './TryModal';
 import OutsideClickHandler from 'react-outside-click-handler';
 import brandLogo from '../images/ec_logo_nobg.png';
 import downIcon from '../images/ic_arrow_down_green.svg';
@@ -17,6 +18,7 @@ const Navbar = (props) => {
   const { activeMenuItem } = props;
 
   const [loginModal, setLoginModal] = useState(false);
+  const [tryModal, setTryModal] = useState(false);
   const [courseMenu, setCourseMenu] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
   const [activeMenu1Item, setActiveMenu1Item] = useState(0);
@@ -60,6 +62,13 @@ const Navbar = (props) => {
     }
   };
 
+  const handleTryClick = () => {
+    setTryModal(true);
+    if (!allCourses) {
+      dispatch(getAllCourses());
+    }
+  };
+
   const handleProfileClick = (option) => {
     setProfileMenu(false);
     if (option === 'profile')
@@ -89,19 +98,23 @@ const Navbar = (props) => {
     setActiveProfileMenuItem(0);
   };
 
-  loginModal
+  (loginModal || tryModal)
     ? document.querySelector("body").style.overflow = 'hidden'
     : document.querySelector("body").style.overflow = 'auto'
 
   const getFilteredCourses = (standard, board) => {
-    return allCourses.filter(course =>
+    return allCourses?.filter(course =>
       (course.class === standard.toString() && course.board === board)
     );
   };
 
   const subjectsMenu = (standard, board) => (
     <div className="course-menu-2">
-      {getFilteredCourses(standard, board)?.map(course => (
+      {getFilteredCourses(standard, board).length === 0 ? (
+        <div className="no-subject-item">
+          <span>No subject available</span>
+        </div>
+      ) : getFilteredCourses(standard, board)?.map(course => (
         <div
           onClick={() => handleSubmit(course)}
           className="course-menu-1-item"
@@ -144,6 +157,7 @@ const Navbar = (props) => {
     <div className="Navbar">
       {courseMenu && <div className="dim"></div>}
       {loginModal && <LoginModal setLoginModal={setLoginModal} />}
+      {tryModal && <TryModal setTryModal={setTryModal} />}
       <div className="Navbar-container">
         <div className="Navbar-container-left">
           <img
@@ -304,7 +318,9 @@ const Navbar = (props) => {
           ) : (
             <p onClick={() => setLoginModal(true)} className="Navbar-items">Login</p>
           )}
-          <button className="try-free-button">Try for free</button>
+          <button onClick={() => handleTryClick()} className="try-free-button">
+            Try for free
+          </button>
         </div>
       </div>
     </div>

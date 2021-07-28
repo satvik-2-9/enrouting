@@ -36,16 +36,13 @@
 }
 
 .ReadWatchModal-title-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   width: 60%;
   margin: 1.5rem auto 0 auto;
 }
 .ReadWatchModal-title-container h1 {
   font-weight: 400;
   margin: 0.7rem 0;
+  text-align: center;
 }
 .ReadWatchModal-title-container button {
   border: none;

@@ -167,3 +167,7 @@
   margin-right: 1rem;
   cursor: pointer;
 }
+
+.no-subject-item {
+  cursor: auto;
+}

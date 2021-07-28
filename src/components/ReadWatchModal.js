@@ -20,11 +20,6 @@ const ReadWatchModal = (props) => {
         </span>
         <div className="ReadWatchModal-title-container">
           <h1>{chapter.name}</h1>
-          <button>
-            <a href={chapter.notes} download target="_blank" rel="noopener noreferrer">
-              Download {type === 'notes' ? 'notes' : 'video'}
-            </a>
-          </button>
         </div>
         <p className="ReadWatchModal-notes-text">
           {type === 'notes' ? 'Notes' : 'Video lecture'}

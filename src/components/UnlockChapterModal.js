@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { buyCourse } from '../redux/actions/api/index';
+import { buyCourse, verifyPayment } from '../redux/actions/api/index';
 import { useHistory } from 'react-router-dom';
 import unlockImage from '../images/img_unlock.jpg';
 import closeIcon from '../images/ic_close.svg';
@@ -11,13 +11,7 @@ const UnlockChapterModal = (props) => {
   const { handleClose, course } = props;
   const history = useHistory();
 
-  const [payment, setPayment] = useState(false);
-  const [orderId, setOrderId] = useState('');
-  const [paymentId, setPaymentId] = useState('');
-  const [signature, setSignature] = useState('');
-
   const { isAuthenticated, userData } = useSelector((store) => store.userReducer);
-
 
   const handleClick = () => {
     handleClose();
@@ -38,11 +32,15 @@ const UnlockChapterModal = (props) => {
       "description": res.data.response.notes.desc,
       "image": ecLogo,
       "order_id": res.data.response.id,
-      "handler": function (response) {
-        setOrderId(response.razorpay_order_id);
-        setPaymentId(response.razorpay_payment_id);
-        setSignature(response.razorpay_signature);
-        setPayment(true);
+      "handler": async function (response) {
+        const data = {
+          orderCreationId: res.data.response.id,
+          razorpayPaymentId: response.razorpay_payment_id,
+          razorpaySignature: response.razorpay_signature,
+          courseId: course?.id,
+          userId: userData?.id,
+        };
+        await verifyPayment(data);
       },
       "prefill": {
         "name": userData.firstname + ' ' + userData.lastname,

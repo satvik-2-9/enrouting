@@ -36,4 +36,5 @@ export const getAllEvents = () => API.get('/api/events/all');
 export const getAllWorkshops = () => API.get('/api/workshops/all');
 
 export const buyCourse = (id) => API.post(`/api/course/purchase/${id}`);
+export const verifyPayment = (paymentData) => API.post('/verify-payment', paymentData);
 

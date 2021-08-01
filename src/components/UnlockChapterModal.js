@@ -31,7 +31,7 @@ const UnlockChapterModal = (props) => {
       return;
     }
     const options = {
-      "key": process.env.REACT_APP_RAZORPAY_KEY,
+      "key": "rzp_test_uuYuPvt1ORLwzL",
       "amount": res.data.response.amount,
       "currency": res.data.response.currency,
       "name": "Enrouting Careers",

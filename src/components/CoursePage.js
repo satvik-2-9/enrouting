@@ -32,15 +32,15 @@ const CoursePage = () => {
       <div className="CoursePage-title-container">
         <h1>Welcome to class {courseData.class}th</h1>
         <h2>{courseData.subject}</h2>
-        <p>Lorem ipsum dolor sit amet. Unde velit hst yyu rer jhkji plohf bshsy nisi yutt uyu fdrte gty ut tempore voluptatem. Sed internos sunt cum nostrum saepe. Rem voluptas quisquam qui vero repellat et rerum nihil a rerum velit quo enim eligendi.</p>
+        <p>{courseData.desc}</p>
       </div>
       <div className="chapter-card-container">
         {(!isAuthenticated || !isPurchased) ? courseData.chapters.map((chapter, index) => (
-          index < 2 ? <ChapterCard isLocked={false} chapter={chapter} />
-            : <ChapterCard isLocked={true} chapter={chapter} />
+          index < 2 ? <ChapterCard isLocked={false} chapter={chapter} course={courseData} />
+            : <ChapterCard isLocked={true} chapter={chapter} course={courseData} />
         )) : (
           courseData.chapters.map(chapter => (
-            <ChapterCard isLocked={false} chapter={chapter} />
+            <ChapterCard isLocked={false} chapter={chapter} course={courseData} />
           ))
         )}
       </div>

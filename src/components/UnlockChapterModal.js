@@ -1,17 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { buyCourse } from '../redux/actions/api/index';
 import { useHistory } from 'react-router-dom';
 import unlockImage from '../images/img_unlock.jpg';
 import closeIcon from '../images/ic_close.svg';
+import ecLogo from '../images/ec_logo_square.jpg';
 import '../styles/UnlockChapterModal.css';
 
 const UnlockChapterModal = (props) => {
-  const { handleClose } = props;
+  const { handleClose, course } = props;
   const history = useHistory();
+
+  const [payment, setPayment] = useState(false);
+  const [orderId, setOrderId] = useState('');
+  const [paymentId, setPaymentId] = useState('');
+  const [signature, setSignature] = useState('');
+
+  const { isAuthenticated, userData } = useSelector((store) => store.userReducer);
+
 
   const handleClick = () => {
     handleClose();
     document.querySelector("body").style.overflow = 'auto';
     history.push('/subscription');
+  };
+
+  const buyNow = async () => {
+    const res = await buyCourse(course.id);
+    if (res.status !== 201) {
+      return;
+    }
+    const options = {
+      "key": process.env.REACT_APP_RAZORPAY_KEY,
+      "amount": res.data.response.amount,
+      "currency": res.data.response.currency,
+      "name": "Enrouting Careers",
+      "description": res.data.response.notes.desc,
+      "image": ecLogo,
+      "order_id": res.data.response.id,
+      "handler": function (response) {
+        setOrderId(response.razorpay_order_id);
+        setPaymentId(response.razorpay_payment_id);
+        setSignature(response.razorpay_signature);
+        setPayment(true);
+      },
+      "prefill": {
+        "name": userData.firstname + ' ' + userData.lastname,
+        "email": userData.email,
+        "contact": userData.phone
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new window.Razorpay(options);
+
+    rzp1.open();
+
+    rzp1.on('payment.failed', function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
   };
 
   return (
@@ -33,13 +87,13 @@ const UnlockChapterModal = (props) => {
                 <span>Subscription cost</span>
               </div>
               <div className="UnlockChapterModal-details-container-col-right">
-                <span>Maths</span>
-                <span>CBSE</span>
-                <span>8th standard</span>
-                <span>₹1000 / year</span>
+                <span>{course.subject}</span>
+                <span>{course.board}</span>
+                <span>{course.class}th standard</span>
+                <span>₹{course.price} / year</span>
               </div>
             </div>
-            <button onClick={handleClick} className="UnlockChapterModal-button">
+            <button onClick={() => buyNow()} className="UnlockChapterModal-button">
               Buy now
             </button>
           </div>

@@ -13,3 +13,10 @@ export const GET_ALL_BOARDS = 'GET_ALL_BOARDS';
 
 // Standard Action Types
 export const GET_ALL_STANDARDS = 'GET_ALL_STANDARDS';
+
+// Testimonial Action Types
+export const GET_ALL_TESTIMONIALS = 'GET_ALL_TESTIMONIALS';
+
+export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
+
+export const GET_ALL_WORKSHOPS = 'GET_ALL_WORKSHOPS';

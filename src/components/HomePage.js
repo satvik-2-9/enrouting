@@ -18,37 +18,15 @@ import workshopImage4 from '../images/img_tech_workshop4.svg';
 import workshopImage5 from '../images/img_tech_workshop5.svg';
 import workshopImage6 from '../images/img_tech_workshop6.svg';
 import teachersImage from '../images/img_best_teacher.svg';
-import studentImage from '../images/img_student.jpg';
 import starIcon from '../images/ic_star.svg';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import TryModal from './TryModal';
 import { getAllCourses } from '../redux/actions/courseActions';
+import { getAllTestimonials } from '../redux/actions/testimonialActions';
 import '../styles/HomePage.css';
 
 const delay = 5000;
-
-const testimonial = (
-  <div className="slide">
-    <div className="testimonial-section-content-box">
-      <div className="testimonial-section-content-box-left">
-        <img src={studentImage} alt="student-img" className="student-img" />
-      </div>
-      <div className="testimonial-section-content-box-right">
-        <div className="star-container">
-          <img src={starIcon} alt="star-icon-1" className="star-icon" />
-          <img src={starIcon} alt="star-icon-2" className="star-icon" />
-          <img src={starIcon} alt="star-icon-3" className="star-icon" />
-          <img src={starIcon} alt="star-icon-4" className="star-icon" />
-          <img src={starIcon} alt="star-icon-5" className="star-icon" />
-        </div>
-        <p className="testimonial-text">Lorem ipsum dolor sit amet. Laudantium voluptatem est sunt eaque hic minus. Delectus rerum ut pariatur maiores ut dolor cupiditate et ipsa saepe ut delectus maiores est impedit minima qui harum dolorem.</p>
-        <p className="name-text">Nisha Patel</p>
-        <p className="board-text">CBSC board</p>
-      </div>
-    </div>
-  </div>
-);
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -57,6 +35,7 @@ const HomePage = () => {
   const timeoutRef = useRef(null);
 
   const { allCourses } = useSelector((store) => store.courseReducer);
+  const { allTestimonials } = useSelector((store) => store.testimonialReducer);
 
   const resetTimeout = () => {
     if (timeoutRef.current) {
@@ -76,12 +55,40 @@ const HomePage = () => {
     return () => { resetTimeout() };
   }, [index]);
 
+  useEffect(() => {
+    if (allTestimonials.length === 0) {
+      dispatch(getAllTestimonials());
+    }
+  }, [dispatch, allTestimonials]);
+
   const handleTryClick = () => {
     setTryModal(true);
     if (!allCourses) {
       dispatch(getAllCourses());
     }
   };
+
+  const testimonials = (
+    allTestimonials?.map((testimonial) => (
+      <div className="slide">
+        <div className="testimonial-section-content-box">
+          <div className="testimonial-section-content-box-left">
+            <img src={testimonial.img} alt="student-img" className="student-img" />
+          </div>
+          <div className="testimonial-section-content-box-right">
+            <div className="star-container">
+              {[...Array(testimonial.stars)].map((e, i) => (
+                <img src={starIcon} alt="star-icon-1" className="star-icon" key={i} />
+              ))}
+            </div>
+            <p className="testimonial-text">{testimonial.review}</p>
+            <p className="name-text">{testimonial.firstname + ' ' + testimonial.lastname}</p>
+            <p className="board-text">{testimonial.board}</p>
+          </div>
+        </div>
+      </div>
+    ))
+  );
 
   return (
     <div className="HomePage">
@@ -303,9 +310,7 @@ const HomePage = () => {
               className="slideshowSlider"
               style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
             >
-              {testimonial}
-              {testimonial}
-              {testimonial}
+              {testimonials}
             </div>
           </div>
           <div className="slideshowDotsContainer">

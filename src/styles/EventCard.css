@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.9rem;
+  margin-top: 0.3rem;
 }
 
 .EventCard-amount-text {
@@ -27,21 +28,36 @@
   justify-content: space-between;
 }
 .EventCard-content-row img {
-  width: 190px;
-  height: 90px;
+  width: 22%;
+  height: 100px;
   border-radius: 8px;
   margin-right: 1.5rem;
 }
 
+.EventCard-content-div {
+  width: 75%;
+}
 .EventCard-content-div p {
   font-size: 0.8rem;
   color: grey;
-  width: 55%;
+  width: 60%;
   line-height: 1.3rem;
   margin: -1px 0 0.8rem 0;
 }
 
+.register-event-button {
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(to right, #fb794a, #edb038);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
 .EventCard-date-row {
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -50,6 +66,7 @@
 .EventCard-date-text {
   font-size: 0.8rem;
   margin-right: 2rem;
+  font-weight: 500;
 }
 
 .EventCard-details-text {
@@ -58,6 +75,9 @@
   font-weight: 500;
 }
 
+.EventCard-detail-div {
+  cursor: pointer;
+}
 .EventCard-detail-div img {
   width: 11px;
   height: 11px;

@@ -6,7 +6,7 @@ import nextIcon from '../images/ic_arrow_right.svg';
 import '../styles/ChapterCard.css';
 
 const ChapterCard = (props) => {
-  const { isLocked, chapter } = props;
+  const { isLocked, chapter, course } = props;
   const [notesModal, setNotesModal] = useState(false);
   const [lecturesModal, setLecturesModal] = useState(false);
   const [unlockChapterModal, setUnlockChapterModal] = useState(false);
@@ -50,6 +50,7 @@ const ChapterCard = (props) => {
       {unlockChapterModal &&
         <UnlockChapterModal
           handleClose={handleClose}
+          course={course}
         />
       }
       <div className="ChapterCard-left">

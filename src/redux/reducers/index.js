@@ -4,10 +4,16 @@ import userReducer from './userReducer';
 import courseReducer from './courseReducer';
 import boardReducer from './boardReducer';
 import standardReducer from './standardReducer';
+import testimonialReducer from './testimonialReducer';
+import eventReducer from './eventReducer';
+import workshopReducer from './workshopReducer';
 
 export default combineReducers({
   userReducer,
   courseReducer,
   boardReducer,
   standardReducer,
+  testimonialReducer,
+  eventReducer,
+  workshopReducer,
 });

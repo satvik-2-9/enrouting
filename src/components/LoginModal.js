@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import closeIcon from '../images/ic_close.svg';
 import backIcon from '../images/ic_back.svg';
-import successIcon from '../images/ic_success_tick.svg';
+import successIcon from '../images/ic_tick_green.svg';
 
 import { login, signup } from '../redux/actions/userActions';
 

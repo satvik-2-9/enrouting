@@ -31,10 +31,16 @@ export const getAllStandards = () => API.get('/admin/standards/all');
 // Testimonial Routes
 export const getAllTestimonials = () => API.get('/api/testimonials');
 
+// Event Routes
 export const getAllEvents = () => API.get('/api/events/all');
 
+// Workshop Routes
 export const getAllWorkshops = () => API.get('/api/workshops/all');
 
+// Blog Routes
+export const getAllBlogs = () => API.get('/api/blogs/all');
+
+// Payment Routes
 export const buyCourse = (id) => API.post(`/api/course/purchase/${id}`);
 export const verifyPayment = (paymentData) => API.post('/verify-payment', paymentData);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { buyCourse, verifyPayment } from '../redux/actions/api/index';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import unlockImage from '../images/img_unlock.jpg';
 import closeIcon from '../images/ic_close.svg';
 import ecLogo from '../images/ec_logo_square.jpg';
@@ -9,15 +9,15 @@ import '../styles/UnlockChapterModal.css';
 
 const UnlockChapterModal = (props) => {
   const { handleClose, course } = props;
-  const history = useHistory();
+  // const history = useHistory();
 
-  const { isAuthenticated, userData } = useSelector((store) => store.userReducer);
+  const { userData } = useSelector((store) => store.userReducer);
 
-  const handleClick = () => {
-    handleClose();
-    document.querySelector("body").style.overflow = 'auto';
-    history.push('/subscription');
-  };
+  // const handleClick = () => {
+  //   handleClose();
+  //   document.querySelector("body").style.overflow = 'auto';
+  //   history.push('/subscription');
+  // };
 
   const buyNow = async () => {
     const res = await buyCourse(course.id);

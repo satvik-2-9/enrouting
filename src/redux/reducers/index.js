@@ -7,6 +7,7 @@ import standardReducer from './standardReducer';
 import testimonialReducer from './testimonialReducer';
 import eventReducer from './eventReducer';
 import workshopReducer from './workshopReducer';
+import blogReducer from './blogReducer';
 
 export default combineReducers({
   userReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   testimonialReducer,
   eventReducer,
   workshopReducer,
+  blogReducer,
 });

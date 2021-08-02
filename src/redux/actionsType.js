@@ -17,6 +17,11 @@ export const GET_ALL_STANDARDS = 'GET_ALL_STANDARDS';
 // Testimonial Action Types
 export const GET_ALL_TESTIMONIALS = 'GET_ALL_TESTIMONIALS';
 
+// Event Action Types
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 
+// Workshop Action Types
 export const GET_ALL_WORKSHOPS = 'GET_ALL_WORKSHOPS';
+
+// Blog Action Types
+export const GET_ALL_BLOGS = 'GET_ALL_BLOGS';

@@ -41,14 +41,6 @@
   width: 77%;
 }
 
-.BlogCard-content-div p {
-  font-size: 0.8rem;
-  color: grey;
-  width: 65%;
-  line-height: 1.3rem;
-  margin: -1px 0 0.8rem 0;
-}
-
 .BlogCard-date-row {
   display: flex;
   flex-direction: row;
@@ -76,4 +68,12 @@ img.BlogCard-forward-icon {
   width: 11px;
   height: 11px;
   margin: 0 0 -1px 5px;
+}
+
+.blog-text {
+  width: 65%;
+  font-size: 0.8rem;
+  color: grey;
+  line-height: 1.3rem;
+  margin: -1px 0 0.8rem 0;
 }

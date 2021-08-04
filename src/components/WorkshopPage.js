@@ -27,7 +27,7 @@ const WorkshopPage = () => {
     if (!userWorkshops) {
       return false;
     } else {
-      return userWorkshops.some(w => w.workshopId === workshop.id);
+      return userWorkshops.some(w => w.id === workshop.id);
     }
   };
 

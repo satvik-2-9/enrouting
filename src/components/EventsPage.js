@@ -27,7 +27,7 @@ const EventsPage = () => {
     if (!userEvents) {
       return false;
     } else {
-      return userEvents.some(e => e.eventId === event.id);
+      return userEvents.some(e => e.id === event.id);
     }
   };
 

@@ -19,9 +19,11 @@ export const GET_ALL_TESTIMONIALS = 'GET_ALL_TESTIMONIALS';
 
 // Event Action Types
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
+export const GET_USER_EVENTS = 'GET_USER_EVENTS';
 
 // Workshop Action Types
 export const GET_ALL_WORKSHOPS = 'GET_ALL_WORKSHOPS';
+export const GET_USER_WORKSHOPS = 'GET_USER_WORKSHOPS';
 
 // Blog Action Types
 export const GET_ALL_BLOGS = 'GET_ALL_BLOGS';

@@ -29,7 +29,7 @@ const BlogCard = (props) => {
             }...
           </p>
           <div className="BlogCard-date-row">
-            <p className="blog-text">Written by {blog.author} posted on {blog.date} will take a maximum 10 minutes to read</p>
+            <p className="blog-text">Written by {blog.author} posted on {blog.date} will take a maximum {blog.readingTime} minutes to read</p>
             <div onClick={() => setBlogModal(true)} className="BlogCard-detail-div">
               <span className="BlogCard-details-text">Read more</span>
               <img src={nextIcon} alt="forward-icon" className="BlogCard-forward-icon" />

@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import WorkshopCard from './WorkshopCard';
-import { getAllWorkshops } from '../redux/actions/workshopActions';
+import { getAllWorkshops, getUserWorkshops } from '../redux/actions/workshopActions';
 import '../styles/WorkshopPage.css';
 
 const WorkshopPage = () => {
   const dispatch = useDispatch();
-  const { allWorkshops } = useSelector((store) => store.workshopReducer);
+  const { allWorkshops, userWorkshops } = useSelector((store) => store.workshopReducer);
   const { isAuthenticated } = useSelector((store) => store.userReducer);
 
   useEffect(() => {
@@ -16,6 +16,20 @@ const WorkshopPage = () => {
       dispatch(getAllWorkshops());
     }
   }, [dispatch, allWorkshops]);
+
+  useEffect(() => {
+    if (isAuthenticated && !userWorkshops) {
+      dispatch(getUserWorkshops());
+    }
+  }, [dispatch, isAuthenticated, userWorkshops]);
+
+  const isPurchased = (workshop) => {
+    if (!userWorkshops) {
+      return false;
+    } else {
+      return userWorkshops.some(w => w.workshopId === workshop.id);
+    }
+  };
 
   return (
     <div className="WorkshopPage">
@@ -29,7 +43,11 @@ const WorkshopPage = () => {
       </div>
       <div className="workshop-card-container">
         {allWorkshops?.map(workshop => (
-          <WorkshopCard workshop={workshop} isAuthenticated={isAuthenticated} />
+          <WorkshopCard
+            workshop={workshop}
+            locked={!isAuthenticated || !isPurchased(workshop)}
+            isAuthenticated={isAuthenticated}
+          />
         ))}
       </div>
       <Footer />

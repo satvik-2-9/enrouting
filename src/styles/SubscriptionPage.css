@@ -16,7 +16,7 @@
 }
 .SubscriptionPage-content h1 {
   font-weight: 400;
-  width: 40%;
+  width: 39%;
   margin: 0 auto 0.7rem auto;
   line-height: 2.7rem;
 }
@@ -109,21 +109,20 @@
 
 .notes-img {
   width: 70%;
-  margin-top: 0.7rem;
+  margin-top: -0.3rem;
 }
 
 .subscription-card-button {
-  width: 45%;
   border: none;
   cursor: pointer;
   color: #ffffff;
   background: linear-gradient(to right, #fb794a, #edb038);
-  padding: 0.4rem 0;
+  padding: 0.4rem 1.3rem;
   border-radius: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 0.8rem;
-  margin-top: 2.3rem;
+  margin-top: 1rem;
 }
 
 .workshop-title {

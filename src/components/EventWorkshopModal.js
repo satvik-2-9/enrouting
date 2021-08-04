@@ -3,7 +3,7 @@ import closeIcon from '../images/ic_close.svg';
 import '../styles/EventWorkshopModal.css';
 
 const EventWorkshopModal = (props) => {
-  const { type, event, workshop, setEventModal, setWorkshopModal, isAuthenticated } = props;
+  const { type, event, workshop, setEventModal, setWorkshopModal, locked } = props;
 
   const handleClick = () => {
     type === 'event' ? setEventModal(false) : setWorkshopModal(false)
@@ -19,9 +19,9 @@ const EventWorkshopModal = (props) => {
           <div className="EventWorkshopModal-container">
             <div className="EventWorkshopModal-title-row">
               <h1>{event.topic}</h1>
-              {!isAuthenticated && <button>Register for event</button>}
+              {locked && <button>Register for event</button>}
             </div>
-            {isAuthenticated ? (
+            {!locked ? (
               <div className="registration-details-div">
                 <p className="registration-text">Paid amount: ₹{event.price}</p>
                 <div>
@@ -44,9 +44,9 @@ const EventWorkshopModal = (props) => {
           <div className="EventWorkshopModal-container">
             <div className="EventWorkshopModal-title-row">
               <h1>{workshop.topic}</h1>
-              {!isAuthenticated && <button>Register for workshop</button>}
+              {locked && <button>Register for workshop</button>}
             </div>
-            {isAuthenticated ? (
+            {!locked ? (
               <div className="registration-details-div">
                 <p className="registration-text">Paid amount: ₹{workshop.price}</p>
                 <div>

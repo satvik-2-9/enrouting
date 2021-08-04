@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ReadWatchModal from './ReadWatchModal';
 import UnlockChapterModal from './UnlockChapterModal';
+import LoginModal from './LoginModal';
 import lockIcon from '../images/ic_lock.svg';
 import nextIcon from '../images/ic_arrow_right.svg';
 import '../styles/ChapterCard.css';
@@ -8,14 +10,19 @@ import '../styles/ChapterCard.css';
 const ChapterCard = (props) => {
   const { isLocked, chapter, course } = props;
   const [notesModal, setNotesModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
   const [lecturesModal, setLecturesModal] = useState(false);
   const [unlockChapterModal, setUnlockChapterModal] = useState(false);
+
+  const { isAuthenticated } = useSelector((store) => store.userReducer);
 
   const handleOpen = (type) => {
     if (type === 'notes') {
       setNotesModal(true);
     } else if (type === 'lectures') {
       setLecturesModal(true);
+    } else if (type === 'login') {
+      setLoginModal(true);
     } else {
       setUnlockChapterModal(true);
     }
@@ -25,6 +32,11 @@ const ChapterCard = (props) => {
     setNotesModal(false);
     setLecturesModal(false);
     setUnlockChapterModal(false);
+    setLoginModal(false);
+  };
+
+  const handleUnlockClick = () => {
+    isAuthenticated ? handleOpen('unlockChapter') : handleOpen('login');
   };
 
   (notesModal || lecturesModal || unlockChapterModal)
@@ -53,13 +65,14 @@ const ChapterCard = (props) => {
           course={course}
         />
       }
+      {loginModal && <LoginModal setLoginModal={handleClose} />}
       <div className="ChapterCard-left">
         <span>Chapter {chapter.number}</span>
         <p>{chapter.name}</p>
       </div>
       {isLocked ? (
         <div className="ChapterCard-right">
-          <button onClick={() => handleOpen('unlockChapter')}>Unlock chapter</button>
+          <button onClick={handleUnlockClick}>Unlock chapter</button>
           <img src={lockIcon} alt="lock-icon" className="lock-icon" />
         </div>
       ) : (

@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EventCard from './EventCard';
-import { getAllEvents } from '../redux/actions/eventActions';
+import { getAllEvents, getUserEvents } from '../redux/actions/eventActions';
 import '../styles/EventsPage.css';
 
 const EventsPage = () => {
   const dispatch = useDispatch();
-  const { allEvents } = useSelector((store) => store.eventReducer);
+  const { allEvents, userEvents } = useSelector((store) => store.eventReducer);
   const { isAuthenticated } = useSelector((store) => store.userReducer);
 
   useEffect(() => {
@@ -16,6 +16,20 @@ const EventsPage = () => {
       dispatch(getAllEvents());
     }
   }, [dispatch, allEvents]);
+
+  useEffect(() => {
+    if (isAuthenticated && !userEvents) {
+      dispatch(getUserEvents());
+    }
+  }, [dispatch, isAuthenticated, userEvents]);
+
+  const isPurchased = (event) => {
+    if (!userEvents) {
+      return false;
+    } else {
+      return userEvents.some(e => e.eventId === event.id);
+    }
+  };
 
   return (
     <div className="EventsPage">
@@ -29,7 +43,11 @@ const EventsPage = () => {
       </div>
       <div className="events-card-container">
         {allEvents?.map(event => (
-          <EventCard event={event} isAuthenticated={isAuthenticated} />
+          <EventCard
+            event={event}
+            locked={!isAuthenticated || !isPurchased(event)}
+            isAuthenticated={isAuthenticated}
+          />
         ))}
       </div>
       <Footer />

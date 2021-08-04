@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import heroImage from '../images/img_hero.png';
 import favIcon from '../images/ic_fav.svg';
@@ -29,6 +30,7 @@ import '../styles/HomePage.css';
 const delay = 5000;
 
 const HomePage = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [index, setIndex] = useState(0);
   const [tryModal, setTryModal] = useState(false);
@@ -226,9 +228,9 @@ const HomePage = () => {
           <div className="events-section-subtitle-container">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dsd sdeom.</p>
           </div>
-          <button>Register for events</button>
         </div>
         <div className="events-section-container">
+          <button onClick={() => history.push('/events')}>Register for events</button>
           <img src={eventsImage} alt="events-img" className="events-img" />
         </div>
       </div>

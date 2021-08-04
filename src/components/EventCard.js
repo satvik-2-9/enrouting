@@ -1,15 +1,77 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { buyEvent, verifyEventPayment } from '../redux/actions/api/index';
+import LoginModal from './LoginModal';
 import EventWorkshopModal from './EventWorkshopModal';
+import ecLogo from '../images/ec_logo_square.jpg';
 import nextIcon from '../images/ic_arrow_right.svg';
 import '../styles/EventCard.css';
 
 const EventCard = (props) => {
-  const { event, isAuthenticated } = props;
+  const { event, locked, isAuthenticated } = props;
+  const history = useHistory();
   const [eventModal, setEventModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
+
+  const { userData } = useSelector((store) => store.userReducer);
 
   (eventModal)
     ? document.querySelector("body").style.overflow = 'hidden'
     : document.querySelector("body").style.overflow = 'auto'
+
+  const buyNow = async () => {
+    const res = await buyEvent(event.id);
+    if (res.status !== 201) {
+      return;
+    }
+    const options = {
+      "key": process.env.REACT_APP_RAZORPAY_KEY,
+      "amount": res.data.response.amount,
+      "currency": res.data.response.currency,
+      "name": "Enrouting Careers",
+      "description": event.topic,
+      "image": ecLogo,
+      "order_id": res.data.response.id,
+      "handler": async function (response) {
+        const data = {
+          orderCreationId: res.data.response.id,
+          razorpayPaymentId: response.razorpay_payment_id,
+          razorpaySignature: response.razorpay_signature,
+          eventId: event?.id,
+          userId: userData?.id,
+        };
+        await verifyEventPayment(data);
+        history.push({
+          pathname: '/subscription',
+          state: { type: 'event', event, paymentDetails: data }
+        });
+      },
+      "prefill": {
+        "name": userData.firstname + ' ' + userData.lastname,
+        "email": userData.email,
+        "contact": userData.phone
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new window.Razorpay(options);
+
+    rzp1.open();
+
+    rzp1.on('payment.failed', function (response) {
+      // payment failed
+    });
+  };
+
+  const handleRegisterClick = () => {
+    if (!isAuthenticated) {
+      setLoginModal(true);
+    } else {
+      buyNow();
+    }
+  };
 
   return (
     <div className="EventCard">
@@ -18,14 +80,17 @@ const EventCard = (props) => {
           type={'event'}
           event={event}
           setEventModal={setEventModal}
-          isAuthenticated={isAuthenticated}
+          locked={locked}
         />
       }
+      {loginModal && <LoginModal setLoginModal={setLoginModal} />}
       <div className="EventCard-title-row">
         <span className="EventCard-title-text">{event.topic}</span>
-        {isAuthenticated
+        {!locked
           ? <span className="EventCard-amount-text">Paid amount: ₹200</span>
-          : <button className="register-event-button">Register for event</button>
+          : <button className="register-event-button" onClick={handleRegisterClick}>
+            Register for event
+          </button>
         }
       </div>
       <div className="EventCard-content-row">
@@ -33,7 +98,7 @@ const EventCard = (props) => {
         <div className="EventCard-content-div">
           <p>{event.desc.replace('<p>', '').substring(0, 185)}...</p>
           <div className="EventCard-date-row">
-            {isAuthenticated ? (
+            {!locked ? (
               <div>
                 <span className="EventCard-date-text">
                   Start date: {event.start_time.replace('6:30 PM', '')}

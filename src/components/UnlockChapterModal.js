@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { buyCourse, verifyPayment } from '../redux/actions/api/index';
-// import { useHistory } from 'react-router-dom';
+import { buyCourse, verifyCoursePayment } from '../redux/actions/api/index';
+import { useHistory } from 'react-router-dom';
 import unlockImage from '../images/img_unlock.jpg';
 import closeIcon from '../images/ic_close.svg';
 import ecLogo from '../images/ec_logo_square.jpg';
@@ -9,15 +9,9 @@ import '../styles/UnlockChapterModal.css';
 
 const UnlockChapterModal = (props) => {
   const { handleClose, course } = props;
-  // const history = useHistory();
+  const history = useHistory();
 
   const { userData } = useSelector((store) => store.userReducer);
-
-  // const handleClick = () => {
-  //   handleClose();
-  //   document.querySelector("body").style.overflow = 'auto';
-  //   history.push('/subscription');
-  // };
 
   const buyNow = async () => {
     const res = await buyCourse(course.id);
@@ -40,7 +34,13 @@ const UnlockChapterModal = (props) => {
           courseId: course?.id,
           userId: userData?.id,
         };
-        await verifyPayment(data);
+        await verifyCoursePayment(data);
+        handleClose();
+        document.querySelector("body").style.overflow = 'auto';
+        history.push({
+          pathname: '/subscription',
+          state: { course, paymentDetails: data }
+        });
       },
       "prefill": {
         "name": userData.firstname + ' ' + userData.lastname,
@@ -56,13 +56,7 @@ const UnlockChapterModal = (props) => {
     rzp1.open();
 
     rzp1.on('payment.failed', function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      handleClose();
     });
   };
 

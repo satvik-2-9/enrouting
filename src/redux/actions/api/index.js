@@ -34,6 +34,7 @@ export const getAllTestimonials = () => API.get('/api/testimonials');
 // Event Routes
 export const getAllEvents = () => API.get('/api/events/all');
 export const getUserEvents = () => API.get('/api/events/self');
+export const makeSubmission = (id, formData) => API.post(`/api/submit/${id}`, formData);
 
 // Workshop Routes
 export const getAllWorkshops = () => API.get('/api/workshops/all');
@@ -44,7 +45,7 @@ export const getAllBlogs = () => API.get('/api/blogs/all');
 
 // Payment Routes
 export const buyCourse = (id) => API.post(`/api/course/purchase/${id}`);
-export const buyEvent = (id) => API.post(`/api/event/purchase/${id}`);
+export const buyEvent = (id, formData) => API.post(`/api/event/purchase/${id}`, formData);
 export const buyWorkshop = (id) => API.post(`/api/workshop/purchase/${id}`);
 export const verifyCoursePayment = (paymentData) =>
   API.post('/course/verify-payment', paymentData);

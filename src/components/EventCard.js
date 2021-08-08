@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { buyEvent, verifyEventPayment } from '../redux/actions/api/index';
 import LoginModal from './LoginModal';
 import EventWorkshopModal from './EventWorkshopModal';
+import RegisterModal from './RegisterModal';
 import ecLogo from '../images/ec_logo_square.jpg';
 import nextIcon from '../images/ic_arrow_right.svg';
 import '../styles/EventCard.css';
@@ -13,6 +14,7 @@ const EventCard = (props) => {
   const history = useHistory();
   const [eventModal, setEventModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [registerModal, setRegisterModal] = useState(false);
 
   const { userData } = useSelector((store) => store.userReducer);
 
@@ -20,11 +22,17 @@ const EventCard = (props) => {
     ? document.querySelector("body").style.overflow = 'hidden'
     : document.querySelector("body").style.overflow = 'auto'
 
-  const buyNow = async () => {
-    const res = await buyEvent(event.id);
+  const buyNow = async (regType, memberList) => {
+    const formData = {
+      isSolo: regType === 'solo',
+      isGroup: regType === 'group',
+      groupMembers: memberList
+    }
+    const res = await buyEvent(event.id, formData);
     if (res.status !== 201) {
       return;
     }
+
     const options = {
       "key": process.env.REACT_APP_RAZORPAY_KEY,
       "amount": res.data.response.amount,
@@ -40,11 +48,16 @@ const EventCard = (props) => {
           razorpaySignature: response.razorpay_signature,
           eventId: event?.id,
           userId: userData?.id,
+          groupMembers: memberList,
+          isSolo: regType === 'solo',
+          isGroup: regType === 'group',
+          price: res.data.price,
         };
+
         await verifyEventPayment(data);
         history.push({
           pathname: '/subscription',
-          state: { type: 'event', event, paymentDetails: data }
+          state: { type: 'event', event, paymentDetails: data, regType: regType }
         });
       },
       "prefill": {
@@ -69,7 +82,7 @@ const EventCard = (props) => {
     if (!isAuthenticated) {
       setLoginModal(true);
     } else {
-      buyNow();
+      setRegisterModal(true);
     }
   };
 
@@ -81,13 +94,15 @@ const EventCard = (props) => {
           event={event}
           setEventModal={setEventModal}
           locked={locked}
+          handleRegisterClick={handleRegisterClick}
         />
       }
       {loginModal && <LoginModal setLoginModal={setLoginModal} />}
+      {registerModal && <RegisterModal setRegisterModal={setRegisterModal} buyNow={buyNow} />}
       <div className="EventCard-title-row">
         <span className="EventCard-title-text">{event.topic}</span>
         {!locked
-          ? <span className="EventCard-amount-text">Paid amount: ₹200</span>
+          ? <span className="EventCard-amount-text">Paid amount: ₹{event.groupPrice}</span>
           : <button className="register-event-button" onClick={handleRegisterClick}>
             Register for event
           </button>
@@ -96,7 +111,13 @@ const EventCard = (props) => {
       <div className="EventCard-content-row">
         <img src={event.img} alt="event-img" />
         <div className="EventCard-content-div">
-          <p>{event.desc.replace('<p>', '').substring(0, 185)}...</p>
+          <p>
+            {event.desc
+              .replace(/(<([^>]+)>)/ig, '')
+              .replace('&nbsp;', ' ')
+              .substring(0, 185)
+            }...
+          </p>
           <div className="EventCard-date-row">
             {!locked ? (
               <div>
@@ -110,7 +131,7 @@ const EventCard = (props) => {
             ) : (
               <div>
                 <span className="EventCard-date-text">
-                  Registration fee: ₹{event.price}
+                  Registration fee: ₹{event.soloPrice} (for single) and ₹{event.groupPrice} (for group)
                 </span>
               </div>
             )}

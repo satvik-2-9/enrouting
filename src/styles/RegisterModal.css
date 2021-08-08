@@ -1,0 +1,87 @@
+.RegisterModal {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.RegisterModal-content {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  width: 40%;
+  border-radius: 10px;
+}
+.RegisterModal-content h1 {
+  font-weight: 400;
+  text-align: center;
+}
+
+.RegisterModal-close-icon {
+  width: 18px;
+  float: right;
+  margin: -1.6rem 0.3rem 0 0;
+  cursor: pointer;
+}
+
+.RegisterModal-type-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
+.RegisterModal-type-div p {
+  margin-right: 2rem;
+}
+
+.RegisterModal-radio-div input {
+  margin-right: 0.5rem;
+}
+
+.members-list-div {
+  text-align: center;
+}
+.members-list-div p {
+  font-size: 0.8rem;
+  color: grey;
+  width: 80%;
+  margin: 1rem auto 0.4rem auto;
+}
+.members-list-div textarea {
+  width: 73%;
+  border: 1px solid #d1d9d9;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: grey;
+  font-size: 0.8rem;
+}
+.members-list-div textarea:focus {
+  outline: none;
+}
+
+.RegisterModal-button-div {
+  width: 100%;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.RegisterModal-button {
+  width: 25%;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(to right, #fb794a, #edb038);
+  padding: 0.5rem 0;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}

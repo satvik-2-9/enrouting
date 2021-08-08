@@ -36,10 +36,7 @@ const EventsPage = () => {
       <Navbar activeMenuItem={'events'} />
       <div className="EventsPage-title-container">
         <h1>Events</h1>
-        {isAuthenticated
-          ? <p>All events you are part of you can check here.</p>
-          : <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        }
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div className="events-card-container">
         {allEvents?.map(event => (

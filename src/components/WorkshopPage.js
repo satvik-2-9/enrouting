@@ -36,10 +36,7 @@ const WorkshopPage = () => {
       <Navbar activeMenuItem={'workshop'} />
       <div className="WorkshopPage-title-container">
         <h1>Workshops</h1>
-        {isAuthenticated
-          ? <p>All workshops you are part of you can check here.</p>
-          : <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        }
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div className="workshop-card-container">
         {allWorkshops?.map(workshop => (

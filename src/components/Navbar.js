@@ -79,9 +79,9 @@ const Navbar = (props) => {
         state: 'purchases'
       });
     else if (option === 'events')
-      history.push('/events');
+      history.push('/myEvents');
     else if (option === 'workshop')
-      history.push('/workshop');
+      history.push('/myWorkshops');
     else if (option === 'notes')
       history.push({
         pathname: '/notes',
@@ -107,6 +107,14 @@ const Navbar = (props) => {
       (course.class === standard.toString() && course.board === board)
     );
   };
+
+  const comingSoonMenu = () => (
+    <div className="course-menu-2">
+      <div className="no-subject-item">
+        <span>Available soon</span>
+      </div>
+    </div>
+  );
 
   const subjectsMenu = (standard, board) => (
     <div className="course-menu-2">
@@ -191,36 +199,42 @@ const Navbar = (props) => {
                     className={`course-menu-1-item ${activeMenu1Item === 2 && 'active-item'}`}
                   >
                     <span>Exam preparation</span>
+                    {activeMenu1Item === 2 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(3)}
                     className={`course-menu-1-item ${activeMenu1Item === 3 && 'active-item'}`}
                   >
                     <span>Competitive exam</span>
+                    {activeMenu1Item === 3 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(4)}
                     className={`course-menu-1-item ${activeMenu1Item === 4 && 'active-item'}`}
                   >
                     <span>Articulture</span>
+                    {activeMenu1Item === 4 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(5)}
                     className={`course-menu-1-item ${activeMenu1Item === 5 && 'active-item'}`}
                   >
                     <span>Scifun</span>
+                    {activeMenu1Item === 5 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(6)}
                     className={`course-menu-1-item ${activeMenu1Item === 6 && 'active-item'}`}
                   >
                     <span>Practical presentation</span>
+                    {activeMenu1Item === 6 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(7)}
                     className={`course-menu-1-item ${activeMenu1Item === 7 && 'active-item'}`}
                   >
                     <span>Conceptual videos</span>
+                    {activeMenu1Item === 7 && comingSoonMenu()}
                   </div>
                 </div>
               </OutsideClickHandler>

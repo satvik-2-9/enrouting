@@ -4,7 +4,7 @@ import nextIcon from '../images/ic_arrow_right.svg';
 import '../styles/SubscriptionCard.css';
 
 const SubscriptionCard = (props) => {
-  const { chapNo } = props;
+  const { chapter } = props;
   const [notesModal, setNotesModal] = useState(false);
   const [lecturesModal, setLecturesModal] = useState(false);
 
@@ -18,12 +18,22 @@ const SubscriptionCard = (props) => {
   };
 
   return (
-    <div className={`SubscriptionCard ${chapNo === 1 && 'first-chapter'}`}>
-      {notesModal && <ReadWatchModal type={'notes'} handleClose={handleClose} />}
-      {lecturesModal && <ReadWatchModal type={'lectures'} handleClose={handleClose} />}
+    <div className={`SubscriptionCard ${chapter.number === 1 && 'first-chapter'}`}>
+      {notesModal &&
+        <ReadWatchModal
+          type={'notes'}
+          handleClose={handleClose}
+          chapter={chapter}
+        />}
+      {lecturesModal &&
+        <ReadWatchModal
+          type={'lectures'}
+          handleClose={handleClose}
+          chapter={chapter}
+        />}
       <div className="SubscriptionCard-left">
-        <p>Chapter {chapNo}</p>
-        <p>Name of the chapter</p>
+        <p className="SubscriptionCard-chapterNo">Chapter {chapter.number}</p>
+        <p className="SubscriptionCard-chapterName">{chapter.name}</p>
       </div>
       <div className="SubscriptionCard-right">
         <div onClick={() => handleOpen('notes')} className="read-watch-button">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
 import tickIcon from '../images/ic_success_tick.svg';
@@ -9,8 +9,9 @@ import downloadIcon from '../images/ic_download.svg';
 import '../styles/SubscriptionPage.css';
 
 const SubscriptionPage = () => {
+  const history = useHistory();
   const location = useLocation();
-  const { type, course, event, workshop, paymentDetails } = location.state;
+  const { type, course, event, workshop, paymentDetails, regType } = location.state;
 
   const getFormattedDate = () => {
     const dateObj = new Date();
@@ -21,7 +22,7 @@ const SubscriptionPage = () => {
   };
 
   const getConvertedDate = (str) => {
-    const newStr = str.replace(' 12:50 PM', '');
+    const newStr = str.substring(0, str.length - 8);
     return newStr;
   };
 
@@ -85,7 +86,7 @@ const SubscriptionPage = () => {
             {type === 'event' && (
               <div className="subscription-details-container-col-right">
                 <p>{getFormattedDate()}</p>
-                <p>₹{event.price}</p>
+                <p>₹{regType === 'solo' ? event.soloPrice : event.groupPrice}</p>
                 <p>{event.topic}</p>
                 <p>{getConvertedDate(event.start_time)}</p>
                 <p>{getConvertedDate(event.end_time)}</p>
@@ -111,7 +112,12 @@ const SubscriptionPage = () => {
             <p className="subscription-card-text">We have added {course.subject} notes to your account you can check in my account / my notes section.</p>
             <img src={notesImage} alt="notes-img" className="notes-img" />
             <div>
-              <button className="subscription-card-button">My notes</button>
+              <button
+                className="subscription-card-button"
+                onClick={() => history.push({ pathname: '/notes', state: 'notes' })}
+              >
+                My notes
+              </button>
             </div>
           </div>
         )}
@@ -121,7 +127,12 @@ const SubscriptionPage = () => {
             <p className="subscription-card-text">We have added event to your account you can check in my account / Registered events section.</p>
             <img src={notesImage} alt="notes-img" className="notes-img" />
             <div>
-              <button className="subscription-card-button">Registered events</button>
+              <button
+                className="subscription-card-button"
+                onClick={() => history.push('/myEvents')}
+              >
+                Registered events
+              </button>
             </div>
           </div>
         )}
@@ -131,7 +142,12 @@ const SubscriptionPage = () => {
             <p className="subscription-card-text">We have added workshop to your account you can check in my account / Registered workshops section.</p>
             <img src={notesImage} alt="notes-img" className="notes-img" />
             <div>
-              <button className="subscription-card-button">Registered workshops</button>
+              <button
+                className="subscription-card-button"
+                onClick={() => history.push('/myWorkshops')}
+              >
+                Registered workshops
+              </button>
             </div>
           </div>
         )}

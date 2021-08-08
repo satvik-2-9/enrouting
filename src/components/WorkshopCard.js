@@ -95,7 +95,13 @@ const WorkshopCard = (props) => {
       <div className="EventCard-content-row">
         <img src={workshop.img} alt="workshop-img" />
         <div className="EventCard-content-div">
-          <p>{workshop.desc.replace('<p>', '').substring(0, 185)}...</p>
+          <p>
+            {workshop.desc
+              .replace(/(<([^>]+)>)/ig, '')
+              .replace('&nbsp;', ' ')
+              .substring(0, 185)
+            }...
+          </p>
           <div className="EventCard-date-row">
             {!locked ? (
               <div>

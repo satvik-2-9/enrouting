@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -6,10 +7,21 @@ import SubscriptionCard from './SubscriptionCard';
 import TransactionCard from './TransactionCard';
 import '../styles/PurchasesPage.css';
 
+import { getUserCourses } from '../redux/actions/courseActions';
+
 const PurchasesPage = () => {
+  const dispatch = useDispatch();
   const [activeOption, setActiveOption] = useState('subscriptions');
   const [expandView, setExpandView] = useState([]);
   const location = useLocation();
+
+  const { userCourses } = useSelector((store) => store.courseReducer);
+
+  useEffect(() => {
+    if (!userCourses) {
+      dispatch(getUserCourses());
+    }
+  }, [dispatch, userCourses]);
 
   const handleViewClick = (sub) => {
     var index = expandView.indexOf(sub);
@@ -56,47 +68,38 @@ const PurchasesPage = () => {
             <p className="middle-title">Price</p>
             <p className="last-title">Purchase Date</p>
           </div>
-          <TransactionCard standard={8} subject={'Maths'} price={1000} date={'Jun 19, 2021'} />
-          <TransactionCard standard={8} subject={'Science'} price={1000} date={'Jun 20, 2021'} />
+          {userCourses?.map(course => (
+            <TransactionCard
+              standard={course.class}
+              subject={course.subject}
+              price={course.price}
+              date={course.createdAt}
+            />
+          ))}
         </div>
       ) : (
         <div className="subscriptions-card-content">
-          <div className="subscriptions-card-container">
-            <p className="subscriptions-card-title">Class 8th : Maths notes</p>
-            <SubscriptionCard chapNo={1} />
-            <SubscriptionCard chapNo={2} />
-            {expandView.includes('maths') && (
-              <div>
-                <SubscriptionCard chapNo={3} />
-                <SubscriptionCard chapNo={4} />
-                <SubscriptionCard chapNo={5} />
-                <SubscriptionCard chapNo={6} />
+          {userCourses?.map((course, index) => (
+            <div className="subscriptions-card-container">
+              <p className="subscriptions-card-title">
+                Class {course.class}th : {course.subject} notes
+              </p>
+              {course?.chapters?.sort((a, b) =>
+                (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0)
+              ).map((chapter, idx) => (
+                idx <= 1 ? (
+                  <SubscriptionCard chapter={chapter} />
+                ) : (
+                  expandView.includes(course.id) && <SubscriptionCard chapter={chapter} />
+                )
+              ))}
+              <div className="view-toggle">
+                <span onClick={() => handleViewClick(course.id)}>
+                  {expandView.includes(course.id) ? 'View less' : 'View more'}
+                </span>
               </div>
-            )}
-            <div className="view-toggle">
-              <span onClick={() => handleViewClick('maths')}>
-                {expandView.includes('maths') ? 'View less' : 'View more'}
-              </span>
             </div>
-          </div>
-          <div className="subscriptions-card-container">
-            <p className="subscriptions-card-title">Class 8th : Science notes</p>
-            <SubscriptionCard chapNo={1} />
-            <SubscriptionCard chapNo={2} />
-            {expandView.includes('science') && (
-              <div>
-                <SubscriptionCard chapNo={3} />
-                <SubscriptionCard chapNo={4} />
-                <SubscriptionCard chapNo={5} />
-                <SubscriptionCard chapNo={6} />
-              </div>
-            )}
-            <div className="view-toggle">
-              <span onClick={() => handleViewClick('science')}>
-                {expandView.includes('science') ? 'View less' : 'View more'}
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       )}
       <Footer />

@@ -1,0 +1,27 @@
+.ErrorPage {
+  background-color: #383838;
+  height: 91vh;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 57px;
+}
+
+.ErrorPage-heading {
+  font-weight: 400;
+  font-size: 2.1rem;
+  margin-bottom: 0.9rem;
+  padding-top: 5rem;
+}
+
+.ErrorPage-text {
+  width: 55%;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  line-height: 1.3rem;
+}
+
+.error-img {
+  margin-top: 1rem;
+  width: 25%;
+}

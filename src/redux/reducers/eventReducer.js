@@ -1,4 +1,4 @@
-import { GET_ALL_EVENTS, GET_USER_EVENTS } from '../actionsType';
+import { GET_ALL_EVENTS, GET_USER_EVENTS, MAKE_SUBMISSION } from '../actionsType';
 
 const initialState = {
   allEvents: [],
@@ -17,6 +17,8 @@ const eventReducer = (state = initialState, action) => {
         ...state,
         userEvents: action?.payload,
       };
+    case MAKE_SUBMISSION:
+      return state;
     default:
       return state;
   }

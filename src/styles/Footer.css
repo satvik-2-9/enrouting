@@ -39,6 +39,10 @@
   margin: 0.4rem 0;
 }
 
+.links-text:hover {
+  cursor: pointer;
+}
+
 .terms-container {
   width: 85%;
   margin: 1rem auto 2rem auto;

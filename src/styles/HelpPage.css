@@ -39,14 +39,17 @@
 }
 
 .HelpPage-name-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 2rem 0 0.5rem 0;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
 }
-.HelpPage-name-container input {
-  width: 41%;
+/* .HelpPage-name-container input {
+width: 41%;
   border: 1px solid #d1d9d9;
   padding: 0.9rem 1.1rem;
   border-radius: 0.5rem;
@@ -54,9 +57,52 @@
   font-weight: 500;
   color: grey;
   font-size: 0.8rem;
-}
-.HelpPage-name-container input:focus {
+} */
+/* .HelpPage-name-container input:focus {
   outline: none;
+} */
+
+.HelpPage-inputDiv-name {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  color: grey !important;
+}
+
+.HelpPage-inputDiv-name input {
+  width: 80%;
+  border: 1px solid #d1d9d9;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: grey !important;
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.HelpPage-inputDiv-name input.marginRight {
+  margin-right: auto;
+}
+
+.HelpPage-inputDiv-name input.marginLeft {
+  margin-left: auto;
+}
+
+.HelpPage-inputDiv-name input:focus {
+  outline: none;
+}
+
+.HelpPage-inputDiv-name input:hover {
+  outline: none;
+}
+
+.HelpPage-inputDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 .HelpPage-input {
@@ -92,4 +138,22 @@
 
 .help-img {
   width: 70%;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.75em;
+  display: relative;
+  /* text-align: left; */
+  margin-bottom: 5px;
+  margin-left: 18px;
+  margin-right: auto;
+}
+
+.errorMessage.correctMargin {
+  margin-left: 5px !important;
 }

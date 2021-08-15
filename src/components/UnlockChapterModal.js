@@ -19,14 +19,14 @@ const UnlockChapterModal = (props) => {
       return;
     }
     const options = {
-      "key": process.env.REACT_APP_RAZORPAY_KEY,
-      "amount": res.data.response.amount,
-      "currency": res.data.response.currency,
-      "name": "Enrouting Careers",
-      "description": res.data.response.notes.desc,
-      "image": ecLogo,
-      "order_id": res.data.response.id,
-      "handler": async function (response) {
+      key: process.env.REACT_APP_RAZORPAY_KEY,
+      amount: res.data.response.amount,
+      currency: res.data.response.currency,
+      name: 'Enrouting Careers',
+      description: res.data.response.notes.desc,
+      image: ecLogo,
+      order_id: res.data.response.id,
+      handler: async function (response) {
         const data = {
           orderCreationId: res.data.response.id,
           razorpayPaymentId: response.razorpay_payment_id,
@@ -36,20 +36,20 @@ const UnlockChapterModal = (props) => {
         };
         await verifyCoursePayment(data);
         handleClose();
-        document.querySelector("body").style.overflow = 'auto';
+        document.querySelector('body').style.overflow = 'auto';
         history.push({
           pathname: '/subscription',
-          state: { course, paymentDetails: data }
+          state: { course, paymentDetails: data, type: 'course' },
         });
       },
-      "prefill": {
-        "name": userData.firstname + ' ' + userData.lastname,
-        "email": userData.email,
-        "contact": userData.phone
+      prefill: {
+        name: userData.firstname + ' ' + userData.lastname,
+        email: userData.email,
+        contact: userData.phone,
       },
-      "theme": {
-        "color": "#3399cc"
-      }
+      theme: {
+        color: '#3399cc',
+      },
     };
     var rzp1 = new window.Razorpay(options);
 
@@ -61,31 +61,45 @@ const UnlockChapterModal = (props) => {
   };
 
   return (
-    <div className="UnlockChapterModal">
-      <div className="UnlockChapterModal-content">
+    <div className='UnlockChapterModal'>
+      <div className='UnlockChapterModal-content'>
         <span onClick={() => handleClose()}>
-          <img src={closeIcon} alt="close-icon" className="UnlockChapterModal-close-icon" />
+          <img
+            src={closeIcon}
+            alt='close-icon'
+            className='UnlockChapterModal-close-icon'
+          />
         </span>
-        <div className="UnlockChapterModal-content-container">
-          <img src={unlockImage} alt="unlock-chapter-img" className="unlock-chapter-img" />
-          <div className="UnlockChapterModal-text-container">
+        <div className='UnlockChapterModal-content-container'>
+          <img
+            src={unlockImage}
+            alt='unlock-chapter-img'
+            className='unlock-chapter-img'
+          />
+          <div className='UnlockChapterModal-text-container'>
             <h1>Unlock notes</h1>
-            <p>Get complete access to all the lecture videos and notes by availing our annual subscription.</p>
-            <div className="UnlockChapterModal-details-container">
-              <div className="UnlockChapterModal-details-container-col-left">
+            <p>
+              Get complete access to all the lecture videos and notes by
+              availing our annual subscription.
+            </p>
+            <div className='UnlockChapterModal-details-container'>
+              <div className='UnlockChapterModal-details-container-col-left'>
                 <span>Subject name</span>
                 <span>Board</span>
                 <span>Standard / Class</span>
                 <span>Subscription cost</span>
               </div>
-              <div className="UnlockChapterModal-details-container-col-right">
+              <div className='UnlockChapterModal-details-container-col-right'>
                 <span>{course.subject}</span>
                 <span>{course.board}</span>
                 <span>{course.class}th standard</span>
                 <span>₹{course.price} / year</span>
               </div>
             </div>
-            <button onClick={() => buyNow()} className="UnlockChapterModal-button">
+            <button
+              onClick={() => buyNow()}
+              className='UnlockChapterModal-button'
+            >
               Buy now
             </button>
           </div>

@@ -48,20 +48,19 @@ const HomePage = () => {
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === 3 - 1 ? 0 : prevIndex + 1
-        ),
+      () => setIndex((prevIndex) => (prevIndex === 3 - 1 ? 0 : prevIndex + 1)),
       delay
     );
-    return () => { resetTimeout() };
+    return () => {
+      resetTimeout();
+    };
   }, [index]);
 
-  useEffect(() => {
-    if (allTestimonials.length === 0) {
-      dispatch(getAllTestimonials());
-    }
-  }, [dispatch, allTestimonials]);
+  // useEffect(() => {
+  //   if (allTestimonials.length === 0) {
+  //     dispatch(getAllTestimonials());
+  //   }
+  // }, [dispatch, allTestimonials]);
 
   const handleTryClick = () => {
     setTryModal(true);
@@ -70,86 +69,121 @@ const HomePage = () => {
     }
   };
 
-  const testimonials = (
-    allTestimonials?.map((testimonial) => (
-      <div className="slide">
-        <div className="testimonial-section-content-box">
-          <div className="testimonial-section-content-box-left">
-            <img src={testimonial.img} alt="student-img" className="student-img" />
+  const testimonials = allTestimonials?.map((testimonial) => (
+    <div className='slide'>
+      <div className='testimonial-section-content-box'>
+        <div className='testimonial-section-content-box-left'>
+          <img
+            src={testimonial.img}
+            alt='student-img'
+            className='student-img'
+          />
+        </div>
+        <div className='testimonial-section-content-box-right'>
+          <div className='star-container'>
+            {[...Array(testimonial.stars)].map((e, i) => (
+              <img
+                src={starIcon}
+                alt='star-icon-1'
+                className='star-icon'
+                key={i}
+              />
+            ))}
           </div>
-          <div className="testimonial-section-content-box-right">
-            <div className="star-container">
-              {[...Array(testimonial.stars)].map((e, i) => (
-                <img src={starIcon} alt="star-icon-1" className="star-icon" key={i} />
-              ))}
-            </div>
-            <p className="testimonial-text">{testimonial.review}</p>
-            <p className="name-text">{testimonial.firstname + ' ' + testimonial.lastname}</p>
-            <p className="board-text">{testimonial.board}</p>
-          </div>
+          <p className='testimonial-text'>{testimonial.review}</p>
+          <p className='name-text'>
+            {testimonial.firstname + ' ' + testimonial.lastname}
+          </p>
+          <p className='board-text'>{testimonial.board}</p>
         </div>
       </div>
-    ))
-  );
+    </div>
+  ));
 
   return (
-    <div className="HomePage">
+    <div className='HomePage'>
       <Navbar activeMenuItem={'home'} />
       {tryModal && <TryModal setTryModal={setTryModal} />}
-      <div className="welcome-section">
-        <div className="welcome-textbox">
-          <h1 className="welcome-text1">Welcome to Enrouting careers</h1>
-          <h1 className="welcome-text2">Own your future with us</h1>
+      <div className='welcome-section'>
+        <div className='welcome-textbox'>
+          <h1 className='welcome-text1'>Welcome to Enrouting careers</h1>
+          <h1 className='welcome-text2'>Own your future with us</h1>
         </div>
-        <img src={heroImage} alt="img-hero" className="hero-img" />
-        <div className="curved-div">
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-            <path d="M-0.84,99.17 C84.36,59.70 263.82,-16.28 502.54,95.22 L504.22,170.22 L-1.97,152.45 Z" style={{ stroke: 'none', fill: '#3eac72' }}></path>
+        <img src={heroImage} alt='img-hero' className='hero-img' />
+        <div className='curved-div'>
+          <svg
+            viewBox='0 0 500 150'
+            preserveAspectRatio='none'
+            style={{ height: '100%', width: '100%' }}
+          >
+            <path
+              d='M-0.84,99.17 C84.36,59.70 263.82,-16.28 502.54,95.22 L504.22,170.22 L-1.97,152.45 Z'
+              style={{ stroke: 'none', fill: '#3eac72' }}
+            ></path>
           </svg>
         </div>
-        <div className="curved-div">
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-            <path d="M-14.39,155.42 C123.87,88.31 252.54,8.39 502.54,95.22 L504.22,170.22 L-8.74,172.20 Z" style={{ stroke: 'none', fill: '#ffffff' }}></path>
+        <div className='curved-div'>
+          <svg
+            viewBox='0 0 500 150'
+            preserveAspectRatio='none'
+            style={{ height: '100%', width: '100%' }}
+          >
+            <path
+              d='M-14.39,155.42 C123.87,88.31 252.54,8.39 502.54,95.22 L504.22,170.22 L-8.74,172.20 Z'
+              style={{ stroke: 'none', fill: '#ffffff' }}
+            ></path>
           </svg>
         </div>
       </div>
-      <div className="university-section">
-        <div className="university-section-container">
-          <div className="university-section-content-box-left">
+      <div className='university-section'>
+        <div className='university-section-container'>
+          <div className='university-section-content-box-left'>
             <h1>6000+</h1>
-            <div className="fav-icon-container">
-              <img className="fav-icon" src={favIcon} alt="fav-icon-1" />
-              <img className="fav-icon" src={favIcon} alt="fav-icon-2" />
-              <img className="fav-icon" src={favIcon} alt="fav-icon-3" />
-              <img className="fav-icon" src={favIcon} alt="fav-icon-4" />
-              <img className="fav-icon" src={favIcon} alt="fav-icon-5" />
+            <div className='fav-icon-container'>
+              <img className='fav-icon' src={favIcon} alt='fav-icon-1' />
+              <img className='fav-icon' src={favIcon} alt='fav-icon-2' />
+              <img className='fav-icon' src={favIcon} alt='fav-icon-3' />
+              <img className='fav-icon' src={favIcon} alt='fav-icon-4' />
+              <img className='fav-icon' src={favIcon} alt='fav-icon-5' />
             </div>
             <p>Active students</p>
           </div>
-          <div className="university-section-content-box-right">
-            <div className="slideshow">
+          <div className='university-section-content-box-right'>
+            <div className='slideshow'>
               <div
-                className="slideshowSlider"
+                className='slideshowSlider'
                 style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
               >
-                <div className="slide">
-                  <h1>Trust our world of learning, joining us to achieve their goals.</h1>
+                <div className='slide'>
+                  <h1>
+                    Trust our world of learning, joining us to achieve their
+                    goals.
+                  </h1>
                   <p>Collaborated with universities</p>
-                  <div className="university-icon-container">
-                    <img className="university-logo" src={universityLogo1} alt="university-1" />
-                    <img className="university-logo" src={universityLogo2} alt="university-2" />
+                  <div className='university-icon-container'>
+                    <img
+                      className='university-logo'
+                      src={universityLogo1}
+                      alt='university-1'
+                    />
+                    <img
+                      className='university-logo'
+                      src={universityLogo2}
+                      alt='university-2'
+                    />
                   </div>
                 </div>
-                <div className="slide">
-                  <div className="slide-full-div">
-                    <h1 className="slide-full-div-text">
-                      Organised 50+ technical events, in and around 15+ cities all over India.
+                <div className='slide'>
+                  <div className='slide-full-div'>
+                    <h1 className='slide-full-div-text'>
+                      Organised 50+ technical events, in and around 15+ cities
+                      all over India.
                     </h1>
                   </div>
                 </div>
-                <div className="slide">
-                  <div className="slide-full-div">
-                    <h1 className="slide-full-div-text">
+                <div className='slide'>
+                  <div className='slide-full-div'>
+                    <h1 className='slide-full-div-text'>
                       75+ technical workshops conducted.
                     </h1>
                   </div>
@@ -157,88 +191,130 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="slideshowDotsContainer">
+          <div className='slideshowDotsContainer'>
             {[1, 2, 3].map((_, idx) => (
               <div
                 key={idx}
-                className={`slideshowDot${index === idx ? " checked" : ""}`}
+                className={`slideshowDot${index === idx ? ' checked' : ''}`}
                 onClick={() => setIndex(idx)}
               ></div>
             ))}
           </div>
-        </div >
-      </div >
-      <div className="features-section">
-        <div className="features-section-title">
+        </div>
+      </div>
+      <div className='features-section'>
+        <div className='features-section-title'>
           <h1>Why simple notes are better than Tuitions & video classes"</h1>
         </div>
-        <div className="features-container">
-          <div className="features-container-row">
-            <div className="feature-item">
-              <img src={featureImage1} alt="feature-1" className="feature-img" />
-              <p className="feature-text">
-                Easily learn and understand tough topics without a guide. Boost your self confidence.
+        <div className='features-container'>
+          <div className='features-container-row'>
+            <div className='feature-item'>
+              <img
+                src={featureImage1}
+                alt='feature-1'
+                className='feature-img'
+              />
+              <p className='feature-text'>
+                Easily learn and understand tough topics without a guide. Boost
+                your self confidence.
               </p>
             </div>
-            <div className="feature-item">
-              <img src={featureImage2} alt="feature-2" className="feature-img" />
-              <p className="feature-text">
+            <div className='feature-item'>
+              <img
+                src={featureImage2}
+                alt='feature-2'
+                className='feature-img'
+              />
+              <p className='feature-text'>
                 No more tough tuition timings, no more travel time.
               </p>
             </div>
-            <div className="feature-item">
-              <img src={featureImage3} alt="feature-3" className="feature-img" />
-              <p className="feature-text">
+            <div className='feature-item'>
+              <img
+                src={featureImage3}
+                alt='feature-3'
+                className='feature-img'
+              />
+              <p className='feature-text'>
                 No more dependence in solving problems or analyzing solutions.
               </p>
             </div>
           </div>
-          <div className="features-container-row">
-            <div className="feature-item">
-              <img src={featureImage4} alt="feature-4" className="feature-img" />
-              <p className="feature-text">
+          <div className='features-container-row'>
+            <div className='feature-item'>
+              <img
+                src={featureImage4}
+                alt='feature-4'
+                className='feature-img'
+              />
+              <p className='feature-text'>
                 Watch the lectures any number of times, no particular timetable.
               </p>
             </div>
-            <div className="feature-item">
-              <img src={featureImage5} alt="feature-5" className="feature-img" />
-              <p className="feature-text">
+            <div className='feature-item'>
+              <img
+                src={featureImage5}
+                alt='feature-5'
+                className='feature-img'
+              />
+              <p className='feature-text'>
                 No more worries of loosing a class or avoiding family functions.
               </p>
             </div>
-            <div className="feature-item">
-              <img src={featureImage6} alt="feature-6" className="feature-img" />
-              <p className="feature-text">
+            <div className='feature-item'>
+              <img
+                src={featureImage6}
+                alt='feature-6'
+                className='feature-img'
+              />
+              <p className='feature-text'>
                 All these at the comfort from your home.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="events-section">
-        <div className="event-curved-div" >
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-            <path d="M-0.27,1.48 C160.55,79.44 349.60,80.42 501.41,1.48 L500.00,150.00 L0.00,150.00 Z" style={{ stroke: 'none', fill: '#2f2f2f' }}></path>
+      <div className='events-section'>
+        <div className='event-curved-div'>
+          <svg
+            viewBox='0 0 500 150'
+            preserveAspectRatio='none'
+            style={{ height: '100%', width: '100%' }}
+          >
+            <path
+              d='M-0.27,1.48 C160.55,79.44 349.60,80.42 501.41,1.48 L500.00,150.00 L0.00,150.00 Z'
+              style={{ stroke: 'none', fill: '#2f2f2f' }}
+            ></path>
           </svg>
         </div>
-        <div className="events-section-text-div">
-          <div className="events-section-title-container">
-            <h1>Events which will challenge your abilities & help in evolution</h1>
+        <div className='events-section-text-div'>
+          <div className='events-section-title-container'>
+            <h1>
+              Events which will challenge your abilities & help in evolution
+            </h1>
           </div>
-          <div className="events-section-subtitle-container">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore dsd sdeom.</p>
+          <div className='events-section-subtitle-container'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore dsd sdeom.
+            </p>
           </div>
         </div>
-        <div className="events-section-container">
-          <button onClick={() => history.push('/events')}>Register for events</button>
-          <img src={eventsImage} alt="events-img" className="events-img" />
+        <div className='events-section-container'>
+          <button onClick={() => history.push('/events')}>
+            Register for events
+          </button>
+          <img src={eventsImage} alt='events-img' className='events-img' />
         </div>
       </div>
-      <div className="experience-section">
-        <div className="experience-section-container">
-          <h1>Best notes from 10+ year teaching experience teachers will crack all your troubles</h1>
-          <div className="experience-section-content-div">
-            <div className="experience-section-content-div-left">
+      <div className='experience-section'>
+        <div className='experience-section-container'>
+          <h1>
+            Best notes from 10+ year teaching experience teachers will crack all
+            your troubles
+          </h1>
+          <div className='experience-section-content-div'>
+            <div className='experience-section-content-div-left'>
               <h3>Become an Independent learner.</h3>
               <p>Become self reliant.</p>
               <p>Start making Informed decisions about your learning.</p>
@@ -247,92 +323,146 @@ const HomePage = () => {
               <p>Start taking responsibility for your own learning.</p>
               <p>Know about the different strategies of learning.</p>
             </div>
-            <div className="experience-section-content-div-right">
-              <img src={teachersImage} alt="best-teacher" className="teacher-img" />
+            <div className='experience-section-content-div-right'>
+              <img
+                src={teachersImage}
+                alt='best-teacher'
+                className='teacher-img'
+              />
             </div>
           </div>
         </div>
       </div>
-      <div className="workshops-section">
+      <div className='workshops-section'>
         <h1>Technical Workshops</h1>
-        <div className="workshops-section-card-container">
-          <div className="workshops-section-card-container-row">
-            <div className="workshops-section-card">
-              <img src={workshopImage5} alt="workshop-img-1" className="workshop-img" />
-              <p>Provides practical knowledge on various topics which would help the students to build strong concepts and hands on experience.</p>
+        <div className='workshops-section-card-container'>
+          <div className='workshops-section-card-container-row'>
+            <div className='workshops-section-card'>
+              <img
+                src={workshopImage5}
+                alt='workshop-img-1'
+                className='workshop-img'
+              />
+              <p>
+                Provides practical knowledge on various topics which would help
+                the students to build strong concepts and hands on experience.
+              </p>
             </div>
-            <div className="workshops-section-card">
-              <img src={workshopImage1} alt="workshop-img-6" className="workshop-img" />
+            <div className='workshops-section-card'>
+              <img
+                src={workshopImage1}
+                alt='workshop-img-6'
+                className='workshop-img'
+              />
               <p>Step by step explanations on how a project is completed.</p>
             </div>
-            <div className="workshops-section-card">
-              <img src={workshopImage6} alt="workshop-img-6" className="workshop-img" />
+            <div className='workshops-section-card'>
+              <img
+                src={workshopImage6}
+                alt='workshop-img-6'
+                className='workshop-img'
+              />
               <p>Opportunities to develop and learn new skills.</p>
             </div>
-            <div className="workshops-section-card">
-              <img src={workshopImage2} alt="workshop-img-2" className="workshop-img" />
-              <p>Opportunities for networking with other like minded students.</p>
+            <div className='workshops-section-card'>
+              <img
+                src={workshopImage2}
+                alt='workshop-img-2'
+                className='workshop-img'
+              />
+              <p>
+                Opportunities for networking with other like minded students.
+              </p>
             </div>
           </div>
-          <div className="workshops-section-card-container-row">
-            <div className="workshops-section-card">
-              <img src={workshopImage3} alt="workshop-img-3" className="workshop-img" />
+          <div className='workshops-section-card-container-row'>
+            <div className='workshops-section-card'>
+              <img
+                src={workshopImage3}
+                alt='workshop-img-3'
+                className='workshop-img'
+              />
               <p>Will help you realize and think new ideas as you learn.</p>
             </div>
-            <div className="workshops-section-card">
-              <img src={featureImage6} alt="workshop-img-5" className="workshop-feature-img" />
+            <div className='workshops-section-card'>
+              <img
+                src={featureImage6}
+                alt='workshop-img-5'
+                className='workshop-feature-img'
+              />
               <p>Get inspired to work better on your ideas.</p>
             </div>
-            <div className="workshops-section-card">
-              <img src={workshopImage4} alt="workshop-img-4" className="workshop-img" />
+            <div className='workshops-section-card'>
+              <img
+                src={workshopImage4}
+                alt='workshop-img-4'
+                className='workshop-img'
+              />
               <p>Have fun while learning.</p>
             </div>
-            <div className="workshops-section-card"></div>
+            <div className='workshops-section-card'></div>
           </div>
         </div>
       </div>
-      <div className="testimonial-section">
-        <div className="empty-div"></div>
-        <div className="testimonial-curved-div" >
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-            <path d="M-1.41,68.58 C175.78,-7.39 317.43,14.30 500.84,91.28 L503.67,159.38 L0.00,150.00 Z" style={{ stroke: 'none', fill: '#3eac72' }}></path>
+      <div className='testimonial-section'>
+        <div className='empty-div'></div>
+        <div className='testimonial-curved-div'>
+          <svg
+            viewBox='0 0 500 150'
+            preserveAspectRatio='none'
+            style={{ height: '100%', width: '100%' }}
+          >
+            <path
+              d='M-1.41,68.58 C175.78,-7.39 317.43,14.30 500.84,91.28 L503.67,159.38 L0.00,150.00 Z'
+              style={{ stroke: 'none', fill: '#3eac72' }}
+            ></path>
           </svg>
         </div>
-        <div className="testimonial-curved-div" >
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: '100%', width: '100%' }}>
-            <path d="M-1.41,68.58 C178.61,6.42 320.82,25.16 502.54,150.48 L503.67,153.45 L0.00,150.00 Z" style={{ stroke: 'none', fill: '#2f2f2f' }}></path>
+        <div className='testimonial-curved-div'>
+          <svg
+            viewBox='0 0 500 150'
+            preserveAspectRatio='none'
+            style={{ height: '100%', width: '100%' }}
+          >
+            <path
+              d='M-1.41,68.58 C178.61,6.42 320.82,25.16 502.54,150.48 L503.67,153.45 L0.00,150.00 Z'
+              style={{ stroke: 'none', fill: '#2f2f2f' }}
+            ></path>
           </svg>
         </div>
-        <div className="testimonial-section-container">
-          <div className="testimonial-section-title-div">
+        <div className='testimonial-section-container'>
+          <div className='testimonial-section-title-div'>
             <h1>What our students says</h1>
           </div>
-          <div className="slideshow">
+          <div className='slideshow'>
             <div
-              className="slideshowSlider"
+              className='slideshowSlider'
               style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
             >
               {testimonials}
             </div>
           </div>
-          <div className="slideshowDotsContainer">
+          <div className='slideshowDotsContainer'>
             {[1, 2, 3].map((_, idx) => (
               <div
                 key={idx}
-                className={`slideshowDot${index === idx ? " checked" : ""}`}
+                className={`slideshowDot${index === idx ? ' checked' : ''}`}
                 onClick={() => setIndex(idx)}
               ></div>
             ))}
           </div>
         </div>
       </div>
-      <div className="conclusion-section">
-        <h3>Its not just how well you were taught that bring great results, it's the efforts that the student puts in to get those result on board.</h3>
+      <div className='conclusion-section'>
+        <h3>
+          Its not just how well you were taught that bring great results, it's
+          the efforts that the student puts in to get those result on board.
+        </h3>
         <h1>"WE TEACH THEY PERSUE" !!!</h1>
         <button onClick={() => handleTryClick()}>Try for free</button>
       </div>
       <Footer />
-    </div >
+    </div>
   );
 };
 

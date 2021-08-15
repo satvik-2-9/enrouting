@@ -77,3 +77,8 @@
   font-size: 0.8rem;
   font-weight: 500;
 }
+
+.submitted-text {
+  margin: 5rem 1rem;
+  font-style: italic;
+}

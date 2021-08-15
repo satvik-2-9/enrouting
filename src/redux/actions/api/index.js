@@ -7,7 +7,7 @@ const API = axios.create({
 
 API.interceptors.request.use((req) => {
   if (Cookies.get('userJWT')) {
-    req.headers["x-access-token"] = Cookies.get('userJWT');
+    req.headers['x-access-token'] = Cookies.get('userJWT');
   }
   return req;
 });
@@ -16,7 +16,8 @@ API.interceptors.request.use((req) => {
 export const getUser = () => API.get('/api/user/profile');
 export const login = (loginData) => API.post('/api/auth/signin', loginData);
 export const signup = (signupData) => API.post('/api/auth/signup', signupData);
-export const updateUserDetails = (updates) => API.put('/api/user/update', updates);
+export const updateUserDetails = (updates) =>
+  API.put('/api/user/update', updates);
 
 // Courses Routes
 export const getAllCourses = () => API.get('/admin/courses/all');
@@ -34,7 +35,11 @@ export const getAllTestimonials = () => API.get('/api/testimonials');
 // Event Routes
 export const getAllEvents = () => API.get('/api/events/all');
 export const getUserEvents = () => API.get('/api/events/self');
-export const makeSubmission = (id, formData) => API.post(`/api/submit/${id}`, formData);
+export const makeSubmission = (id, formData) =>
+  API.post(`/api/submit/${id}`, formData);
+
+export const checkSubmission = (eventId) =>
+  API.get(`/api/user/submission/${eventId}`);
 
 // Workshop Routes
 export const getAllWorkshops = () => API.get('/api/workshops/all');
@@ -45,7 +50,8 @@ export const getAllBlogs = () => API.get('/api/blogs/all');
 
 // Payment Routes
 export const buyCourse = (id) => API.post(`/api/course/purchase/${id}`);
-export const buyEvent = (id, formData) => API.post(`/api/event/purchase/${id}`, formData);
+export const buyEvent = (id, formData) =>
+  API.post(`/api/event/purchase/${id}`, formData);
 export const buyWorkshop = (id) => API.post(`/api/workshop/purchase/${id}`);
 export const verifyCoursePayment = (paymentData) =>
   API.post('/course/verify-payment', paymentData);
@@ -53,4 +59,3 @@ export const verifyEventPayment = (paymentData) =>
   API.post('/event/verify-payment', paymentData);
 export const verifyWorkshopPayment = (paymentData) =>
   API.post('/workshop/verify-payment', paymentData);
-

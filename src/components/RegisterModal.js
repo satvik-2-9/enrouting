@@ -5,51 +5,94 @@ import '../styles/RegisterModal.css';
 const RegisterModal = (props) => {
   const { setRegisterModal, buyNow } = props;
   const [participationType, setParticipationType] = useState('');
-  const [memberNames, setMemberNames] = useState('');
+  // const [memberNames, setMemberNames] = useState('');
+  const [inputList, setInputList] = useState([{ name: '' }]);
 
   const handleChange = (e) => {
     setParticipationType(e.target.value);
   };
 
-  const handleClick = () => {
-    buyNow(participationType, memberNames);
+  const handleRegister = () => {
+    const memberString = inputList.map((x) => x.name).join(',');
+    buyNow(participationType, memberString);
     setRegisterModal(false);
   };
 
-  const handleMembersChange = (e) => {
-    setMemberNames(e.target.value);
+  // const handleMembersChange = (e) => {
+  //   setMemberNames(e.target.value);
+  // };
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { name: '' }]);
   };
 
   return (
-    <div className="RegisterModal">
-      <div className="RegisterModal-content">
+    <div className='RegisterModal'>
+      <div className='RegisterModal-content'>
         <span onClick={() => setRegisterModal(false)}>
-          <img src={closeIcon} alt="close-icon" className="RegisterModal-close-icon" />
+          <img
+            src={closeIcon}
+            alt='close-icon'
+            className='RegisterModal-close-icon'
+          />
         </span>
         <h1>Registration Details</h1>
-        <div className="RegisterModal-type-div">
+        <div className='RegisterModal-type-div'>
           <p>Participation Type :</p>
-          <div className="RegisterModal-radio-div" onChange={handleChange}>
-            <input type="radio" value="solo" name="participationType" />
+          <div className='RegisterModal-radio-div' onChange={handleChange}>
+            <input type='radio' value='solo' name='participationType' />
             <span style={{ marginRight: '1rem' }}>Solo</span>
-            <input type="radio" value="group" name="participationType" />
+            <input type='radio' value='group' name='participationType' />
             <span>Group</span>
           </div>
         </div>
         {participationType === 'group' && (
-          <div className="members-list-div">
-            <p>Please write names of all the group members separated by a comma (,)</p>
-            <textarea
-              type="text"
-              rows="3"
-              placeholder="Type group member names here..."
-              value={memberNames}
-              onChange={handleMembersChange}
-            />
+          <div className='members-list-div'>
+            {inputList.map((x, i) => {
+              return (
+                <div className='box'>
+                  <input
+                    name='name'
+                    className='member-input'
+                    placeholder='Member name'
+                    value={x.firstName}
+                    onChange={(e) => handleInputChange(e, i)}
+                  />
+                  <div className='btn-box'>
+                    {inputList.length !== 1 && (
+                      <button
+                        className='mr10'
+                        onClick={() => handleRemoveClick(i)}
+                      >
+                        -
+                      </button>
+                    )}
+                    {inputList.length - 1 === i && (
+                      <button onClick={handleAddClick}>+</button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
-        <div className="RegisterModal-button-div">
-          <button className="RegisterModal-button" onClick={handleClick}>
+        <div className='RegisterModal-button-div'>
+          <button className='RegisterModal-button' onClick={handleRegister}>
             Register
           </button>
         </div>

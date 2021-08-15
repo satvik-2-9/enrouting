@@ -13,6 +13,7 @@ const EventWorkshopModal = (props) => {
     setWorkshopModal,
     locked,
     handleRegisterClick,
+    submissionStatus,
   } = props;
   const [submissionModal, setSubmissionModal] = useState(false);
   const [resultsModal, setResultsModal] = useState(false);
@@ -84,9 +85,11 @@ const EventWorkshopModal = (props) => {
 
             {!locked && (
               <div className='EventWorkshopModal-button-container'>
-                <button onClick={() => setSubmissionModal(true)}>
-                  Make submissions
-                </button>
+                {!submissionStatus && (
+                  <button onClick={() => setSubmissionModal(true)}>
+                    Make submissions
+                  </button>
+                )}
                 <button onClick={() => setResultsModal(true)}>
                   View Results
                 </button>

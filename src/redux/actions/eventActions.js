@@ -1,5 +1,9 @@
 import * as api from './api';
-import { GET_ALL_EVENTS, GET_USER_EVENTS, MAKE_SUBMISSION } from '../actionsType';
+import {
+  GET_ALL_EVENTS,
+  GET_USER_EVENTS,
+  MAKE_SUBMISSION,
+} from '../actionsType';
 
 export const getAllEvents = () => async (dispatch) => {
   try {
@@ -35,6 +39,18 @@ export const makeSubmission = (id, formData) => async (dispatch) => {
   try {
     await api.makeSubmission(id, formData);
     dispatch({ type: MAKE_SUBMISSION });
+  } catch (err) {
+    const message = err?.response?.data?.message
+      ? err.response.data.message
+      : 'Something went wrong';
+    console.log(message);
+  }
+};
+
+export const checkSubmission = (eventId) => async (dispatch) => {
+  try {
+    const { data } = await api.checkSubmission(eventId);
+    return data;
   } catch (err) {
     const message = err?.response?.data?.message
       ? err.response.data.message

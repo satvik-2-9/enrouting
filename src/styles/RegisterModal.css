@@ -85,3 +85,34 @@
   font-size: 0.9rem;
   font-weight: 500;
 }
+
+.box {
+  margin: 0.6rem 0;
+  position: relative;
+}
+
+.member-input {
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #d1d9d9;
+}
+
+.btn-box {
+  position: absolute;
+  right: 15%;
+  bottom: 0;
+}
+
+.btn-box button {
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  /* padding: 5px; */
+  background: linear-gradient(to right, #fb794a, #edb038);
+  color: #fff;
+  margin: 0 5px;
+}

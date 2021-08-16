@@ -25,7 +25,7 @@
   animation-name: slideIn;
   animation-duration: 0.4s;
   border-radius: 8px 8px 0 0;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 .BlogModal-content::-webkit-scrollbar {
   width: 0;
@@ -54,7 +54,40 @@
   margin-bottom: 2.5rem;
 }
 
+.BlogModal-img-desc-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.BlogModal-imgDiv {
+  width: 45%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .blog-full-img {
+  width: 100%;
+  height: 60%;
+  border-radius: 0.8rem;
+}
+
+.blogModal-desc {
+  width: 45%;
+  height: 60%;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3rem;
+  color: #777777;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* .blog-full-img {
   margin-top: 1rem;
   width: 100%;
   border-radius: 0.5rem;
@@ -62,4 +95,4 @@
 
 .blogModal-desc {
   margin-top: 1.5rem;
-}
+} */

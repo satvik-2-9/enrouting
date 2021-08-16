@@ -93,6 +93,60 @@ const UnlockChapterModal = (props) => {
                 <span>{course.subject}</span>
                 <span>{course.board}</span>
                 <span>{course.class}th standard</span>
+                <span>₹{course.price} for 3 months</span>
+              </div>
+            </div>
+            <button
+              onClick={() => buyNow()}
+              className='UnlockChapterModal-button'
+            >
+              Buy now
+            </button>
+          </div>
+          <div className='UnlockChapterModal-text-container'>
+            <h1>Unlock notes</h1>
+            <p>
+              Get complete access to all the lecture videos and notes by
+              availing our annual subscription.
+            </p>
+            <div className='UnlockChapterModal-details-container'>
+              <div className='UnlockChapterModal-details-container-col-left'>
+                <span>Subject name</span>
+                <span>Board</span>
+                <span>Standard / Class</span>
+                <span>Subscription cost</span>
+              </div>
+              <div className='UnlockChapterModal-details-container-col-right'>
+                <span>{course.subject}</span>
+                <span>{course.board}</span>
+                <span>{course.class}th standard</span>
+                <span>₹{course.price} for 6 months</span>
+              </div>
+            </div>
+            <button
+              onClick={() => buyNow()}
+              className='UnlockChapterModal-button'
+            >
+              Buy now
+            </button>
+          </div>
+          <div className='UnlockChapterModal-text-container'>
+            <h1>Unlock notes</h1>
+            <p>
+              Get complete access to all the lecture videos and notes by
+              availing our annual subscription.
+            </p>
+            <div className='UnlockChapterModal-details-container'>
+              <div className='UnlockChapterModal-details-container-col-left'>
+                <span>Subject name</span>
+                <span>Board</span>
+                <span>Standard / Class</span>
+                <span>Subscription cost</span>
+              </div>
+              <div className='UnlockChapterModal-details-container-col-right'>
+                <span>{course.subject}</span>
+                <span>{course.board}</span>
+                <span>{course.class}th standard</span>
                 <span>₹{course.price} / year</span>
               </div>
             </div>

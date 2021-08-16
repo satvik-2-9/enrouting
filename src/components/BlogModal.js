@@ -17,11 +17,15 @@ const BlogModal = (props) => {
         <div className='BlogModal-container'>
           <h1>{blog.topic}</h1>
           <p className='author-text'>Written By {blog.author}</p>
-          <img src={blog.img} alt='blog-img' className='blog-full-img' />
-          <div
-            dangerouslySetInnerHTML={{ __html: blog.desc }}
-            className='blogModal-desc'
-          />
+          <div className='BlogModal-img-desc-div'>
+            <div className='BlogModal-imgDiv'>
+              <img src={blog.img} alt='blog-img' className='blog-full-img' />
+            </div>
+            <div
+              dangerouslySetInnerHTML={{ __html: blog.desc }}
+              className='blogModal-desc'
+            />
+          </div>
         </div>
       </div>
     </div>

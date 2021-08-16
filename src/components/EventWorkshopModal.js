@@ -73,15 +73,19 @@ const EventWorkshopModal = (props) => {
                 </p>
               </div>
             )}
-            <img
-              src={event.img}
-              alt='event-img'
-              className='EventWorkshopModal-img'
-            />
-            <div
-              dangerouslySetInnerHTML={{ __html: event.desc }}
-              className='EventWorkshopModal-desc'
-            />
+            <div className='EventWorkshopModal-img-desc-div'>
+              <div className='EventWorkshopModal-imgDiv'>
+                <img
+                  src={event.img}
+                  alt='event-img'
+                  className='EventWorkshopModal-img'
+                />
+              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: event.desc }}
+                className='EventWorkshopModal-desc'
+              />
+            </div>
 
             {!locked && (
               <div className='EventWorkshopModal-button-container'>
@@ -120,15 +124,19 @@ const EventWorkshopModal = (props) => {
                 </p>
               </div>
             )}
-            <img
-              src={workshop.img}
-              alt='event-img'
-              className='EventWorkshopModal-img'
-            />
-            <div
-              dangerouslySetInnerHTML={{ __html: workshop.desc }}
-              className='EventWorkshopModal-desc'
-            />
+            <div className='EventWorkshopModal-img-desc-div'>
+              <div className='EventWorkshopModal-imgDiv'>
+                <img
+                  src={workshop.img}
+                  alt='workshop-img'
+                  className='EventWorkshopModal-img'
+                />
+              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: workshop.desc }}
+                className='EventWorkshopModal-desc'
+              />
+            </div>
           </div>
         )}
       </div>

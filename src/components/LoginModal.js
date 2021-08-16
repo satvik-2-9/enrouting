@@ -222,6 +222,7 @@ const LoginModal = (props) => {
                 </label>
               )}
             </div>
+            <p className='forgot-password-msg'>Forgot password?</p>
             <button className='login-button' onClick={handleLogin}>
               Login
             </button>

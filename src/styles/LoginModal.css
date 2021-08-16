@@ -73,6 +73,16 @@
   justify-content: left;
 }
 
+.forgot-password-msg {
+  text-align: left;
+  margin: 0.5rem 0.8rem;
+}
+
+.forgot-password-msg:hover {
+  cursor: pointer;
+  color: #4963e1;
+}
+
 .LoginModal-inputDiv input.error {
   border: 1px solid red;
 }
@@ -149,6 +159,7 @@
   font-weight: 500;
   font-size: 0.8rem;
   margin: 1.3rem 0;
+  margin-top: 0.5rem;
 }
 
 .create-account-button {

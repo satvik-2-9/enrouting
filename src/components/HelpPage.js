@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { validator } from '../util/helperFunctions';
+import { helpMail } from '../redux/actions/helpEmailActions';
 import helpImage from '../images/img_help.svg';
 import '../styles/HelpPage.css';
 
@@ -9,10 +11,12 @@ const initialData = {
   firstname: '',
   lastname: '',
   email: '',
-  message: '',
+  description: '',
 };
 
 const HelpPage = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState(null);
 
@@ -26,12 +30,15 @@ const HelpPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requiredFields = ['firstname', 'lastname', 'email', 'message'];
+    const requiredFields = ['firstname', 'lastname', 'email', 'description'];
 
     const flag = validator(formData, requiredFields);
     if (flag === true) {
       setErrors(null);
-      alert('success');
+      dispatch(helpMail(formData)).then((res) => {
+        setFormData(initialData);
+        alert(res.message);
+      });
     } else {
       setErrors(flag);
     }
@@ -121,21 +128,21 @@ const HelpPage = () => {
                   type='text'
                   rows='5'
                   placeholder='Type message here...'
-                  name='message'
-                  value={formData.message}
+                  name='description'
+                  value={formData.description}
                   onChange={handleChange}
                   className={`HelpPage-input ${
-                    errors && errors.message && errors.message !== ''
+                    errors && errors.description && errors.description !== ''
                       ? 'error'
                       : ''
                   }`}
                 />
-                {errors && errors.message !== '' && (
+                {errors && errors.description !== '' && (
                   <label
                     className='errorMessage correctMargin'
-                    htmlFor='messageError'
+                    htmlFor='descriptionError'
                   >
-                    {errors.message}
+                    {errors.description}
                   </label>
                 )}
               </div>

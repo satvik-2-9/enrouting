@@ -48,6 +48,9 @@ export const getUserWorkshops = () => API.get('/api/workshops/self');
 // Blog Routes
 export const getAllBlogs = () => API.get('/api/blogs/all');
 
+// Help email Routes
+export const helpMail = (formData) => API.post('/api/connect', formData);
+
 // Payment Routes
 export const buyCourse = (id) => API.post(`/api/course/purchase/${id}`);
 export const buyEvent = (id, formData) =>

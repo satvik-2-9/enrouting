@@ -28,3 +28,6 @@ export const GET_USER_WORKSHOPS = 'GET_USER_WORKSHOPS';
 
 // Blog Action Types
 export const GET_ALL_BLOGS = 'GET_ALL_BLOGS';
+
+// Help Email Action Type
+// export const SEND_EMAIL = 'SEND_EMAIL';

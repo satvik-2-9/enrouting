@@ -20,8 +20,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fefefe;
-  width: 35%;
-  height: 50%;
+  width: 92%;
+  height: 58%;
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
@@ -33,17 +33,19 @@
 .UnlockChapterModal-content-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
 }
 
 .unlock-chapter-img {
-  width: 38%;
+  width: 17%;
   border-radius: 10px;
 }
 
 .UnlockChapterModal-text-container {
-  width: 58%;
+  width: 25.6%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 .UnlockChapterModal-text-container h1 {

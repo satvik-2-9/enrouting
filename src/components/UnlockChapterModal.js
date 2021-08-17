@@ -13,8 +13,9 @@ const UnlockChapterModal = (props) => {
 
   const { userData } = useSelector((store) => store.userReducer);
 
-  const buyNow = async () => {
-    const res = await buyCourse(course.id);
+  const buyNow = async (type) => {
+    const res = await buyCourse(course.id, { typeofSubcription: type });
+
     if (res.status !== 201) {
       return;
     }
@@ -33,6 +34,7 @@ const UnlockChapterModal = (props) => {
           razorpaySignature: response.razorpay_signature,
           courseId: course?.id,
           userId: userData?.id,
+          typeofSubcription: type,
         };
         await verifyCoursePayment(data);
         handleClose();
@@ -93,11 +95,11 @@ const UnlockChapterModal = (props) => {
                 <span>{course.subject}</span>
                 <span>{course.board}</span>
                 <span>{course.class}th standard</span>
-                <span>₹{course.price} for 3 months</span>
+                <span>₹{course.yearlyPrice} / year</span>
               </div>
             </div>
             <button
-              onClick={() => buyNow()}
+              onClick={() => buyNow('Year')}
               className='UnlockChapterModal-button'
             >
               Buy now
@@ -120,11 +122,11 @@ const UnlockChapterModal = (props) => {
                 <span>{course.subject}</span>
                 <span>{course.board}</span>
                 <span>{course.class}th standard</span>
-                <span>₹{course.price} for 6 months</span>
+                <span>₹{course.halfyearlyPrice} for 6 months</span>
               </div>
             </div>
             <button
-              onClick={() => buyNow()}
+              onClick={() => buyNow('HalfYear')}
               className='UnlockChapterModal-button'
             >
               Buy now
@@ -147,11 +149,11 @@ const UnlockChapterModal = (props) => {
                 <span>{course.subject}</span>
                 <span>{course.board}</span>
                 <span>{course.class}th standard</span>
-                <span>₹{course.price} / year</span>
+                <span>₹{course.quarterlyPrice} for 3 months</span>
               </div>
             </div>
             <button
-              onClick={() => buyNow()}
+              onClick={() => buyNow('Quarterly')}
               className='UnlockChapterModal-button'
             >
               Buy now

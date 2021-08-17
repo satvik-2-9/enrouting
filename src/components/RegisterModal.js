@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import closeIcon from '../images/ic_close.svg';
 import '../styles/RegisterModal.css';
 
 const RegisterModal = (props) => {
-  const { setRegisterModal, buyNow } = props;
+  const { setRegisterModal, buyNow, event } = props;
   const [participationType, setParticipationType] = useState('');
   // const [memberNames, setMemberNames] = useState('');
   const [inputList, setInputList] = useState([{ name: '' }]);
@@ -52,13 +52,25 @@ const RegisterModal = (props) => {
           />
         </span>
         <h1>Registration Details</h1>
-        <div className='RegisterModal-type-div'>
+        <div
+          className={`${
+            event.groupAllowed
+              ? 'RegisterModal-type-div'
+              : 'RegisterModal-type-div-center'
+          }`}
+        >
           <p>Participation Type :</p>
           <div className='RegisterModal-radio-div' onChange={handleChange}>
             <input type='radio' value='solo' name='participationType' />
             <span style={{ marginRight: '1rem' }}>Solo</span>
-            <input type='radio' value='group' name='participationType' />
-            <span>Group</span>
+            {event.groupAllowed ? (
+              <Fragment>
+                <input type='radio' value='group' name='participationType' />
+                <span>Group</span>
+              </Fragment>
+            ) : (
+              ''
+            )}
           </div>
         </div>
         {participationType === 'group' && (
@@ -82,9 +94,11 @@ const RegisterModal = (props) => {
                         -
                       </button>
                     )}
-                    {inputList.length - 1 === i && (
-                      <button onClick={handleAddClick}>+</button>
-                    )}
+                    {inputList.length - 1 === i &&
+                      event.groupLimit &&
+                      event.groupLimit - 1 > i && (
+                        <button onClick={handleAddClick}>+</button>
+                      )}
                   </div>
                 </div>
               );

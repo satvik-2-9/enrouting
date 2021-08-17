@@ -19,6 +19,7 @@ export const getAllCourses = () => async (dispatch) => {
 export const getUserCourses = () => async (dispatch) => {
   try {
     const { data } = await api.getUserCourses();
+    // console.log(data);
     dispatch({
       type: GET_USER_COURSES,
       payload: data,

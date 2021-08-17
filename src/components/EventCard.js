@@ -117,7 +117,11 @@ const EventCard = (props) => {
       )}
       {loginModal && <LoginModal setLoginModal={setLoginModal} />}
       {registerModal && (
-        <RegisterModal setRegisterModal={setRegisterModal} buyNow={buyNow} />
+        <RegisterModal
+          setRegisterModal={setRegisterModal}
+          buyNow={buyNow}
+          event={event}
+        />
       )}
       <div className='EventCard-title-row'>
         <span className='EventCard-title-text'>{event.topic}</span>

@@ -7,6 +7,7 @@ import successIcon from '../images/ic_tick_green.svg';
 import { validator } from '../util/helperFunctions';
 
 import { login, signup } from '../redux/actions/userActions';
+import { forgotPasswordEmail } from '../redux/actions/api';
 
 import '../styles/LoginModal.css';
 
@@ -16,14 +17,14 @@ const initialSignupDetails = {
   email: '',
   phone: '',
   password: '',
+  standard: '',
+  school: '',
   confirmPassword: '',
   addressLine1: '',
   addressLine2: '',
   institutionType: '',
-  collegeName: '',
+  college: '',
   state: '',
-  standard: '',
-  schoolName: '',
 };
 
 const initialLoginDetails = {
@@ -37,6 +38,7 @@ const LoginModal = (props) => {
   const [openInstitutionalMenu, setOpenInstitutionalMenu] = useState(false);
   const [signupData, setSignupData] = useState(initialSignupDetails);
   const [loginData, setLoginData] = useState(initialLoginDetails);
+  const [inputForForgotPass, setInputForForgotPass] = useState({ email: '' });
   const [errors, setErrors] = useState(null);
 
   const dispatch = useDispatch();
@@ -55,7 +57,7 @@ const LoginModal = (props) => {
       addressLine1: '',
       addressLine2: '',
       institutionType: '',
-      collegeName: '',
+      college: '',
       state: '',
       standard: '',
       school: '',
@@ -96,13 +98,21 @@ const LoginModal = (props) => {
     }
   };
 
+  const handleForgotPassChange = (e) => {
+    const { name } = e.target;
+    setInputForForgotPass({ ...inputForForgotPass, [name]: e.target.value });
+    if (errors) {
+      setErrors({ ...errors, [name]: '' });
+    }
+  };
+
   const handleSignup = (e) => {
     e.preventDefault();
     var requiredFields = ['addressLine1', 'institutionType', 'state'];
     if (signupData.institutionType === 'College') {
-      requiredFields = [...requiredFields, 'collegeName'];
+      requiredFields = [...requiredFields, 'college'];
     } else if (signupData.institutionType === 'School') {
-      requiredFields = [...requiredFields, 'schoolName', 'standard'];
+      requiredFields = [...requiredFields, 'school', 'standard'];
     }
 
     const flag = validator(signupData, requiredFields);
@@ -136,6 +146,28 @@ const LoginModal = (props) => {
         history.push('/');
       });
       setLoginModal(false);
+    } else {
+      setErrors(flag);
+    }
+  };
+
+  const handleForgotPassSubmit = async (e) => {
+    e.preventDefault();
+    const requiredFields = ['email'];
+
+    const flag = validator(inputForForgotPass, requiredFields);
+
+    if (flag === true) {
+      setErrors(null);
+      await forgotPasswordEmail(inputForForgotPass)
+        .then((res) => {
+          alert('Email Send Successfully');
+          setInputForForgotPass({ email: '' });
+        })
+        .catch((err) => {
+          alert(err.response.data.message);
+          setInputForForgotPass({ email: '' });
+        });
     } else {
       setErrors(flag);
     }
@@ -222,7 +254,12 @@ const LoginModal = (props) => {
                 </label>
               )}
             </div>
-            <p className='forgot-password-msg'>Forgot password?</p>
+            <p
+              className='forgot-password-msg'
+              onClick={() => setModalType('forgot-password')}
+            >
+              Forgot password?
+            </p>
             <button className='login-button' onClick={handleLogin}>
               Login
             </button>
@@ -473,20 +510,20 @@ const LoginModal = (props) => {
                 </div>
                 <div className='LoginModal-inputDiv'>
                   <input
-                    name='schoolName'
+                    name='school'
                     type='text'
-                    value={signupData.schoolName}
+                    value={signupData.school}
                     placeholder='School name'
                     onChange={handleSignupDetailsChange}
                     className={`LoginModal-input ${
-                      errors && errors.schoolName && errors.schoolName !== ''
+                      errors && errors.school && errors.school !== ''
                         ? 'error'
                         : ''
                     }`}
                   />
-                  {errors && errors.schoolName !== '' && (
+                  {errors && errors.school !== '' && (
                     <label className='errorMessage' htmlFor='schoolNameError'>
-                      {errors.schoolName}
+                      {errors.school}
                     </label>
                   )}
                 </div>
@@ -495,20 +532,20 @@ const LoginModal = (props) => {
             {signupData.institutionType === 'College' && (
               <div className='LoginModal-inputDiv'>
                 <input
-                  name='collegeName'
+                  name='college'
                   type='text'
-                  value={signupData.collegeName}
+                  value={signupData.college}
                   placeholder='College name'
                   className={`LoginModal-input ${
-                    errors && errors.collegeName && errors.collegeName !== ''
+                    errors && errors.college && errors.college !== ''
                       ? 'error'
                       : ''
                   }`}
                   onChange={handleSignupDetailsChange}
                 />
-                {errors && errors.collegeName !== '' && (
+                {errors && errors.college !== '' && (
                   <label className='errorMessage' htmlFor='collegeNameError'>
-                    {errors.collegeName}
+                    {errors.college}
                   </label>
                 )}
               </div>
@@ -551,6 +588,37 @@ const LoginModal = (props) => {
             <button className='login-button' onClick={handleSignupSuccess}>
               Done
             </button>
+          </div>
+        )}
+        {modalType === 'forgot-password' && (
+          <div className='LoginModal-container'>
+            <h1 className='forgot-password-title'>Forgot Your Password?</h1>
+            <p>
+              No worries! Enter your registered email and we'll send you a link
+              to reset your password.
+            </p>
+            <form onSubmit={handleForgotPassSubmit}>
+              <div className='LoginModal-inputDiv'>
+                <input
+                  name='email'
+                  type='text'
+                  value={inputForForgotPass.email}
+                  placeholder='Email ID'
+                  className={`LoginModal-input ${
+                    errors && errors.email && errors.email !== '' ? 'error' : ''
+                  }`}
+                  onChange={handleForgotPassChange}
+                />
+                {errors && errors.email !== '' && (
+                  <label className='errorMessage' htmlFor='emailError'>
+                    {errors.email}
+                  </label>
+                )}
+              </div>
+              <button type='submit' className='login-button'>
+                Send link
+              </button>
+            </form>
           </div>
         )}
       </div>

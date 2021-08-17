@@ -37,6 +37,16 @@
   width: 80%;
   margin: 0 auto;
 }
+
+.RegisterModal-type-div-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
 .RegisterModal-type-div p {
   margin-right: 2rem;
 }

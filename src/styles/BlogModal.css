@@ -25,7 +25,7 @@
   animation-name: slideIn;
   animation-duration: 0.4s;
   border-radius: 8px 8px 0 0;
-  /* overflow-y: auto; */
+  overflow-y: auto;
 }
 .BlogModal-content::-webkit-scrollbar {
   width: 0;

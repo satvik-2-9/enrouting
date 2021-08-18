@@ -21,6 +21,7 @@ export const GET_ALL_TESTIMONIALS = 'GET_ALL_TESTIMONIALS';
 export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 export const GET_USER_EVENTS = 'GET_USER_EVENTS';
 export const MAKE_SUBMISSION = 'MAKE_SUBMISSION';
+export const EDIT_SUBMISSION = 'EDIT_SUBMISSION';
 
 // Workshop Action Types
 export const GET_ALL_WORKSHOPS = 'GET_ALL_WORKSHOPS';

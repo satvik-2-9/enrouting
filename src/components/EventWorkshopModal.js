@@ -3,6 +3,7 @@ import SubmissionModal from './SubmissionModal';
 import ResultsModal from './ResultsModal';
 import closeIcon from '../images/ic_close.svg';
 import '../styles/EventWorkshopModal.css';
+import ViewSubmissionModal from './ViewSubmissionModal';
 
 const EventWorkshopModal = (props) => {
   const {
@@ -15,8 +16,10 @@ const EventWorkshopModal = (props) => {
     locked,
     handleRegisterClick,
     submissionStatus,
+    submissionDetails,
   } = props;
   const [submissionModal, setSubmissionModal] = useState(false);
+  const [viewSubmissionsModal, setViewSubmissionsModal] = useState(false);
   const [resultsModal, setResultsModal] = useState(false);
 
   const handleClick = () => {
@@ -29,6 +32,14 @@ const EventWorkshopModal = (props) => {
         <SubmissionModal
           event={event}
           setSubmissionModal={setSubmissionModal}
+        />
+      )}
+      {viewSubmissionsModal && (
+        <ViewSubmissionModal
+          event={event}
+          setViewSubmissionsModal={setViewSubmissionsModal}
+          submissionDetails={submissionDetails.submission}
+          submissionID={submissionDetails.id}
         />
       )}
       {resultsModal && (
@@ -94,9 +105,13 @@ const EventWorkshopModal = (props) => {
 
             {!locked && (
               <div className='EventWorkshopModal-button-container'>
-                {!submissionStatus && (
+                {!submissionStatus ? (
                   <button onClick={() => setSubmissionModal(true)}>
                     Make submissions
+                  </button>
+                ) : (
+                  <button onClick={() => setViewSubmissionsModal(true)}>
+                    View submissions
                   </button>
                 )}
                 <button onClick={() => setResultsModal(true)}>

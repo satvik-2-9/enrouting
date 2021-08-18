@@ -73,16 +73,14 @@ const SubmissionModal = (props) => {
       pdf = true;
     }
 
-    console.log(image, pdf, video);
-
     if (pdf && video && image) {
       dispatch(makeSubmission(event.id, formData));
       setIsSubmitted(true);
       setTimeout(() => {
         setSubmissionModal(false);
         setIsSubmitted(false);
-        history.push('/events');
-      }, 5000);
+        history.push('/');
+      }, 3000);
     } else {
       alert("You haven't choose required number of files");
     }

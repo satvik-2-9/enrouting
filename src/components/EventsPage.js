@@ -27,21 +27,27 @@ const EventsPage = () => {
     if (!userEvents) {
       return false;
     } else {
-      return userEvents.some(e => e.id === event.id);
+      return userEvents.some((e) => e.id === event.id);
     }
   };
 
   return (
-    <div className="EventsPage">
+    <div className='EventsPage'>
       <Navbar activeMenuItem={'events'} />
-      <div className="EventsPage-title-container">
+      <div className='EventsPage-title-container'>
         <h1>Events</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
       </div>
-      <div className="events-card-container">
-        {allEvents?.map(event => (
+      <div className='events-card-container'>
+        {allEvents?.map((event) => (
           <EventCard
             event={event}
+            key={event.id}
             locked={!isAuthenticated || !isPurchased(event)}
             isAuthenticated={isAuthenticated}
           />

@@ -18,6 +18,7 @@ const EventCard = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(false);
+  const [submissionDetails, setSubmissionDetails] = useState([]);
   const [purchaseDetails, setPurchaseDetails] = useState({});
   const [boolVal, setBoolVal] = useState(false);
   const { userData } = useSelector((store) => store.userReducer);
@@ -34,8 +35,6 @@ const EventCard = (props) => {
       setBoolVal(true);
     }
   }, [userEvents, boolVal, event]);
-
-  console.log(purchaseDetails);
 
   eventModal
     ? (document.querySelector('body').style.overflow = 'hidden')
@@ -105,8 +104,10 @@ const EventCard = (props) => {
   const handleMoreDetail = () => {
     dispatch(checkSubmission(event.id)).then((res) => {
       if (res && Object.keys(res).length !== 0) {
+        setSubmissionDetails(res);
         setSubmissionStatus(true);
       }
+
       setEventModal(true);
     });
   };
@@ -129,6 +130,7 @@ const EventCard = (props) => {
           event={event}
           purchaseDetails={purchaseDetails}
           setEventModal={setEventModal}
+          submissionDetails={submissionDetails}
           locked={locked}
           submissionStatus={submissionStatus}
           handleRegisterClick={handleRegisterClick}

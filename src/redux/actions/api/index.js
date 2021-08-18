@@ -45,6 +45,8 @@ export const getAllEvents = () => API.get('/api/events/all');
 export const getUserEvents = () => API.get('/api/events/self');
 export const makeSubmission = (id, formData) =>
   API.post(`/api/submit/${id}`, formData);
+export const editSubmission = (id, formData) =>
+  API.post(`/api/submit/edit/${id}`, formData);
 
 export const checkSubmission = (eventId) =>
   API.get(`/api/user/submission/${eventId}`);

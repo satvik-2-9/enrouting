@@ -17,16 +17,17 @@ const MyEventsPage = () => {
   }, [dispatch, userEvents]);
 
   return (
-    <div className="EventsPage">
+    <div className='EventsPage'>
       <Navbar activeMenuItem={'profile'} />
-      <div className="EventsPage-title-container">
+      <div className='EventsPage-title-container'>
         <h1>Events</h1>
         <p>All events you are part of you can check here.</p>
       </div>
-      <div className="events-card-container">
-        {userEvents?.map(event => (
+      <div className='events-card-container'>
+        {userEvents?.map((event) => (
           <EventCard
             event={event}
+            key={event.id}
             locked={false}
             isAuthenticated={true}
           />

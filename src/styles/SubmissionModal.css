@@ -82,3 +82,72 @@
   margin: 5rem 1rem;
   font-style: italic;
 }
+
+/* View submission modal styles*/
+
+.viewsubmission-container {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+.viewsubmission-input-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.viewsubmission-input-text {
+  text-align: left;
+  margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: grey;
+}
+
+.viewsubmission-documentsDiv {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-bottom: 1.6rem;
+}
+.viewsubmission-documentsDiv .submissionLinks {
+  width: 20%;
+  text-align: left;
+  margin: 0 1rem;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+.viewsubmission-documentsDiv .submissionLinks:hover {
+  color: #4963e1;
+}
+
+.viewsubmission-headDiv {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.viewsubmission-headDiv h1 {
+  margin-left: auto;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.viewsubmission-button {
+  margin-left: auto;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(to right, #fb794a, #edb038);
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}

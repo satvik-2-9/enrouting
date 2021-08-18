@@ -56,11 +56,11 @@ const HomePage = () => {
     };
   }, [index]);
 
-  // useEffect(() => {
-  //   if (allTestimonials.length === 0) {
-  //     dispatch(getAllTestimonials());
-  //   }
-  // }, [dispatch, allTestimonials]);
+  useEffect(() => {
+    if (allTestimonials.length === 0) {
+      dispatch(getAllTestimonials());
+    }
+  }, [dispatch, allTestimonials]);
 
   const handleTryClick = () => {
     setTryModal(true);

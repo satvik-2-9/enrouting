@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import { makeSubmission } from '../redux/actions/eventActions';
@@ -7,18 +8,13 @@ import '../styles/SubmissionModal.css';
 const SubmissionModal = (props) => {
   const { event, setSubmissionModal } = props;
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [pdfFiles, setPdfFiles] = useState([]);
   const [pdfFileNames, setPdfFileNames] = useState([]);
   const [videoFiles, setVideoFiles] = useState([]);
   const [videoFileNames, setVideoFileNames] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
   const [imageFileNames, setImageFileNames] = useState([]);
-  const [boolObj, setBoolObj] = useState({
-    pdf: !event.pdfSubmission,
-    video: !event.videoSubmission,
-    image: !event.imageSubmission,
-  });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -39,6 +35,10 @@ const SubmissionModal = (props) => {
 
   const handleSubmit = () => {
     const formData = new FormData();
+    var pdf = !event.pdfSubmission;
+    var video = !event.videoSubmission;
+    var image = !event.imageSubmission;
+
     if (
       event.imageSubmission &&
       imageFiles.length > 0 &&
@@ -47,7 +47,7 @@ const SubmissionModal = (props) => {
       for (const key of Object.keys(imageFiles)) {
         formData.append('submission', imageFiles[key]);
       }
-      setBoolObj({ ...boolObj, image: true });
+      image = true;
     }
 
     if (
@@ -55,10 +55,11 @@ const SubmissionModal = (props) => {
       videoFiles.length > 0 &&
       videoFiles.length === event.videoLimit
     ) {
-      for (const key of Object.keys(pdfFiles)) {
-        formData.append('submission', pdfFiles[key]);
+      for (const key of Object.keys(videoFiles)) {
+        formData.append('submission', videoFiles[key]);
       }
-      setBoolObj({ ...boolObj, video: true });
+
+      video = true;
     }
 
     if (
@@ -66,18 +67,21 @@ const SubmissionModal = (props) => {
       pdfFiles.length > 0 &&
       pdfFiles.length === event.pdfLimit
     ) {
-      for (const key of Object.keys(videoFiles)) {
-        formData.append('submission', videoFiles[key]);
+      for (const key of Object.keys(pdfFiles)) {
+        formData.append('submission', pdfFiles[key]);
       }
-      setBoolObj({ ...boolObj, pdf: true });
+      pdf = true;
     }
 
-    if (boolObj.pdf && boolObj.video && boolObj.image) {
+    console.log(image, pdf, video);
+
+    if (pdf && video && image) {
       dispatch(makeSubmission(event.id, formData));
       setIsSubmitted(true);
       setTimeout(() => {
         setSubmissionModal(false);
         setIsSubmitted(false);
+        history.push('/events');
       }, 5000);
     } else {
       alert("You haven't choose required number of files");

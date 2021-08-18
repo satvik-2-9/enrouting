@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { buyEvent, verifyEventPayment } from '../redux/actions/api/index';
@@ -18,8 +18,24 @@ const EventCard = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(false);
-
+  const [purchaseDetails, setPurchaseDetails] = useState({});
+  const [boolVal, setBoolVal] = useState(false);
   const { userData } = useSelector((store) => store.userReducer);
+  const { userEvents } = useSelector((store) => store.eventReducer);
+
+  useEffect(() => {
+    if (userEvents && !boolVal) {
+      const Event =
+        userEvents.length !== 0
+          ? userEvents.filter((detail) => detail.id === event.id)
+          : [];
+      const Details = Event.length !== 0 ? Event[0].UserEvents[0] : null;
+      setPurchaseDetails(Details);
+      setBoolVal(true);
+    }
+  }, [userEvents, boolVal, event]);
+
+  console.log(purchaseDetails);
 
   eventModal
     ? (document.querySelector('body').style.overflow = 'hidden')
@@ -103,12 +119,15 @@ const EventCard = (props) => {
     }
   };
 
+  // console.log(event);
+
   return (
     <div className='EventCard'>
       {eventModal && (
         <EventWorkshopModal
           type={'event'}
           event={event}
+          purchaseDetails={purchaseDetails}
           setEventModal={setEventModal}
           locked={locked}
           submissionStatus={submissionStatus}
@@ -127,7 +146,8 @@ const EventCard = (props) => {
         <span className='EventCard-title-text'>{event.topic}</span>
         {!locked ? (
           <span className='EventCard-amount-text'>
-            Paid amount: ₹{event.groupPrice}
+            Paid amount: ₹
+            {purchaseDetails.isSolo ? event.soloPrice : event.groupPrice}
           </span>
         ) : (
           <button
@@ -161,8 +181,11 @@ const EventCard = (props) => {
             ) : (
               <div>
                 <span className='EventCard-date-text'>
-                  Registration fee: ₹{event.soloPrice} (for single) and ₹
-                  {event.groupPrice} (for group)
+                  Registration fee: ₹{event.soloPrice} (for single){' '}
+                  {event.groupAllowed
+                    ? `and ₹
+                    ${event.groupPrice} (for group)`
+                    : ''}
                 </span>
               </div>
             )}

@@ -8,6 +8,7 @@ const EventWorkshopModal = (props) => {
   const {
     type,
     event,
+    purchaseDetails,
     workshop,
     setEventModal,
     setWorkshopModal,
@@ -54,7 +55,8 @@ const EventWorkshopModal = (props) => {
             {!locked ? (
               <div className='registration-details-div'>
                 <p className='registration-text'>
-                  Paid amount: ₹{event.groupPrice}
+                  Paid amount: ₹
+                  {purchaseDetails.isSolo ? event.soloPrice : event.groupPrice}
                 </p>
                 <div>
                   <span className='registration-text date-text-margin'>
@@ -68,8 +70,11 @@ const EventWorkshopModal = (props) => {
             ) : (
               <div className='registration-details-div'>
                 <p className='registration-text'>
-                  Registration fee: ₹{event.soloPrice} (for single) and ₹
-                  {event.groupPrice} (for group)
+                  Registration fee: ₹{event.soloPrice} (for single){' '}
+                  {event.groupAllowed
+                    ? `and ₹
+                  ${event.groupPrice} (for group)`
+                    : ''}
                 </p>
               </div>
             )}

@@ -3,7 +3,7 @@ import { validator } from '../util/helperFunctions';
 import { useHistory } from 'react-router-dom';
 import brandLogo from '../images/ec_logo_nobg.png';
 import { resetPassword } from '../redux/actions/api';
-import '../styles/ForgotPasswordPage.css';
+import '../styles/ResetPasswordPage.css';
 
 const initialData = {
   password: '',

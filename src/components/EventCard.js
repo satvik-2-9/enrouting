@@ -12,6 +12,7 @@ import '../styles/EventCard.css';
 
 const EventCard = (props) => {
   const { event, locked, isAuthenticated } = props;
+  const validTill = new Date(event.end_time) >= new Date() ? true : false;
   const history = useHistory();
   const dispatch = useDispatch();
   const [eventModal, setEventModal] = useState(false);
@@ -120,14 +121,13 @@ const EventCard = (props) => {
     }
   };
 
-  // console.log(event);
-
   return (
     <div className='EventCard'>
       {eventModal && (
         <EventWorkshopModal
           type={'event'}
           event={event}
+          validTill={validTill}
           purchaseDetails={purchaseDetails}
           setEventModal={setEventModal}
           submissionDetails={submissionDetails}
@@ -151,13 +151,15 @@ const EventCard = (props) => {
             Paid amount: ₹
             {purchaseDetails.isSolo ? event.soloPrice : event.groupPrice}
           </span>
-        ) : (
+        ) : validTill ? (
           <button
             className='register-event-button'
             onClick={handleRegisterClick}
           >
             Register for event
           </button>
+        ) : (
+          <span className='EventCard-amount-text'>Event ends</span>
         )}
       </div>
       <div className='EventCard-content-row'>

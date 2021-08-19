@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SubscriptionCard from './SubscriptionCard';
@@ -36,11 +36,11 @@ const PurchasesPage = () => {
   };
 
   return (
-    <div className="PurchasesPage">
+    <div className='PurchasesPage'>
       <Navbar activeMenuItem={'profile'} />
-      <div className="PurchasesPage-title-container">
+      <div className='PurchasesPage-title-container'>
         <h1>{location.state === 'purchases' ? 'Purchases' : 'My notes'}</h1>
-        <div className="PurchasesPage-options-container">
+        <div className='PurchasesPage-options-container'>
           {location.state === 'purchases' ? (
             <div>
               <span
@@ -62,38 +62,45 @@ const PurchasesPage = () => {
         </div>
       </div>
       {activeOption === 'transactions' ? (
-        <div className="transactions-card-container">
-          <div className="transactions-card-container-title-row">
-            <p className="first-title">Purchases</p>
-            <p className="middle-title">Price</p>
-            <p className="last-title">Purchase Date</p>
+        <div className='transactions-card-container'>
+          <div className='transactions-card-container-title-row'>
+            <p className='first-title'>Purchases</p>
+            <p className='middle-title'>Price</p>
+            <p className='last-title'>Purchase Date</p>
           </div>
-          {userCourses?.map(course => (
+          {userCourses?.map((course) => (
             <TransactionCard
+              purchaseDetails={course.UserCourses}
               standard={course.class}
               subject={course.subject}
-              price={course.price}
+              yearlyPrice={course.yearlyPrice}
+              halfyearlyPrice={course.halfyearlyPrice}
+              quarterlyPrice={course.quarterlyPrice}
               date={course.createdAt}
             />
           ))}
         </div>
       ) : (
-        <div className="subscriptions-card-content">
+        <div className='subscriptions-card-content'>
           {userCourses?.map((course, index) => (
-            <div className="subscriptions-card-container">
-              <p className="subscriptions-card-title">
+            <div className='subscriptions-card-container'>
+              <p className='subscriptions-card-title'>
                 Class {course.class}th : {course.subject} notes
               </p>
-              {course?.chapters?.sort((a, b) =>
-                (a.number > b.number) ? 1 : ((b.number > a.number) ? -1 : 0)
-              ).map((chapter, idx) => (
-                idx <= 1 ? (
-                  <SubscriptionCard chapter={chapter} />
-                ) : (
-                  expandView.includes(course.id) && <SubscriptionCard chapter={chapter} />
+              {course?.chapters
+                ?.sort((a, b) =>
+                  a.number > b.number ? 1 : b.number > a.number ? -1 : 0
                 )
-              ))}
-              <div className="view-toggle">
+                .map((chapter, idx) =>
+                  idx <= 1 ? (
+                    <SubscriptionCard chapter={chapter} />
+                  ) : (
+                    expandView.includes(course.id) && (
+                      <SubscriptionCard chapter={chapter} />
+                    )
+                  )
+                )}
+              <div className='view-toggle'>
                 <span onClick={() => handleViewClick(course.id)}>
                   {expandView.includes(course.id) ? 'View less' : 'View more'}
                 </span>

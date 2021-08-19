@@ -17,6 +17,7 @@ const EventWorkshopModal = (props) => {
     handleRegisterClick,
     submissionStatus,
     submissionDetails,
+    validTill,
   } = props;
   const [submissionModal, setSubmissionModal] = useState(false);
   const [viewSubmissionsModal, setViewSubmissionsModal] = useState(false);
@@ -57,7 +58,7 @@ const EventWorkshopModal = (props) => {
           <div className='EventWorkshopModal-container'>
             <div className='EventWorkshopModal-title-row'>
               <h1>{event.topic}</h1>
-              {locked && (
+              {locked && validTill && (
                 <button onClick={() => handleRegisterClick()}>
                   Register for event
                 </button>

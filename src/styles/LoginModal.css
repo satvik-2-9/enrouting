@@ -19,7 +19,7 @@
   position: fixed;
   right: 0;
   background-color: #fefefe;
-  width: 25%;
+  width: 50%;
   height: 100%;
   -webkit-animation-name: loginSlideIn;
   -webkit-animation-duration: 0.4s;
@@ -257,3 +257,4 @@
     opacity: 1;
   }
 }
+

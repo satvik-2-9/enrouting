@@ -153,7 +153,7 @@ const EventCard = (props) => {
           </span>
         ) : validTill ? (
           <button
-            className='register-event-button'
+            className='register-event-button cc'
             onClick={handleRegisterClick}
           >
             Register for event
@@ -200,6 +200,7 @@ const EventCard = (props) => {
           </div>
         </div>
       </div>
+      <button className="register-event-button bb" > Register for event </button>
     </div>
   );
 };

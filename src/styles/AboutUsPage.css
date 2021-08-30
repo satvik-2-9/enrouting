@@ -45,3 +45,15 @@
 .aboutUs-img {
   width: 70%;
 }
+@media screen and (max-width:860px){
+   .AboutUsPage-container{
+     flex-direction: column;
+   }
+   .AboutUsPage-container-left{
+     width: 100%;
+   }
+   .AboutUsPage-container-right{
+     width: 100%;
+     overflow-y:unset;
+   }
+}

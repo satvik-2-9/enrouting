@@ -46,8 +46,8 @@ const AboutUsPage = () => {
               education.</p>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

@@ -160,6 +160,7 @@ const Navbar = (props) => {
       ))}
     </div>
   );
+  const [ct, setct] = useState(false);
 
   return (
     <div className="Navbar">
@@ -168,12 +169,18 @@ const Navbar = (props) => {
       {tryModal && <TryModal setTryModal={setTryModal} />}
       <div className="Navbar-container">
         <div className="Navbar-container-left">
+          
+          <div className="bar" onClick={() => { setct(!ct) }}><i class={ct?"fas fa-times":"fas fa-bars"}></i></div>
+          
+          
           <img
             src={brandLogo}
             alt="ec_logo"
             className="ec-logo"
             onClick={() => history.push('/')}
           />
+          <div className={ct===true?"nav_left":"remove"}>
+
           <NavLink
             to='/'
             exact
@@ -183,7 +190,7 @@ const Navbar = (props) => {
           <div
             className={`Navbar-items course-div ${(courseMenu || activeMenuItem === 'course') && 'activ'}`}
           >
-            <span className="course-text" onClick={handleCourseClick}>Course</span>
+            <p className="course-text" onClick={handleCourseClick}>Course</p>
             {courseMenu && (
               <OutsideClickHandler onOutsideClick={handleOutsideClick}>
                 <div className="course-menu-1">
@@ -263,14 +270,17 @@ const Navbar = (props) => {
             exact
             className={`nav-link ${activeMenuItem === 'about' && !courseMenu && !profileMenu && 'activ'}`}>
             <p className="Navbar-items">About us</p>
-          </NavLink>
+            </NavLink>
+           </div>
         </div>
         <div className="Navbar-container-right">
+        
+        <div className={ct===true?"sec":"sec_shrink"}>
           <NavLink
             to='/help'
             exact
             className={`nav-link ${activeMenuItem === 'help' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p className="Navbar-items">Help</p>
+            <p className="Navbar-items help">Help</p>
           </NavLink>
           {isAuthenticated ? (
             <div className={`Navbar-items profile-div ${(profileMenu || activeMenuItem === 'profile') && 'activ'}`}>
@@ -332,8 +342,10 @@ const Navbar = (props) => {
           ) : (
             <p onClick={() => setLoginModal(true)} className="Navbar-items">Login</p>
           )}
-          <button onClick={() => handleTryClick()} className="try-free-button">
-            Try for free
+
+          </div>
+          <button onClick={() => handleTryClick()} className={`try-free-button ${ct && 'j'}`}>
+            <div className="ff">Try for free</div>
           </button>
         </div>
       </div>

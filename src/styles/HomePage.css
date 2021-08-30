@@ -8,7 +8,16 @@
 }
 
 .hero-img {
-  width: 100%;
+ 
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: auto;
+    right: 0;
+    top: 0;
+    -o-object-fit: contain;
+    object-fit: contain;
+    width: 100%;
 }
 
 .welcome-textbox {
@@ -25,13 +34,18 @@
 .welcome-text1 {
   margin: 4rem 0 0 0;
   font-size: 2rem;
+  font-size: 4.5vw;
+  z-index: 10;
 }
 
 .welcome-text2 {
   font-family: Smoothy, Arial, serif;
-  font-size: 4rem;
+  font-size: 2vw;
   font-weight: 400;
   margin: 0;
+  z-index: 10;
+
+  font-size: 6.5vw;
 }
 
 .curved-div {
@@ -42,16 +56,22 @@
   bottom: -1px;
 }
 
+
 .university-section-container {
   width: 60%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   padding-bottom: 2rem;
+  padding-top: 2rem;
   position: relative;
   height: 225px;
+  margin-bottom: 200px;
+}
+.slideshowDotsContainer{
+  align-items: center;
 }
 
 .university-section-content-box-left {
@@ -60,12 +80,18 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  padding-right: 20px;
 }
 .university-section-content-box-left h1 {
   font-size: 3.5rem;
   font-weight: 800;
   margin: 2rem 0 0.3rem -3px;
 }
+.ss{
+  display: flex;
+  flex-direction: column;
+}
+
 .university-section-content-box-left p {
   font-size: 0.9rem;
   margin-top: 0.7rem;
@@ -85,6 +111,9 @@
 
 .university-section-content-box-right {
   width: 65%;
+  height: 100%;
+  margin-left: 50px;
+  margin-bottom: 20px;
 }
 .university-section-content-box-right h1 {
   font-weight: 400;
@@ -111,6 +140,7 @@
   width: 60%;
   margin: 0 auto;
   padding: 7rem 0;
+  margin-top: 60px;
 }
 
 .features-section-title {
@@ -302,7 +332,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .testimonial-section-title-div h1 {
   width: 50%;
@@ -317,6 +347,7 @@
 .slideshow {
   overflow: hidden;
   width: 100%;
+  padding-top: 40%;
 }
 .slideshowSlider {
   position: relative;
@@ -332,16 +363,16 @@
 }
 .slide-full-div {
   padding-top: 223px;
-  position: relative;
 }
 .slide-full-div-text {
   position: absolute;
   top: 0;
 }
 .slideshowDotsContainer {
-  position: absolute;
   bottom: 0;
   right: -5rem;
+  align-items: center;
+  margin-left: 100px;
 }
 .slideshowDot {
   cursor: pointer;
@@ -410,10 +441,11 @@
 }
 
 .conclusion-section {
-  width: 70%;
+  padding:10%;
+  width: 100%;
   margin: 0 auto;
-  padding: 7rem;
   text-align: center;
+  justify-content: flex-start;
 }
 .conclusion-section h3 {
   font-weight: 400;
@@ -435,4 +467,177 @@
   border-radius: 2rem;
   font-weight: 600;
   margin: 0 auto;
+}
+.jj{
+  justify-content: flex-start;
+}
+
+@media screen and (max-width:860px){
+   .hero-img{
+     height: 90vh;
+   }
+   .university-section{
+     display: flex;
+     flex-direction: column;
+   }
+   .features-section-title{
+     width: 100%;
+   }
+   .features-container-row{
+     width: 100%;
+     justify-content: space-between;
+     display: block;
+   }
+   .feature-item{
+     display: flex;
+     width: 100%;
+   }
+   .feature-img{
+     margin-right: 5px;
+     width: 15%;
+   }
+   .features-section-title h1{
+     line-height: normal;
+   }
+   .slide{
+     font-size: small;
+     width: 100%;
+   }
+   .university-section-content-box-right{
+    width: 100%;
+    font-size: 0.6rem;
+   }
+   .university-section-content-box-left{
+    align-items: center;
+    width: 100%;
+  }
+   .university-section-content-box-left h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 2rem 0rem  0.3rem -3px;
+    align-items: center;
+  }
+   .events-section-container button{
+      left:25%;
+   }
+   .events-img {
+    width: 100%;
+    margin: 20px auto;
+}
+  .experience-section-content-div-left {
+    width: 100%;
+  }
+  .experience-section-content-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.experience-section-content-div-left h3{
+  font-size: calc(0.8rem + .6vw);
+  font-weight: bold;
+}
+.experience-section-container h1{
+  font-size: calc(1.0rem+1.5vw);
+  font-weight: bold;
+}
+.experience-section-content-div-left p {
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.experience-section-container {
+  width: 100%;
+  margin: 7rem 1rem;
+}
+.experience-section-content-div-right {
+  width: 90%;
+  margin-top: 2rem;
+}
+.workshops-section-card-container-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.workshop-img{
+  width:50%;
+}
+.workshops-section-card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+  padding: 1.1rem;
+}
+.testimonial-section-title-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.testimonial-section-title-div h1 {
+  width: 100%;
+  color: #ffffff;
+  font-family: Smoothy, Arial, serif;
+  font-size: 2.0rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+  margin-top: 2rem;
+}
+
+.conclusion-section h3 {
+  justify-content: flex-start;
+  font-weight:bold;
+  width: 100%;
+  margin: 0 auto;
+  text-align: flex-start;
+  font-size: 1rem;
+}
+.Footer{
+  padding-top:50%;
+  width: 100%;
+}
+.links-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  border-top: 1px solid #d1d9d9;
+  margin-left: 0.8rem;
+  padding: 0;
+  padding-top: 10%;
+
+}
+.links-vertical-div{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+.slideshow{
+  padding:0;
+  height: 300px;
+  margin-bottom: 20px;
+  font-size: x-small;
+  margin-right: 20px;
+}
+
+.university-section-container{
+  display: flex;
+  flex-direction: column;
+}
+.events-section-title-container {
+  width:100% ; 
+  margin: 0 auto;
+}
+.events-section-text-div h1 {
+  font-family: Smoothy, Arial, serif;
+  font-size: 3rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 5rem;
+}
+
+
 }

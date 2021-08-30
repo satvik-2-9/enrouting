@@ -49,11 +49,12 @@ const HelpPage = () => {
       <Navbar activeMenuItem={'help'} />
       <div className='HelpPage-container'>
         <div className='HelpPage-container-left'>
+          <h1 className="jj">Let's Connect</h1>
           <img src={helpImage} alt='help-img' className='help-img' />
         </div>
         <div className='HelpPage-container-right'>
           <div className='HelpPage-text-box'>
-            <h1>Let's connect</h1>
+            <h1 className="kk">Let's connect</h1>
             <p>
               Let us know if you have something interesting to say and share it
               with us. If you have any questions, just fill in the contact form

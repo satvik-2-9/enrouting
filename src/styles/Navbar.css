@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: center;
   top: 0;
-  width: 100%;
+  width: 100vw;
   background-color: #383838;
   color: #ffffff;
   height: 57px;
@@ -22,7 +22,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .Navbar-container-left {
@@ -157,17 +157,128 @@
   padding: 0.6rem 0 0.6rem 2rem;
 }
 
-.course-text,
+
 .name-text {
-  padding: 1rem 0;
+  padding-top: 11%;
+}
+.course-text{
+  padding-top:20%;
 }
 
 .ec-logo {
-  width: 11%;
-  margin-right: 1rem;
+  width: 15%;
   cursor: pointer;
 }
 
 .no-subject-item {
   cursor: auto;
+}
+.bar{
+  display: none;
+}
+
+.nav_left{
+
+  display: flex;
+  flex-direction: row;
+}
+.remove{
+
+  display: flex;
+  flex-direction: row;
+}
+.sec{
+  display: flex;
+  flex-direction: row;
+}
+.sec_shrink{
+     display: flex;
+     flex-direction: row;
+}
+
+.j{
+  display: none;
+}
+.help{
+  padding-top: 15%;;
+}
+.course-menu-1{
+  background-color: #383838;
+  color: white;
+}
+@media screen and (max-width:1050px){
+
+  .bar{
+     display: block;
+     margin-right: 10px;
+   }
+   .nav_left{
+    /* styling when not hidden*/
+     display: flex;
+     flex-direction: column;
+     z-index: 1;
+     transition: all 0.5s ease-in-out;
+     left:0;
+     position: absolute;
+     margin-top: 500px;
+     align-items: center;
+     height: calc(100vw-57px);
+     width: 100vw;
+     background-color: #383838;
+   }
+   .body{
+     background-color: #383838;
+   }
+   .remove{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    left:-100%  ; 
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    position: absolute;
+   }
+   .sec{
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+    left:0;
+    position: absolute;
+    margin-top: 1960px;
+    align-items: center;
+    width: 100vw;
+    background-color: #383838;
+    padding-bottom: 900px;
+    
+   }
+   .sec_shrink{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    left:-100%  ; 
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    position: absolute;
+
+   }
+   .try-free-button {
+    background: linear-gradient(to right, #fb7b49, #edaf38);
+    outline: none;
+    border: none;
+    width: fit-content;
+    color: #ffffff;
+    padding: 0.5rem 0.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-left: 10%;
+  }
+  .ff{
+    white-space: nowrap;
+    font-size: x-small;
+  }
+  .ec-logo{
+     width: 20%;
+  }
+  
 }

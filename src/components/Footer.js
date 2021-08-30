@@ -33,8 +33,9 @@ const Footer = () => {
           </p>
           <p className='links-title'>FAQ</p>
         </div>
+        </div>
         <div className='links-vertical-div'>
-          <p className='links-title'>SOCIAL MEDIA</p>
+          <p className='links-title soc'>SOCIAL MEDIA</p>
           <div className='social-media-icons-container'>
             <img
               src={linkedinIcon}
@@ -54,7 +55,7 @@ const Footer = () => {
             />
           </div>
         </div>
-      </div>
+   
       <div className='terms-container'>
         <span>Privacy Policy</span>
         <span>Terms & Conditions</span>

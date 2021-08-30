@@ -87,13 +87,13 @@ const WorkshopCard = (props) => {
       <div className="EventCard-title-row">
         <span className="EventCard-title-text">{workshop.topic}</span>
         {locked && (
-          <button className="register-event-button" onClick={handleRegisterClick}>
+          <button className="register-event-button cc" onClick={handleRegisterClick}>
             Register for workshop
           </button>
         )}
       </div>
       <div className="EventCard-content-row">
-        <img src={workshop.img} alt="workshop-img" />
+        <img src={workshop.img} alt="workshop-img" className="main" />
         <div className="EventCard-content-div">
           <p>
             {workshop.desc
@@ -123,6 +123,7 @@ const WorkshopCard = (props) => {
           </div>
         </div>
       </div>
+      <button className="register-event-button bb" > Register for event </button>
     </div>
   );
 };

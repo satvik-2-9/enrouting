@@ -59,7 +59,7 @@ const EventWorkshopModal = (props) => {
             <div className='EventWorkshopModal-title-row'>
               <h1>{event.topic}</h1>
               {locked && validTill && (
-                <button onClick={() => handleRegisterClick()}>
+                <button onClick={() => handleRegisterClick()} className="cc">
                   Register for event
                 </button>
               )}

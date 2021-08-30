@@ -20,6 +20,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding-left: 3%;
 }
 
 .social-media-icon {
@@ -30,6 +31,10 @@
 .links-title {
   font-size: 0.9rem;
   font-weight: 500;
+
+}
+.soc{
+  padding-left: 3%;
 }
 
 .links-text {

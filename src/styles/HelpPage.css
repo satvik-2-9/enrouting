@@ -157,3 +157,35 @@ width: 41%;
 .errorMessage.correctMargin {
   margin-left: 5px !important;
 }
+.jj{
+  display: none;
+}
+
+@media screen and (max-width:860px){
+  .HelpPage-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .HelpPage-container-left{
+    width: 100%;
+  }
+  .jj{
+    display: block;
+    align-items: center;
+    position: absolute;
+    margin-left: 3%;
+    color: white;
+    margin-bottom: 60%;
+    font-size: 5.5vw;
+  }
+  .kk{
+    display: none;
+  }
+  .HelpPage-container-right{
+    width: 100%;
+    padding-bottom: 20%;
+  }
+  .Footer{
+    
+  }
+}

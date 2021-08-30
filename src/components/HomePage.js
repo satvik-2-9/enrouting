@@ -26,6 +26,8 @@ import TryModal from './TryModal';
 import { getAllCourses } from '../redux/actions/courseActions';
 import { getAllTestimonials } from '../redux/actions/testimonialActions';
 import '../styles/HomePage.css';
+import { Container, Row, Col } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const delay = 5000;
 
@@ -106,8 +108,10 @@ const HomePage = () => {
       {tryModal && <TryModal setTryModal={setTryModal} />}
       <div className='welcome-section'>
         <div className='welcome-textbox'>
+          
           <h1 className='welcome-text1'>Welcome to Enrouting careers</h1>
           <h1 className='welcome-text2'>Own your future with us</h1>
+
         </div>
         <img src={heroImage} alt='img-hero' className='hero-img' />
         <div className='curved-div'>
@@ -135,6 +139,7 @@ const HomePage = () => {
           </svg>
         </div>
       </div>
+      
       <div className='university-section'>
         <div className='university-section-container'>
           <div className='university-section-content-box-left'>
@@ -148,7 +153,8 @@ const HomePage = () => {
             </div>
             <p>Active students</p>
           </div>
-          <div className='university-section-content-box-right'>
+          <div className="ss">
+          <div className='university-section-content-box-right '>
             <div className='slideshow'>
               <div
                 className='slideshowSlider'
@@ -200,7 +206,11 @@ const HomePage = () => {
               ></div>
             ))}
           </div>
+
+          </div>
+        
         </div>
+
       </div>
       <div className='features-section'>
         <div className='features-section-title'>
@@ -454,13 +464,20 @@ const HomePage = () => {
         </div>
       </div>
       <div className='conclusion-section'>
-        <h3>
+       
+       <h3>
           Its not just how well you were taught that bring great results, it's
           the efforts that the student puts in to get those result on board.
         </h3>
-        <h1>"WE TEACH THEY PERSUE" !!!</h1>
+          
+          
+        
+        <h1 >"WE TEACH THEY PERSUE" !!!</h1>
+
         <button onClick={() => handleTryClick()}>Try for free</button>
-      </div>
+   
+        </div>
+      
       <Footer />
     </div>
   );

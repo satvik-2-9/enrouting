@@ -70,9 +70,6 @@
   height: 225px;
   margin-bottom: 200px;
 }
-.slideshowDotsContainer{
-  align-items: center;
-}
 
 .university-section-content-box-left {
   width: 30%;
@@ -373,6 +370,8 @@
   right: -5rem;
   align-items: center;
   margin-left: 100px;
+  padding-bottom: 10%;
+  margin-left: 40%;
 }
 .slideshowDot {
   cursor: pointer;
@@ -493,6 +492,7 @@
      width: 100%;
    }
    .feature-img{
+    padding-left: 5%;
      margin-right: 5px;
      width: 15%;
    }
@@ -502,10 +502,13 @@
    .slide{
      font-size: small;
      width: 100%;
+     margin-right: 10%;
    }
    .university-section-content-box-right{
     width: 100%;
     font-size: 0.6rem;
+    margin:0;
+    margin-left: 2%;
    }
    .university-section-content-box-left{
     align-items: center;
@@ -616,7 +619,7 @@
     width: 100%;
 }
 .slideshow{
-  padding-top:30%;
+  padding-top:20%;
   height: 300px;
   margin-bottom: 20px;
   font-size: x-small;
@@ -641,5 +644,11 @@
 .welcome-text2{
   font-size: 10.5vw;
 }
-
+.university-icon-container {
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 }

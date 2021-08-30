@@ -159,7 +159,7 @@ const HomePage = () => {
                 className='slideshowSlider'
                 style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
               >
-                <div className='slide'>
+                <div className='slide gg'>
                   <h1>
                     Trust our world of learning, joining us to achieve their
                     goals.

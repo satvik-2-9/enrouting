@@ -616,7 +616,7 @@
     width: 100%;
 }
 .slideshow{
-  padding-top:40%;
+  padding-top:30%;
   height: 300px;
   margin-bottom: 20px;
   font-size: x-small;
@@ -637,6 +637,9 @@
   font-weight: 400;
   margin: 0;
   line-height: 5rem;
+}
+.welcome-text2{
+  font-size: 10.5vw;
 }
 
 

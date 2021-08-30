@@ -34,7 +34,7 @@ const Footer = () => {
           <p className='links-title'>FAQ</p>
         </div>
         </div>
-        <div className='links-vertical-div'>
+        <div className='links-vertical-div pp'>
           <p className='links-title soc'>SOCIAL MEDIA</p>
           <div className='social-media-icons-container'>
             <img

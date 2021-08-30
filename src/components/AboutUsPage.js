@@ -45,9 +45,9 @@ const AboutUsPage = () => {
               students to help them relax their mind and let them understand the value of
               education.</p>
           </div>
+          <Footer/>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

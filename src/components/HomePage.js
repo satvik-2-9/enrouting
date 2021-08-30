@@ -26,7 +26,6 @@ import TryModal from './TryModal';
 import { getAllCourses } from '../redux/actions/courseActions';
 import { getAllTestimonials } from '../redux/actions/testimonialActions';
 import '../styles/HomePage.css';
-import { Container, Row, Col } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const delay = 5000;

@@ -8,7 +8,7 @@
   color: #ffffff;
   height: 57px;
   z-index: 10;
-  width: 100%;
+  width: 100vw;
 }
 
 .Navbar-container {
@@ -93,17 +93,15 @@
 }
 
 .course-menu-1-item:hover {
-  background: linear-gradient(to right, #fb7b49, #edaf38);
+
   color: #ffffff;
 }
 
 .active-item {
-  background: linear-gradient(to right, #fb7b49, #edaf38);
   color: #ffffff;
 }
 
 .course-menu-2 {
-  position: absolute;
   left: 208px;
   top: 1px;
   width: 200px;
@@ -200,7 +198,8 @@
   display: none;
 }
 .help{
-  padding-top: 15%;;
+  padding-top: 15%;
+  margin-top: 50%;
 }
 .course-menu-1{
   background-color: #383838;
@@ -279,5 +278,24 @@
   .ec-logo{
      width: 20%;
   }
-  
+  .course-menu-2 {
+    left: 208px;
+    top: 1px;
+    width: 200px;
+    padding: 0.6rem 0;
+    color: white;
+    border-radius: 0 0 8px 8px !important;
+    padding-left: 0 !important;
+    background-color: #383838;
+  }
+  .uu:hover{
+    background: linear-gradient(to right, #fb7b49, #edaf38);
+    padding: 5px;
+    border-radius: 2px;
+  }
+  .active-item{
+    background: none;
+  }
+ 
+ 
 }

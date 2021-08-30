@@ -19,7 +19,7 @@
   position: fixed;
   right: 0;
   background-color: #fefefe;
-  width: 20%;
+  width: 50%;
   height: 100%;
   -webkit-animation-name: loginSlideIn;
   -webkit-animation-duration: 0.4s;
@@ -73,4 +73,12 @@
   font-size: 0.8rem;
   padding: 0.6rem 0 0.6rem 1.5rem;
   cursor: auto;
+}
+
+@media screen and (max-width:860px){
+  .active-item {
+    background: none;
+    color: #ffffff;
+  }
+  
 }

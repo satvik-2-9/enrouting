@@ -194,53 +194,55 @@ const Navbar = (props) => {
             {courseMenu && (
               <OutsideClickHandler onOutsideClick={handleOutsideClick}>
                 <div className="course-menu-1">
-                  <div
+                
+                    <div
                     onClick={() => handleMenu1Click(1)}
                     className={`course-menu-1-item ${activeMenu1Item === 1 && 'active-item'}`}
                   >
-                    <span>Notes & lectures</span>
+                    <span className="uu"  >Notes & lectures</span>
                     {activeMenu1Item === 1 && classMenu()}
-                  </div>
+                   </div>
+               
                   <div
                     onClick={() => handleMenu1Click(2)}
                     className={`course-menu-1-item ${activeMenu1Item === 2 && 'active-item'}`}
                   >
-                    <span>Exam preparation</span>
+                    <span className="uu" >Exam preparation</span>
                     {activeMenu1Item === 2 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(3)}
                     className={`course-menu-1-item ${activeMenu1Item === 3 && 'active-item'}`}
                   >
-                    <span>Competitive exam</span>
+                    <span className="uu" >Competitive exam</span>
                     {activeMenu1Item === 3 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(4)}
                     className={`course-menu-1-item ${activeMenu1Item === 4 && 'active-item'}`}
                   >
-                    <span>Articulture</span>
+                    <span className="uu" >Articulture</span>
                     {activeMenu1Item === 4 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(5)}
                     className={`course-menu-1-item ${activeMenu1Item === 5 && 'active-item'}`}
                   >
-                    <span>Scifun</span>
+                    <span className="uu"  >Scifun</span>
                     {activeMenu1Item === 5 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(6)}
                     className={`course-menu-1-item ${activeMenu1Item === 6 && 'active-item'}`}
                   >
-                    <span>Practical presentation</span>
+                    <span className="uu" >Practical presentation</span>
                     {activeMenu1Item === 6 && comingSoonMenu()}
                   </div>
                   <div
                     onClick={() => handleMenu1Click(7)}
                     className={`course-menu-1-item ${activeMenu1Item === 7 && 'active-item'}`}
                   >
-                    <span>Conceptual videos</span>
+                    <span className="uu"  >Conceptual videos</span>
                     {activeMenu1Item === 7 && comingSoonMenu()}
                   </div>
                 </div>

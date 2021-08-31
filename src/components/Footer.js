@@ -7,7 +7,6 @@ import linkedinIcon from '../images/ic_linkedin.svg';
 import '../styles/Footer.css';
 
 const Footer = () => {
-  const history = useHistory();
   return (
     <div className='Footer'>
       <div className='links-section'>

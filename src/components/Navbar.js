@@ -138,9 +138,9 @@ const Navbar = (props) => {
       {allBoards?.map(board => (
         <div
           onClick={() => setActiveMenu3Item(board.name)}
-          className={`course-menu-1-item ${activeMenu3Item === board.name && 'active-item'}`}
+          className={`course-menu-1-item  ${activeMenu3Item === board.name && 'active-item'}`}
         >
-          <span>{board.name}</span>
+          <span className="ll">{board.name}</span>
           {activeMenu3Item === board.name && subjectsMenu(activeMenu2Item, activeMenu3Item)}
         </div>
       ))}
@@ -152,9 +152,9 @@ const Navbar = (props) => {
       {allStandards?.map(standard => (
         <div
           onClick={() => setActiveMenu2Item(standard.class)}
-          className={`course-menu-1-item ${activeMenu2Item === standard.class && 'active-item'}`}
+          className={`course-menu-1-item  ${activeMenu2Item === standard.class && 'active-item'}`}
         >
-          <span>{standard.class}th Class</span>
+          <span className="ll" >{standard.class}th Class</span>
           {activeMenu2Item === standard.class && boardMenu()}
         </div>
       ))}

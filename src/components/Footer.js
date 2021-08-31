@@ -13,7 +13,7 @@ const Footer = () => {
       <div className='links-section'>
         <div className='links-vertical-div'>
           <p className='links-title'>ABOUT</p>
-          <p className='links-text' onClick={() => history.push('/about')}>
+          <p className='links-text' onClick={() =>window.location.href="./about"}>
             About us
           </p>
           <p className='links-text'>Our story</p>
@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
         <div className='links-vertical-div'>
           <p className='links-title'>COURSES</p>
-          <p className='links-title' onClick={() => history.push('/events')}>
+          <p className='links-title' onClick={() => window.location.href="./events"}>
             EVENTS
           </p>
           <p className='links-title'>FAQ</p>

@@ -277,6 +277,7 @@
      width: 20%;
   }
   .course-menu-2 {
+    position: static;
     left: 10%px;
     top: 1px;
     width: 200px;
@@ -285,8 +286,11 @@
     border-radius: 0 0 8px 8px !important;
     padding-left: 0 !important;
     background-color: #383838;
-    position: relative;
   }
+  .course-menu-1-item:hover {
+    background:#383838;
+    color: #ffffff;
+}
   .uu:hover{
     background: linear-gradient(to right, #fb7b49, #edaf38);
     padding: 5px;
@@ -313,6 +317,11 @@
   }
   .active-item{
     background-color: #383838;
+  }
+  .ll:hover{
+    background: linear-gradient(to right, #fb7b49, #edaf38);
+    border-radius: 2px;
+    padding:2px;
   }
 
  

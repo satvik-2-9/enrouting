@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import youtubeIcon from '../images/ic_youtube.svg';
 import instaIcon from '../images/ic_insta.svg';
 import fbIcon from '../images/ic_fb.svg';

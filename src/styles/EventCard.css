@@ -86,13 +86,19 @@
 .bb{
   display: none;
 }
-@media screen and (max-width:860px) {
+@media screen and (max-width:1050px) {
+  .EventCard{
+    width:90%;
+  }
   .register-event-button{
-    padding:5px;
+    padding:9px;
     white-space: nowrap;
   }
   .EventCard-title-text{
     font-size: small;
+  }
+  .EventCard-content-div{
+    width: 100%;
   }
   .EventCard-content-div p {
     font-size: 0.8rem;
@@ -119,6 +125,19 @@
 }
 .cc{
   display: none;
+}
+.forward-icon{
+  height:15px !important;
+  width: 15px !important;
+}
+.EventCard-details-text{
+  display: flex;
+  flex-direction: row;
+}
+.EventCard-detail-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 }

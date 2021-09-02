@@ -82,6 +82,12 @@ img.BlogCard-forward-icon {
      flex-direction: column;
      width: 100%;
    }
+   .BlogCard{
+     width: 90%;
+   }
+   .BlogCard-content-div{
+     width:100%;
+   }
    .main{
      max-width: 100%;
      max-height: 100%;

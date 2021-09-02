@@ -49,9 +49,8 @@
 }
 
 .terms-container {
-  width: 85%;
+  width: 100%;
   margin: 1rem auto 2rem auto;
-  text-align: center;
 }
 .terms-container span {
   font-size: 0.8rem;
@@ -73,4 +72,11 @@
 }
 .Footer{
   padding-left: 7%;;
+}
+
+@media screen and(max-width:1050px) {
+  .social-media-icon {
+    width: 15%;
+    cursor: pointer;
+  }
 }

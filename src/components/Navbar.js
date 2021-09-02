@@ -172,12 +172,7 @@ const Navbar = (props) => {
   const [f, setf] = useState(false);
   var screen = window.innerWidth;
   
-  function gg() {
-    setct(!ct);
-    var x = window.scrollX;
-    var y = window.scrollY;
-    window.onscroll = function () { window.scrollTo(x, y); };
-  }
+ 
 
   return (
     <div className="Navbar">
@@ -375,8 +370,9 @@ const Navbar = (props) => {
               </div>
             </div> :
 
+            
                
-            <div className= {ct==true?'show_vertical_nav':'hide_vertical_nav'}>
+            <div className= {ct===true?'show_vertical_nav':'hide_vertical_nav'}>
 
               <ul className="nav_list">
               
@@ -386,7 +382,7 @@ const Navbar = (props) => {
                   <ul className="box_list">
                       <li ><p className="drop_list_item" onClick={()=>{setlevel2(!level2)}}>Notes & lectures</p>
                        {level2?<ul>
-                          <li> <p onClick={()=>{setlevel3(!level3)}}> 11th Class </p>
+                          <li> <p onClick={()=>{setlevel3(!level3)}} className="drop_list_item"> 11th Class </p>
                             {level3 ?
                               <ul>
                               <li className="drop_list_item">CBSE</li>
@@ -422,9 +418,9 @@ const Navbar = (props) => {
                 </li>
                 
                 <li  onClick={() => { window.location.href = "./Events" }}><p className="nav_list_item" >Events </p></li>
-                <li  onClick={()=>{window.location.href="./Workshops"}}><p className="nav_list_item">Workshop</p></li>
-                <li  onClick={()=>{window.location.href="./Blogs"}}><p className="nav_list_item">Blogs</p></li>
-                <li > {isAuthenticated?userData.firstname:<p className="nav_list_item" >Login</p>}</li>
+                <li  onClick={()=>{window.location.href="./workshop"}}><p className="nav_list_item">Workshop</p></li>
+                <li  onClick={()=>{window.location.href="./Blogs"}}><p className="nav_list_item blogs">Blogs</p></li>
+                <li > {isAuthenticated?userData.firstname:<p onClick={() => setLoginModal(true)} className="nav_list_item Login" >Login</p>}</li>
                 <li  onClick={()=>{window.location.href="./Help"}}><p className="nav_list_item">Help</p></li>
                 <li onClick={()=>{window.location.href="./"}}><p className="nav_list_item">About us</p></li>
                 <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Ourstory</p></li>
@@ -438,7 +434,11 @@ const Navbar = (props) => {
           
           }
 
-       </div>
+        </div>
+        {screen<1050?   <button onClick={() => handleTryClick()} className={`try-free-button ${ct && 'j'}`}>
+              <div className="ff">Try for free</div>
+        </button>:null}
+
       </div>
     </div>
   );

@@ -45,11 +45,11 @@
   background: linear-gradient(to right, #fb7b49, #edaf38);
   outline: none;
   border: none;
-  width: 40%;
   color: #ffffff;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
   border-radius: 1rem;
   cursor: pointer;
+  margin-right: 10px;
 }
 .try-free-button:hover {
   transform: scale(1.02);
@@ -253,6 +253,7 @@
 .vv{
   padding-bottom: 6px;
 }
+
 /* .box_list li{
    transform-origin: 50% 0%;
    transform:perspective(350px) rotateX(-90deg);
@@ -400,7 +401,12 @@
 .mm:hover{
   background: linear-gradient(to right, #fb7b49, #edaf38);
 }
-
+.blogs{
+  padding-bottom:20px;
+}
+.Login{
+  padding-bottom: 20px;
+}
 
  
 }

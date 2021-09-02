@@ -133,9 +133,9 @@
 }
 
 .features-section {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
-  padding: 7rem 0;
+  padding: 7rem 2rem;
   margin-top: 60px;
 }
 
@@ -300,7 +300,6 @@
 }
 
 .testimonial-section {
-  padding-bottom: 5rem;
   position: relative;
   background: linear-gradient(to bottom, #2f2f2f, #313131);
 }
@@ -597,7 +596,6 @@
   font-size: 1rem;
 }
 .Footer{
-  padding-top:50%;
   width: 100%;
 }
 .links-section {

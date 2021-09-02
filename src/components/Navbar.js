@@ -161,16 +161,34 @@ const Navbar = (props) => {
     </div>
   );
   const [ct, setct] = useState(false);
+  const [level1, setlevel1] = useState(false);
+  const [level2, setlevel2] = useState(false);
+  const [level3, setlevel3] = useState(false);
+  const [a, seta] = useState(false);
+  const [b, setb] = useState(false);
+  const [c, setc] = useState(false);
+  const [d, setd] = useState(false);
+  const [e, sete] = useState(false);
+  const [f, setf] = useState(false);
+  var screen = window.innerWidth;
+  
+  function gg() {
+    setct(!ct);
+    var x = window.scrollX;
+    var y = window.scrollY;
+    window.onscroll = function () { window.scrollTo(x, y); };
+  }
 
   return (
     <div className="Navbar">
       {courseMenu && <div className="dim"></div>}
       {loginModal && <LoginModal setLoginModal={setLoginModal} />}
       {tryModal && <TryModal setTryModal={setTryModal} />}
+  
       <div className="Navbar-container">
         <div className="Navbar-container-left">
           
-          <div className="bar" onClick={() => { setct(!ct) }}><i class={ct?"fas fa-times":"fas fa-bars"}></i></div>
+          <div className="bar" onClick={() => {setct(!ct)}}><i class={ct?"fas fa-times":"fas fa-bars"}></i></div>
           
           
           <img
@@ -179,177 +197,248 @@ const Navbar = (props) => {
             className="ec-logo"
             onClick={() => history.push('/')}
           />
-          <div className={ct===true?"nav_left":"remove"}>
+  {screen >= 1050 ?
+  <div className="new_nav" >
+              
+   <div className={ct === true ? "nav_left" : "remove"}>
 
-          <NavLink
-            to='/'
-            exact
-            className={`nav-link ${activeMenuItem === 'home' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p onClick={() => setCourseMenu(false)} className="Navbar-items">Home</p>
-          </NavLink>
-          <div
-            className={`Navbar-items course-div ${(courseMenu || activeMenuItem === 'course') && 'activ'}`}
-          >
-            <p className="course-text" onClick={handleCourseClick}>Course</p>
-            {courseMenu && (
-              <OutsideClickHandler onOutsideClick={handleOutsideClick}>
-                <div className="course-menu-1">
-                
-                    <div
-                    onClick={() => handleMenu1Click(1)}
-                    className={`course-menu-1-item ${activeMenu1Item === 1 && 'active-item'}`}
-                  >
-                    <span className="uu"  >Notes & lectures</span>
-                    {activeMenu1Item === 1 && classMenu()}
-                   </div>
-               
-                  <div
-                    onClick={() => handleMenu1Click(2)}
-                    className={`course-menu-1-item ${activeMenu1Item === 2 && 'active-item'}`}
-                  >
-                    <span className="uu" >Exam preparation</span>
-                    {activeMenu1Item === 2 && comingSoonMenu()}
-                  </div>
-                  <div
-                    onClick={() => handleMenu1Click(3)}
-                    className={`course-menu-1-item ${activeMenu1Item === 3 && 'active-item'}`}
-                  >
-                    <span className="uu" >Competitive exam</span>
-                    {activeMenu1Item === 3 && comingSoonMenu()}
-                  </div>
-                  <div
-                    onClick={() => handleMenu1Click(4)}
-                    className={`course-menu-1-item ${activeMenu1Item === 4 && 'active-item'}`}
-                  >
-                    <span className="uu" >Articulture</span>
-                    {activeMenu1Item === 4 && comingSoonMenu()}
-                  </div>
-                  <div
-                    onClick={() => handleMenu1Click(5)}
-                    className={`course-menu-1-item ${activeMenu1Item === 5 && 'active-item'}`}
-                  >
-                    <span className="uu"  >Scifun</span>
-                    {activeMenu1Item === 5 && comingSoonMenu()}
-                  </div>
-                  <div
-                    onClick={() => handleMenu1Click(6)}
-                    className={`course-menu-1-item ${activeMenu1Item === 6 && 'active-item'}`}
-                  >
-                    <span className="uu" >Practical presentation</span>
-                    {activeMenu1Item === 6 && comingSoonMenu()}
-                  </div>
-                  <div
-                    onClick={() => handleMenu1Click(7)}
-                    className={`course-menu-1-item ${activeMenu1Item === 7 && 'active-item'}`}
-                  >
-                    <span className="uu"  >Conceptual videos</span>
-                    {activeMenu1Item === 7 && comingSoonMenu()}
-                  </div>
-                </div>
-              </OutsideClickHandler>
-            )}
-          </div>
-          <NavLink
-            to='/events'
-            exact
-            className={`nav-link ${activeMenuItem === 'events' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p onClick={() => setCourseMenu(false)} className="Navbar-items">Events</p>
-          </NavLink>
-          <NavLink
-            to='/workshop'
-            exact
-            className={`nav-link ${activeMenuItem === 'workshop' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p onClick={() => setCourseMenu(false)} className="Navbar-items">Workshop</p>
-          </NavLink>
-          <NavLink
-            to='/blogs'
-            exact
-            className={`nav-link ${activeMenuItem === 'blogs' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p className="Navbar-items">Blogs</p>
-          </NavLink>
-          <NavLink
-            to='/about'
-            exact
-            className={`nav-link ${activeMenuItem === 'about' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p className="Navbar-items">About us</p>
-            </NavLink>
-           </div>
-        </div>
-        <div className="Navbar-container-right">
-        
-        <div className={ct===true?"sec":"sec_shrink"}>
-          <NavLink
-            to='/help'
-            exact
-            className={`nav-link ${activeMenuItem === 'help' && !courseMenu && !profileMenu && 'activ'}`}>
-            <p className="Navbar-items help">Help</p>
-          </NavLink>
-          {isAuthenticated ? (
-            <div className={`Navbar-items profile-div ${(profileMenu || activeMenuItem === 'profile') && 'activ'}`}>
-              <span
-                className="name-text"
-                onClick={() => setProfileMenu(true)}
-              >
-                {userData.firstname}
-              </span>
-              <img
-                src={downIcon}
-                alt="down-icon"
-                className="down-icon"
-                onClick={() => setProfileMenu(true)}
-              />
-              {profileMenu && (
-                <OutsideClickHandler onOutsideClick={handleOutsideClick}>
-                  <div className="profile-menu">
-                    <div
-                      onClick={() => setActiveProfileMenuItem(1)}
-                      className={`course-menu-1-item ${activeProfileMenuItem === 1 && 'active-item'}`}
-                    >
-                      <p onClick={() => handleProfileClick('profile')}>Profile</p>
-                    </div>
-                    <div
-                      onClick={() => setActiveProfileMenuItem(2)}
-                      className={`course-menu-1-item ${activeProfileMenuItem === 2 && 'active-item'}`}
-                    >
-                      <p onClick={() => handleProfileClick('purchases')}>My purchases</p>
-                    </div>
-                    <div
-                      onClick={() => setActiveProfileMenuItem(3)}
-                      className={`course-menu-1-item ${activeProfileMenuItem === 3 && 'active-item'}`}
-                    >
-                      <p onClick={() => handleProfileClick('events')}>Registered events</p>
-                    </div>
-                    <div
-                      onClick={() => setActiveProfileMenuItem(4)}
-                      className={`course-menu-1-item ${activeProfileMenuItem === 4 && 'active-item'}`}
-                    >
-                      <p onClick={() => handleProfileClick('workshop')}>Workshop</p>
-                    </div>
-                    <div
-                      onClick={() => setActiveProfileMenuItem(5)}
-                      className={`course-menu-1-item ${activeProfileMenuItem === 5 && 'active-item'}`}
-                    >
-                      <p onClick={() => handleProfileClick('notes')}>My Notes</p>
-                    </div>
-                    <div
-                      onClick={() => setActiveProfileMenuItem(6)}
-                      className={`course-menu-1-item ${activeProfileMenuItem === 6 && 'active-item'}`}
-                    >
-                      <p onClick={() => dispatch(logout(history))}>Log Out</p>
-                    </div>
-                  </div>
-                </OutsideClickHandler>
-              )}
+    <NavLink
+      to='/'
+      exact
+      className={`nav-link ${activeMenuItem === 'home' && !courseMenu && !profileMenu && 'activ'}`}>
+      <p onClick={() => setCourseMenu(false)} className="Navbar-items mm">Home</p>
+    </NavLink>
+    <div
+      className={`nav-link course-div ${(courseMenu || activeMenuItem === 'course') && 'activ'}`}
+    >
+      <p className="Navbar-items mm" onClick={handleCourseClick}>Course</p>
+      {courseMenu && (
+        <OutsideClickHandler onOutsideClick={handleOutsideClick}>
+          <div className="course-menu-1">
+          
+              <div
+              onClick={() => handleMenu1Click(1)}
+              className={`course-menu-1-item ${activeMenu1Item === 1 && 'active-item'}`}
+            >
+              <span className="uu"  >Notes & lectures</span>
+              {activeMenu1Item === 1 && classMenu()}
             </div>
-          ) : (
-            <p onClick={() => setLoginModal(true)} className="Navbar-items">Login</p>
-          )}
-
+        
+            <div
+              onClick={() => handleMenu1Click(2)}
+              className={`course-menu-1-item ${activeMenu1Item === 2 && 'active-item'}`}
+            >
+              <span className="uu" >Exam preparation</span>
+              {activeMenu1Item === 2 && comingSoonMenu()}
+            </div>
+            <div
+              onClick={() => handleMenu1Click(3)}
+              className={`course-menu-1-item ${activeMenu1Item === 3 && 'active-item'}`}
+            >
+              <span className="uu" >Competitive exam</span>
+              {activeMenu1Item === 3 && comingSoonMenu()}
+            </div>
+            <div
+              onClick={() => handleMenu1Click(4)}
+              className={`course-menu-1-item ${activeMenu1Item === 4 && 'active-item'}`}
+            >
+              <span className="uu" >Articulture</span>
+              {activeMenu1Item === 4 && comingSoonMenu()}
+            </div>
+            <div
+              onClick={() => handleMenu1Click(5)}
+              className={`course-menu-1-item ${activeMenu1Item === 5 && 'active-item'}`}
+            >
+              <span className="uu"  >Scifun</span>
+              {activeMenu1Item === 5 && comingSoonMenu()}
+            </div>
+            <div
+              onClick={() => handleMenu1Click(6)}
+              className={`course-menu-1-item ${activeMenu1Item === 6 && 'active-item'}`}
+            >
+              <span className="uu" >Practical presentation</span>
+              {activeMenu1Item === 6 && comingSoonMenu()}
+            </div>
+            <div
+              onClick={() => handleMenu1Click(7)}
+              className={`course-menu-1-item ${activeMenu1Item === 7 && 'active-item'}`}
+            >
+              <span className="uu"  >Conceptual videos</span>
+              {activeMenu1Item === 7 && comingSoonMenu()}
+            </div>
           </div>
-          <button onClick={() => handleTryClick()} className={`try-free-button ${ct && 'j'}`}>
-            <div className="ff">Try for free</div>
-          </button>
-        </div>
+        </OutsideClickHandler>
+      )}
+    </div>
+    <NavLink
+      to='/events'
+      exact
+      className={`nav-link ${activeMenuItem === 'events' && !courseMenu && !profileMenu && 'activ'}`}>
+      <p onClick={() => setCourseMenu(false)} className="Navbar-items mm ">Events</p>
+    </NavLink>
+    <NavLink
+      to='/workshop'
+      exact
+      className={`nav-link ${activeMenuItem === 'workshop' && !courseMenu && !profileMenu && 'activ'}`}>
+      <p onClick={() => setCourseMenu(false)} className="Navbar-items mm">Workshop</p>
+    </NavLink>
+    <NavLink
+      to='/blogs'
+      exact
+      className={`nav-link ${activeMenuItem === 'blogs' && !courseMenu && !profileMenu && 'activ'}`}>
+      <p className="Navbar-items mm ">Blogs</p>
+    </NavLink>
+    <NavLink
+      to='/about'
+      exact
+      className={`nav-link ${activeMenuItem === 'about' && !courseMenu && !profileMenu && 'activ'}`}>
+      <p className="Navbar-items mm">About us</p>
+      </NavLink>
+    </div>
+   
+    <div className="Navbar-container-right">
+
+    <div className={ct===true?"sec":"sec_shrink"}>
+    <NavLink
+      to='/help'
+      exact
+      className={`nav-link ${activeMenuItem === 'help' && !courseMenu && !profileMenu && 'activ'}`}>
+      <p className="Navbar-items help mm">Help</p>
+    </NavLink>
+    {isAuthenticated ? (
+      <div className={`Navbar-items profile-div ${(profileMenu || activeMenuItem === 'profile') && 'activ'}`}>
+        <span
+          className="name-text mm"
+          onClick={() => setProfileMenu(true)}
+        >
+          {userData.firstname}
+        </span>
+        <img
+          src={downIcon}
+          alt="down-icon"
+          className="down-icon"
+          onClick={() => setProfileMenu(true)}
+        />
+        {profileMenu && (
+          <OutsideClickHandler onOutsideClick={handleOutsideClick}>
+            <div className="profile-menu">
+              <div
+                onClick={() => setActiveProfileMenuItem(1)}
+                className={`course-menu-1-item ${activeProfileMenuItem === 1 && 'active-item'}`}
+              >
+                <p onClick={() => handleProfileClick('profile')}>Profile</p>
+              </div>
+              <div
+                onClick={() => setActiveProfileMenuItem(2)}
+                className={`course-menu-1-item ${activeProfileMenuItem === 2 && 'active-item'}`}
+              >
+                <p onClick={() => handleProfileClick('purchases')}>My purchases</p>
+              </div>
+              <div
+                onClick={() => setActiveProfileMenuItem(3)}
+                className={`course-menu-1-item ${activeProfileMenuItem === 3 && 'active-item'}`}
+              >
+                <p onClick={() => handleProfileClick('events')}>Registered events</p>
+              </div>
+              <div
+                onClick={() => setActiveProfileMenuItem(4)}
+                className={`course-menu-1-item ${activeProfileMenuItem === 4 && 'active-item'}`}
+              >
+                <p onClick={() => handleProfileClick('workshop')}>Workshop</p>
+              </div>
+              <div
+                onClick={() => setActiveProfileMenuItem(5)}
+                className={`course-menu-1-item ${activeProfileMenuItem === 5 && 'active-item'}`}
+              >
+                <p onClick={() => handleProfileClick('notes')}>My Notes</p>
+              </div>
+              <div
+                onClick={() => setActiveProfileMenuItem(6)}
+                className={`course-menu-1-item ${activeProfileMenuItem === 6 && 'active-item'}`}
+              >
+                <p onClick={() => dispatch(logout(history))}>Log Out</p>
+              </div>
+            </div>
+          </OutsideClickHandler>
+        )}
+      </div>
+    ) : (
+          
+          <p onClick={() => setLoginModal(true)} className="Navbar-items login">Login</p>
+        
+      )}
+
+    </div>
+    <button onClick={() => handleTryClick()} className={`try-free-button ${ct && 'j'}`}>
+      <div className="ff">Try for free</div>
+    </button>
+              </div>
+            </div> :
+
+               
+            <div className= {ct==true?'show_vertical_nav':'hide_vertical_nav'}>
+
+              <ul className="nav_list">
+              
+                <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Home</p></li>
+                <li className="course_box" >  <p className={`nav_list_item box_list ${level1 === 1 && 'active-item'}`}  onClick={()=>{setlevel1(!level1)}} >Course </p>
+                {level1?<div className="dropdown">
+                  <ul className="box_list">
+                      <li ><p className="drop_list_item" onClick={()=>{setlevel2(!level2)}}>Notes & lectures</p>
+                       {level2?<ul>
+                          <li> <p onClick={()=>{setlevel3(!level3)}}> 11th Class </p>
+                            {level3 ?
+                              <ul>
+                              <li className="drop_list_item">CBSE</li>
+                              <li className="drop_list_item">ICSE</li>
+                            </ul>:null}
+                          </li>
+                        </ul> : null
+                        }
+                        
+                      </li>
+                      <li ><p className="drop_list_item vv" onClick={()=>{seta(!a)}}> Exam Preparation </p>
+                        {a ? <ul><li  className="drop_list_item vv" >Available soon</li></ul> : null}
+                      </li>
+                      <li ><p className="drop_list_item" onClick={()=>{setb(!b)}}>Competitive Exam</p>
+                      {b?<ul><li className="drop_list_item vv">Available soon</li></ul>:null}
+                      </li>
+                      <li><p className="drop_list_item" onClick={()=>{setc(!c)}}>Articulture</p>
+                      {c?<ul><li className="drop_list_item vv">Available soon</li></ul>:null}
+                      </li>
+                      <li ><p className="drop_list_item" onClick={()=>{setd(!d)}}>Scifun</p>
+                      {d?<ul><li  className="drop_list_item vv">Available soon</li></ul>:null}
+                      </li>
+                      <li ><p className="drop_list_item" onClick={() => { sete(!e) }}>Practical Presentation</p>
+                      {e?<ul><li className="drop_list_item vv">Available soon</li></ul>:null}
+                      </li>
+                      <li ><p className="drop_list_item" onClick={()=>{setf(!f)}}>Conceptual Videos</p>
+                      {f?<ul><li className="drop_list_item ">Available soon</li></ul>:null}
+                      </li>
+                  </ul>
+                  
+                  </div> : null
+                  }
+                </li>
+                
+                <li  onClick={() => { window.location.href = "./Events" }}><p className="nav_list_item" >Events </p></li>
+                <li  onClick={()=>{window.location.href="./Workshops"}}><p className="nav_list_item">Workshop</p></li>
+                <li  onClick={()=>{window.location.href="./Blogs"}}><p className="nav_list_item">Blogs</p></li>
+                <li > {isAuthenticated?userData.firstname:<p className="nav_list_item" >Login</p>}</li>
+                <li  onClick={()=>{window.location.href="./Help"}}><p className="nav_list_item">Help</p></li>
+                <li onClick={()=>{window.location.href="./"}}><p className="nav_list_item">About us</p></li>
+                <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Ourstory</p></li>
+                <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Vision</p></li>
+                <li onClick={()=>{window.location.href="./"}}><p className="nav_list_item">FAQ</p></li>
+              </ul>
+
+              
+            </div>
+    
+          
+          }
+
+       </div>
       </div>
     </div>
   );

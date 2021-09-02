@@ -377,39 +377,103 @@ const Navbar = (props) => {
               <ul className="nav_list">
               
                 <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Home</p></li>
-                <li className="course_box" >  <p className={`nav_list_item box_list ${level1 === 1 && 'active-item'}`}  onClick={()=>{setlevel1(!level1)}} >Course </p>
+                <li className="course_box" >  <p id="course" onClick={() => {
+                  setlevel1(!level1);
+                  if (level1) {
+                    document.getElementById("course").classList.remove("color");
+                  } else {
+                    document.getElementById("course").classList.add("color");
+                  }
+                }} className="nav_list_item" >Course </p>
                 {level1?<div className="dropdown">
                   <ul className="box_list">
-                      <li ><p className="drop_list_item" onClick={()=>{setlevel2(!level2)}}>Notes & lectures</p>
+                      <li ><p id="course1"className="drop_list_item" onClick={() => {
+                        setlevel2(!level2);
+                        if (level2) {
+                          document.getElementById("course1").classList.remove("color");
+                        } else {
+                          document.getElementById("course1").classList.add("color");
+                        }
+                      }}>Notes & lectures</p>
                        {level2?<ul>
-                          <li> <p onClick={()=>{setlevel3(!level3)}} className="drop_list_item"> 11th Class </p>
+                          <li> <p id="course12" onClick={() => {
+                            setlevel3(!level3);
+                            if (level3) {
+                              document.getElementById("course12").classList.remove("color");
+                            } else {
+                              document.getElementById("course12").classList.add("color");
+                            }
+                          }} className="drop_list_item"> 11th Class </p>
                             {level3 ?
                               <ul>
-                              <li className="drop_list_item">CBSE</li>
-                              <li className="drop_list_item">ICSE</li>
+                              <li className="lev3_item">CBSE</li>
+                              <li className="lev3_item">ICSE</li>
                             </ul>:null}
                           </li>
                         </ul> : null
                         }
                         
                       </li>
-                      <li ><p className="drop_list_item vv" onClick={()=>{seta(!a)}}> Exam Preparation </p>
-                        {a ? <ul><li  className="drop_list_item vv" >Available soon</li></ul> : null}
+                      <li ><p id="a1"className="drop_list_item vv" onClick={() => {
+                        seta(!a);
+                        if (a) {
+                              document.getElementById("a1").classList.remove("color");
+                            } else {
+                              document.getElementById("a1").classList.add("color");
+                            }
+                      }}> Exam Preparation </p>
+                        {a ? <ul><li  className="lev3_item">Available soon</li></ul> : null}
                       </li>
-                      <li ><p className="drop_list_item" onClick={()=>{setb(!b)}}>Competitive Exam</p>
-                      {b?<ul><li className="drop_list_item vv">Available soon</li></ul>:null}
+                      <li ><p id="a2" className="drop_list_item" onClick={() => {
+                        setb(!b);
+                        if (b) {
+                              document.getElementById("a2").classList.remove("color");
+                            } else {
+                              document.getElementById("a2").classList.add("color");
+                        }
+
+                      }}>Competitive Exam</p>
+                      {b?<ul><li className="lev3_item">Available soon</li></ul>:null}
                       </li>
-                      <li><p className="drop_list_item" onClick={()=>{setc(!c)}}>Articulture</p>
-                      {c?<ul><li className="drop_list_item vv">Available soon</li></ul>:null}
+                      <li><p id="a3" className="drop_list_item" onClick={() => {
+                        setc(!c);
+                        if (c) {
+                              document.getElementById("a3").classList.remove("color");
+                            } else {
+                              document.getElementById("a3").classList.add("color");
+                          }
+                      }}>Articulture</p>
+                      {c?<ul><li className="lev3_item">Available soon</li></ul>:null}
                       </li>
-                      <li ><p className="drop_list_item" onClick={()=>{setd(!d)}}>Scifun</p>
-                      {d?<ul><li  className="drop_list_item vv">Available soon</li></ul>:null}
+                      <li ><p id="a4" className="drop_list_item" onClick={() => {
+                        setd(!d);
+                        if (d) {
+                              document.getElementById("a4").classList.remove("color");
+                            } else {
+                              document.getElementById("a4").classList.add("color");
+                          }
+                      }}>Scifun</p>
+                      {d?<ul><li  className="lev3_item">Available soon</li></ul>:null}
                       </li>
-                      <li ><p className="drop_list_item" onClick={() => { sete(!e) }}>Practical Presentation</p>
-                      {e?<ul><li className="drop_list_item vv">Available soon</li></ul>:null}
+                      <li ><p id="a5" className="drop_list_item" onClick={() => {
+                        sete(!e);
+                        if (e) {
+                              document.getElementById("a5").classList.remove("color");
+                            } else {
+                              document.getElementById("a5").classList.add("color");
+                            }
+                      }}>Practical Presentation</p>
+                      {e?<ul><li className="lev3_item">Available soon</li></ul>:null}
                       </li>
-                      <li ><p className="drop_list_item" onClick={()=>{setf(!f)}}>Conceptual Videos</p>
-                      {f?<ul><li className="drop_list_item ">Available soon</li></ul>:null}
+                      <li ><p id="a6" className="drop_list_item" onClick={() => {
+                        setf(!f);
+                        if (f) {
+                              document.getElementById("a6").classList.remove("color");
+                            } else {
+                              document.getElementById("a6").classList.add("color");
+                          }
+                       }}>Conceptual Videos</p>
+                      {f?<ul><li className="lev3_item">Available soon</li></ul>:null}
                       </li>
                   </ul>
                   
@@ -419,9 +483,13 @@ const Navbar = (props) => {
                 
                 <li  onClick={() => { window.location.href = "./Events" }}><p className="nav_list_item" >Events </p></li>
                 <li  onClick={()=>{window.location.href="./workshop"}}><p className="nav_list_item">Workshop</p></li>
-                <li  onClick={()=>{window.location.href="./Blogs"}}><p className="nav_list_item blogs">Blogs</p></li>
-                <li > {isAuthenticated?userData.firstname:<p onClick={() => setLoginModal(true)} className="nav_list_item Login" >Login</p>}</li>
-                <li  onClick={()=>{window.location.href="./Help"}}><p className="nav_list_item">Help</p></li>
+                <li onClick={() => { window.location.href = "./Blogs" }}><p className="nav_list_item blogs">Blogs</p></li>
+                
+                <li> <div className="line1"></div></li>
+                <li > {isAuthenticated?userData.firstname:<p onClick={() => setLoginModal(true)} className="Login" >Login</p>}</li>
+                <li> <div className="line2"></div></li>
+
+                <li onClick={() => { window.location.href = "./Help" }}><p className="nav_list_item">Help</p></li>
                 <li onClick={()=>{window.location.href="./"}}><p className="nav_list_item">About us</p></li>
                 <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Ourstory</p></li>
                 <li  onClick={()=>{window.location.href="./"}}><p className="nav_list_item">Vision</p></li>

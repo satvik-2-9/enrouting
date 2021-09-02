@@ -74,7 +74,7 @@
   padding-left: 7%;;
 }
 
-@media screen and(max-width:1050px) {
+@media screen and (max-width:1050px) {
   .social-media-icon {
     width: 15%;
     cursor: pointer;

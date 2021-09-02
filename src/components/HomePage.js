@@ -477,7 +477,7 @@ const HomePage = () => {
    
         </div>
       
-      <Footer />
+      <Footer className="homepg" />
     </div>
   );
 };

@@ -165,10 +165,12 @@ width: 41%;
   .HelpPage-container{
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
   .HelpPage-container-left{
     width: 100%;
   }
+  
   .jj{
     display: block;
     align-items: center;
@@ -183,9 +185,8 @@ width: 41%;
   }
   .HelpPage-container-right{
     width: 100%;
-    padding-bottom: 20%;
+    padding-bottom: 0px;
   }
-  .Footer{
-    
-  }
+  
+  
 }

@@ -259,7 +259,9 @@
 .teacher-img {
   margin-top: -2rem;
 }
-
+.workshops-section{
+  margin: 0 auto 0 .8rem;
+}
 .workshops-section h1 {
   width: 60%;
   margin: 0 auto;
@@ -595,8 +597,10 @@
   text-align: flex-start;
   font-size: 1rem;
 }
-.Footer{
+
+.homepg{
   width: 100%;
+  padding-top:0 !important;
 }
 .links-section {
   width: 100%;

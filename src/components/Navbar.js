@@ -172,7 +172,11 @@ const Navbar = (props) => {
   const [f, setf] = useState(false);
   var screen = window.innerWidth;
   
- 
+  
+  function gg() {
+    setct(!ct)
+    document.body.classList.add("stop-scroll");
+  }
 
   return (
     <div className="Navbar">
@@ -183,7 +187,7 @@ const Navbar = (props) => {
       <div className="Navbar-container">
         <div className="Navbar-container-left">
           
-          <div className="bar" onClick={() => {setct(!ct)}}><i class={ct?"fas fa-times":"fas fa-bars"}></i></div>
+          <div className="bar" onClick={()=>{gg()}}> <i class={ct?"fas fa-times":"fas fa-bars"}></i> </div>
           
           
           <img

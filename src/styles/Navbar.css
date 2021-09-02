@@ -270,7 +270,11 @@
   transform:perspective(350px) rotateX(0deg);
   transition:0.2s linear 0s;
 } */
+.stop-scroll{
+   height: 100%;
+   overflow-y: hidden !important;
 
+}
 @media screen and (max-width:1050px){
 
   .bar{

@@ -175,7 +175,11 @@ const Navbar = (props) => {
   
   function gg() {
     setct(!ct)
-    document.body.classList.add("stop-scroll");
+    if (!ct) {
+      document.body.classList.add("stop-scroll");
+    } else {
+      document.body.classList.remove("stop-scroll");
+    }
   }
 
   return (

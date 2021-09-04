@@ -476,7 +476,7 @@
    .hero-img{
      height: 90vh;
      object-fit: cover;
-     
+     padding:10px;
    }
    .university-section{
      display: flex;

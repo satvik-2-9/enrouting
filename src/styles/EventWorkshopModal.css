@@ -131,3 +131,28 @@
   font-size: 0.8rem;
   font-weight: 500;
 }
+@media screen and (max-width:1050px) {
+  .EventWorkshopModal-img-desc-div {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+ }
+ .EventWorkshopModal-desc {
+  width: 100%;
+  height: 98%;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3rem;
+  color: #777777;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.EventWorkshopModal-img {
+  width: 200%;
+  height: 100%;
+  border-radius: 0.8rem;
+}
+}

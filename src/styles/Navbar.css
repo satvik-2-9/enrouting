@@ -339,7 +339,7 @@
     cursor: pointer;
     margin-left: 10%;
     position: absolute;
-    right:10%;
+    right:0 !important;
   }
   .ff{
     white-space: nowrap;
@@ -348,7 +348,8 @@
   .ec-logo{
     position: absolute;
     right:45%;
-     width: 10%;
+    width: 13%;
+    margin:0;
   }
   .course-menu-2 {
     position: static;

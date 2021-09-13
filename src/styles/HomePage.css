@@ -139,7 +139,8 @@
 }
 
 .features-section-title {
-  width: 70%;
+  width: 100%;
+  align-items: center;
 }
 .features-section-title h1 {
   font-weight: 400;

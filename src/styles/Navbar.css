@@ -21,6 +21,7 @@
 }
 
 .nav-link {
+  padding:0 !important;
   text-decoration: none;
   color: #ffffff !important;
 }
@@ -35,6 +36,7 @@
 
 .Navbar-container-right {
   width: 30%;
+  margin-left: 22%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -46,7 +48,7 @@
   outline: none;
   border: none;
   color: #ffffff;
-  padding: 0.5rem 0.5rem;
+  padding: 0.1rem 1.2rem;
   border-radius: 1rem;
   cursor: pointer;
   margin-right: 10px;
@@ -185,7 +187,6 @@
   flex-direction: row;
 }
 .remove{
-
   display: flex;
   flex-direction: row;
 }
@@ -201,9 +202,7 @@
 .j{
   display: none;
 }
-.help{
-  padding-top: 16%;
-}
+
 .new_nav{
   display: flex !important;
   flex-direction: row !important;

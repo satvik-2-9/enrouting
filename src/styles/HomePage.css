@@ -136,6 +136,8 @@
   margin: 0 auto;
   padding: 7rem 2rem;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
 }
 
 .features-section-title {
@@ -145,6 +147,7 @@
 .features-section-title h1 {
   font-weight: 400;
   line-height: 3rem;
+  text-align: center;
 }
 
 .features-container-row {
@@ -161,11 +164,14 @@
 
 .feature-img {
   width: 25%;
+  margin-left: 30%;
 }
 
 .feature-text {
+  padding-top:3%;
   font-size: 0.8rem;
   line-height: 1.2rem;
+  text-align: center;
 }
 
 .event-curved-div {
@@ -496,9 +502,10 @@
    }
    .feature-img{
     padding-left: 5%;
-     margin-right: 8px;
-     width: 25%;
-   }
+    margin-right: 8px;
+    width: 25%;
+    margin:0; 
+  }
    .features-section-title h1{
      line-height: normal;
    }
